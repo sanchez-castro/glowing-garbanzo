@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import '../styles/styles.scss'
 
 import { rhythm, scale } from "../utils/typography"
 

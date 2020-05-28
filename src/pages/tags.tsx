@@ -2,12 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import Layout from "../components/layout"
 
-// Utilities
-import kebabCase from "lodash/kebabCase"
-
 // Components
 import { Helmet } from "react-helmet"
 import { PageProps, Link, graphql } from "gatsby"
+import { Container, Row, Col } from 'react-bootstrap'
 
 interface Data {
   allMarkdownRemark: {
@@ -37,24 +35,21 @@ const TagsPage = ({ data, location}: PageProps<Data>) => {
 
     return (
         <Layout location={location} title={siteTitle}>
-            <div>
-            <h1>Tags</h1>
-            <ul>
+          <Container>
+            <Row>
                 {data.allMarkdownRemark.group.map(tag => (
-                <li key={tag.fieldValue}>
-                    {/* <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                    {tag.fieldValue} ({tag.totalCount})
-                    </Link> */}
-                    <h2>{tag.fieldValue}</h2>
-                    {tag.edges.map(edge => (
+                  <Col>
+                    <h5 className="tag-title">{tag.fieldValue}</h5>
+                    <div>{tag.edges.map(edge => (
                         <Link to={edge.node.fields.slug}>
                             <p>{edge.node.frontmatter.title}</p>
                         </Link>
-                    ))}
-                </li>
+                    ))}</div>
+                    </Col>
                 ))}
-            </ul>
-            </div>
+            </Row>
+          </Container>
+           
         </Layout>
     )
   
