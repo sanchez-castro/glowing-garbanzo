@@ -2,7 +2,6 @@ import React from "react"
 import { Link } from "gatsby"
 import '../styles/styles.scss'
 
-import { rhythm, scale } from "../utils/typography"
 
 interface Props {
   location: Location
@@ -18,8 +17,7 @@ const Layout = ({ location, title, children }: Props) => {
     header = (
       <h1
         style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
+          marginBottom: `1.5rem`,
           marginTop: 0,
         }}
       >
@@ -62,8 +60,8 @@ const Layout = ({ location, title, children }: Props) => {
       style={{
         marginLeft: `auto`,
         marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+        maxWidth: `50rem`,
+        padding: `${`1.5rem`} ${`(3 / 4)rem`}`,
       }}
     >
       <header>{header}</header>

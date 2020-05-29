@@ -4,7 +4,6 @@ import { Link, graphql } from 'gatsby'
 import Bio from '../components/bio'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { rhythm, scale } from '../utils/typography'
 
 interface Props {
   data: {
@@ -31,7 +30,7 @@ const BlogPostTemplate = ({ data, pageContext }: Props) => {
       />
       <h1
         style={{
-          marginTop: rhythm(1),
+          marginTop: `1rem`,
           marginBottom: 0,
         }}
       >
@@ -39,9 +38,9 @@ const BlogPostTemplate = ({ data, pageContext }: Props) => {
       </h1>
       <p
         style={{
-          ...scale(-1 / 5),
+          transform: `scale(-1 / 5)`,
           display: `block`,
-          marginBottom: rhythm(1),
+          marginBottom: `1rem`,
         }}
       >
         {post.frontmatter.date}
@@ -49,7 +48,7 @@ const BlogPostTemplate = ({ data, pageContext }: Props) => {
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <hr
         style={{
-          marginBottom: rhythm(1),
+          marginBottom: `1rem`,
         }}
       />
       <Bio />
