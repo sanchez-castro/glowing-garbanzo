@@ -1,36 +1,35 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
 
 // Components
-import { Link, graphql } from "gatsby"
+import { Link, graphql } from "gatsby";
 
 interface Props {
   data: {
-    allMarkdownRemark: any
-
-  }
-  pageContext: any
+    allMarkdownRemark: any;
+  };
+  pageContext: any;
 }
 
 const Tags = ({ pageContext, data }: Props) => {
-  const { tag } = pageContext
-  const { edges, totalCount } = data.allMarkdownRemark
+  const { tag } = pageContext;
+  const { edges, totalCount } = data.allMarkdownRemark;
   const tagHeader = `${totalCount} post${
     totalCount === 1 ? "" : "s"
-  } tagged with "${tag}"`
+  } tagged with "${tag}"`;
 
   return (
     <div>
       <h1>{tagHeader}</h1>
       <ul>
         {edges.map(({ node }: any) => {
-          const { slug } = node.fields
-          const { title } = node.frontmatter
+          const { slug } = node.fields;
+          const { title } = node.frontmatter;
           return (
             <li key={slug}>
               <Link to={slug}>{title}</Link>
             </li>
-          )
+          );
         })}
       </ul>
       {/*
@@ -39,8 +38,8 @@ const Tags = ({ pageContext, data }: Props) => {
             */}
       <Link to="/tags">All tags</Link>
     </div>
-  )
-}
+  );
+};
 
 Tags.propTypes = {
   pageContext: PropTypes.shape({
@@ -63,9 +62,9 @@ Tags.propTypes = {
       ),
     }),
   }),
-}
+};
 
-export default Tags
+export default Tags;
 
 export const pageQuery = graphql`
   query($tag: String) {
@@ -87,4 +86,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

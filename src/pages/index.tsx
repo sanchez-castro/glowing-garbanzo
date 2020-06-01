@@ -1,36 +1,36 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Bio from "../components/bio";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 interface Props {
   data: {
-    allMarkdownRemark: any
+    allMarkdownRemark: any;
     site: {
       siteMetadata: {
-        title: string
-      }
-    }
-  }
+        title: string;
+      };
+    };
+  };
 }
 
 const BlogIndex = ({ data }: Props) => {
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  const siteTitle = data.site.siteMetadata.title;
+  const posts = data.allMarkdownRemark.edges;
 
   return (
     <Layout location={window.location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
       {posts.map(({ node }: any) => {
-        const title = node.frontmatter.title || node.fields.slug
+        const title = node.frontmatter.title || node.fields.slug;
         return (
           <div key={node.fields.slug}>
             <h3
               style={{
-                marginBottom: (1 / 4),
+                marginBottom: 1 / 4,
               }}
             >
               <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
@@ -44,13 +44,13 @@ const BlogIndex = ({ data }: Props) => {
               }}
             />
           </div>
-        )
+        );
       })}
     </Layout>
-  )
-}
+  );
+};
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query {
@@ -75,4 +75,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

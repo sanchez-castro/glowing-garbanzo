@@ -1,59 +1,59 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Layout from "../components/layout"
+import React from "react";
+import PropTypes from "prop-types";
+import Layout from "../components/layout";
 
 // Components
-import { Helmet } from "react-helmet"
-import { PageProps, Link, graphql } from "gatsby"
-import { Container, Row, Col } from 'react-bootstrap'
+import { Helmet } from "react-helmet";
+import { PageProps, Link, graphql } from "gatsby";
+import { Container, Row, Col } from "react-bootstrap";
 
 interface Data {
   allMarkdownRemark: {
     group: {
-      fieldValue: string
+      fieldValue: string;
       edges: {
         node: {
           fields: {
-            slug: string
-          }
+            slug: string;
+          };
           frontmatter: {
-            title: string
-          }
-        }
-      } []
-    } []
-  },
+            title: string;
+          };
+        };
+      }[];
+    }[];
+  };
   site: {
     siteMetadata: {
-      title: string
-    }
-  }
+      title: string;
+    };
+  };
 }
 
-const TagsPage = ({ data, location}: PageProps<Data>) => {
-    const siteTitle = data.site.siteMetadata.title
+const TagsPage = ({ data, location }: PageProps<Data>) => {
+  const siteTitle = data.site.siteMetadata.title;
 
-    return (
-        <Layout location={location} title={siteTitle}>
-          <Container>
-            <Row>
-                {data.allMarkdownRemark.group.map(tag => (
-                  <Col>
-                    <h5 className="tag-title">{tag.fieldValue}</h5>
-                    <div>{tag.edges.map(edge => (
-                        <Link to={edge.node.fields.slug}>
-                            <p>{edge.node.frontmatter.title}</p>
-                        </Link>
-                    ))}</div>
-                    </Col>
+  return (
+    <Layout location={location} title={siteTitle}>
+      <Container>
+        <Row>
+          {data.allMarkdownRemark.group.map((tag) => (
+            <Col key={tag.fieldValue}>
+              <h5 className="tag-title">{tag.fieldValue}</h5>
+              <div>
+                {tag.edges.map((edge) => (
+                  <Link key={edge.node.fields.slug} to={edge.node.fields.slug}>
+                    <p>{edge.node.frontmatter.title}</p>
+                  </Link>
                 ))}
-            </Row>
-          </Container>
-           
-        </Layout>
-    )
-  
-}
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </Layout>
+  );
+};
 
 TagsPage.propTypes = {
   data: PropTypes.shape({
@@ -71,9 +71,9 @@ TagsPage.propTypes = {
       }),
     }),
   }),
-}
+};
 
-export default TagsPage
+export default TagsPage;
 
 export const pageQuery = graphql`
   query {
@@ -87,16 +87,16 @@ export const pageQuery = graphql`
         fieldValue
         totalCount
         edges {
-            node {
-                fields {
-                    slug
-                }
-                frontmatter {
-                  title
-                }
+          node {
+            fields {
+              slug
             }
+            frontmatter {
+              title
+            }
+          }
         }
       }
     }
   }
-`
+`;
