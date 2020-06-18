@@ -1,0 +1,108 @@
+.tree-menu {
+
+    ul {
+        list-style-type: none;
+    }
+      
+    .box {
+        cursor: pointer;
+        -webkit-user-select: none; /* Safari 3.1+ */
+        -moz-user-select: none; /* Firefox 2+ */
+        -ms-user-select: none; /* IE 10+ */
+        user-select: none; 
+        height: auto;
+        width: auto;
+        padding-left: 2vh;
+        padding-right: 2vh;
+        border-radius: 1px;
+        border: none;
+        background-color: #03314B;
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    .node {
+        cursor: pointer;
+        box-sizing: border-box;
+        height: auto;
+        width: auto;
+        border-radius: 1px;
+        border: 2px solid #345669;
+        background: #ffffff;
+        border-radius: 1px;
+        padding-left: 2vh;
+        padding-right: 2vh;
+        font-size: 14px;
+        font-weight: bold;
+        color: #03314B;
+    }
+    
+    .nested {
+        display: none;
+    }
+    
+    .active {
+        display: block;
+    }
+    
+    .tree,
+    .tree ul {
+        margin: 0 0 0 0; /* indentation */
+        padding:0;
+        list-style:none;
+        position:relative;
+    }
+    
+    .tree:before,
+    .tree ul:before {
+    content:"";
+        display:block;
+        width:0;
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        border-left:5px solid #03314B;
+    }
+    
+    .tree ul {margin-left:1.5em} /* (indentation/2) */
+    
+    .tree li {
+        margin:0;
+        padding:0 1.5em; /* indentation + .5em */
+        line-height:2em; /* default list item's `line-height` */
+        font-weight:bold;
+        position:relative;
+        padding-top: 2rem;
+    }
+    
+    .tree li:before {
+    content:"";
+        display:block;
+        width:24px; /* same with indentation */
+        height:0;
+        border-top:5px solid #03314B;
+        margin-top:-1px; /* border top width */
+        position:absolute;
+        top:3em; /* (line-height/2) */
+        left:0;
+    }
+    
+    .tree li:last-child:before {
+        background:white; /* same with body background */
+        height:auto;
+        top:3em; /* (line-height/2) */
+        bottom:0;
+    }
+    
+    .tree > li:first-child:before {
+        border-top: 0;
+    }
+    
+    .tree:before,
+    .tree ul:first-child:before { 
+        border-left: 0;
+    }
+}
+
