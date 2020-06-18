@@ -1,7 +1,36 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&family=Crimson+Text');
+
+html {
+    font-family: 'Montserrat', sans-serif, 'Crimson Text', serif;
+}
+
 .tag-title {
     text-transform: capitalize;
 }
 
 .container {
     padding: 0;
+}
+
+/* 
+ * Purpose:
+ * Assign height: "100%" to
+ * html, body, #___gatsby &  
+ * div with role="group"
+*/
+
+html, body, #___gatsby {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+}
+
+div[role="group"][tabindex] {
+    height: 100%;
+}
+
+#gatsby-focus-wrapper {
+    height: 100%;
 }
