@@ -1,7 +1,5 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-
-import Bio from "../components/bio";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
@@ -23,7 +21,6 @@ const BlogIndex = ({ data }: Props) => {
   return (
     <Layout location={window.location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
       {posts.map(({ node }: any) => {
         const title = node.frontmatter.title || node.fields.slug;
         return (
