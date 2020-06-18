@@ -1,6 +1,10 @@
 import React from "react";
 import { Link } from "gatsby";
+import Header from './header';
+import Sidebar from './sidebar';
+import { Container, Row, Col } from "react-bootstrap";
 import "../styles/styles.scss";
+import styles from './layout.module.scss'
 
 interface Props {
   location: Location;
@@ -9,7 +13,7 @@ interface Props {
 }
 
 const Layout = ({ location, title, children }: Props) => {
-  const rootPath = `${__PATH_PREFIX__}/`;
+  /* const rootPath = `${__PATH_PREFIX__}/`;
   let header;
 
   if (location.pathname === rootPath) {
@@ -52,25 +56,20 @@ const Layout = ({ location, title, children }: Props) => {
         </Link>
       </h3>
     );
-  }
+  } */
 
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: `50rem`,
-        padding: `${`1.5rem`} ${`(3 / 4)rem`}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
+    <Container fluid>
+      <Row className={styles.row}>
+        <Col lg={2} xl={3} className={styles.sidebar}>
+          <Sidebar></Sidebar>
+        </Col>
+        <Col style={{ padding: 0 }} lg={10} xl={9}>
+          <Header></Header>
+          <main className={styles.content}>{children}</main>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
