@@ -1,6 +1,60 @@
 .bar {
-    margin: 3rem 2rem 3rem 2rem;
+    margin: 2rem 2rem 2rem 2rem;
 }
+
+.hidden-bar {
+    visibility: hidden;
+}
+
+.title-container {
+    position: relative;
+}
+
+.title-background {
+    background-color: #FFE090;
+    height: 2.8vh;
+    width: 70%;
+    position: absolute;
+    top: 55%;
+    z-index: -1;
+    left: 4%;
+    -webkit-animation: scale-left 1s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+            animation: scale-left 1s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
+}
+
+.rotated {
+    transform: rotate(180deg);
+}
+
+@-webkit-keyframes scale-left {
+    0% {
+      -webkit-transform: scaleX(0.1);
+              transform: scaleX(0.1);
+      -webkit-transform-origin: 0% 0%;
+              transform-origin: 0% 0%;
+    }
+    100% {
+      -webkit-transform: scaleX(1);
+              transform: scaleX(1);
+      -webkit-transform-origin: 0% 0%;
+              transform-origin: 0% 0%;
+    }
+  }
+  
+@keyframes scale-left {
+    0% {
+        -webkit-transform: scaleX(0.4);
+                transform: scaleX(0.4);
+        -webkit-transform-origin: 0% 0%;
+                transform-origin: 0% 0%;
+    }
+    100% {
+        -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+        -webkit-transform-origin: 0% 0%;
+                transform-origin: 0% 0%;
+    }
+} 
 
 .title {
     color: #03314B;
@@ -11,7 +65,7 @@
 .bio {
     color: #03314B;
     font-family: 'Crimson Text';
-    margin-top: 3rem;
+    margin: 1rem 0 5rem 0;
     font-size: 18px;
 }
 
@@ -21,8 +75,20 @@
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
-
     img {
         margin-left: 2vh;
     }
+}
+
+.hide-button {
+    position: absolute;
+    right: -2vh;
+    top: 30vh;
+    cursor: pointer;
+    visibility: initial;
+    z-index: 1;
+}
+
+.tree-container {
+    position: relative;
 }
