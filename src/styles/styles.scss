@@ -34,3 +34,7 @@ div[role="group"][tabindex] {
 #gatsby-focus-wrapper {
     height: 100%;
 }
+
+.row [class*='col-'] {
+    transition: all 0.5s ease-in-out;
+}
