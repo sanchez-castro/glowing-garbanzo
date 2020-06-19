@@ -1,76 +1,73 @@
-import React from "react";
+import React, { Component } from "react";
 import { Link } from "gatsby";
-import Header from './header';
-import Sidebar from './sidebar';
-import { Container, Row, Col } from "react-bootstrap";
+import Header from "./header";
+import Sidebar from "./sidebar";
+import { Container, Row, Col, Collapse } from "react-bootstrap";
 import "../styles/styles.scss";
-import styles from './layout.module.scss'
+import styles from "./layout.module.scss";
 
-interface Props {
+interface LayoutProps {
   location: Location;
   title: string;
   children?: any;
 }
 
-const Layout = ({ location, title, children }: Props) => {
-  /* const rootPath = `${__PATH_PREFIX__}/`;
-  let header;
+interface LayoutState {
+  collapsedSidebar: boolean;
+}
 
-  if (location.pathname === rootPath) {
-    header = (
-      <h1
-        style={{
-          marginBottom: `1.5rem`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    );
-  } else {
-    header = (
-      <h3
-        style={{
-          fontFamily: `Montserrat, sans-serif`,
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h3>
-    );
-  } */
+class Layout extends Component<LayoutProps, LayoutState> {
+  constructor(props: LayoutProps) {
+    super(props);
 
-  return (
-    <Container fluid>
-      <Row className={styles.row}>
-        <Col lg={2} xl={3} className={styles.sidebar}>
-          <Sidebar></Sidebar>
-        </Col>
-        <Col style={{ padding: 0 }} lg={10} xl={9}>
-          <Header></Header>
-          <main className={styles.content}>{children}</main>
-        </Col>
-      </Row>
-    </Container>
-  );
-};
+    this.state = {
+      collapsedSidebar: false,
+    };
+    this.sidebarWidth = 3;
+  }
+
+  sidebarWidth: number;
+
+  toggleHideHandler = () => {
+    this.setState(
+      {
+        collapsedSidebar: !this.state.collapsedSidebar,
+      },
+      this.setBarWidth
+    );
+  };
+
+  setBarWidth = () => {
+    if (this.state.collapsedSidebar) {
+      this.sidebarWidth = 1;
+    } else {
+      this.sidebarWidth = 3;
+    }
+    this.forceUpdate();
+  };
+
+  render() {
+    return (
+      <Container fluid className={styles.container}>
+        <Row className={styles.row}>
+          <Col
+            lg={this.sidebarWidth}
+            xl={this.sidebarWidth}
+            className={styles.sidebar}
+          >
+            <Sidebar
+              hidden={this.state.collapsedSidebar}
+              hideHandler={this.toggleHideHandler}
+            ></Sidebar>
+          </Col>
+          <Col style={{ padding: 0 }} lg={10} xl={9}>
+            <Header></Header>
+            <main className={styles.content}>{this.props.children}</main>
+          </Col>
+        </Row>
+      </Container>
+    );
+  }
+}
 
 export default Layout;
