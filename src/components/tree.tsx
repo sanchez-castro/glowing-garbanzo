@@ -1,50 +1,53 @@
-import React, { Component } from 'react'
-import styles from './tree-menu.module.scss'
-
+import React, { Component } from "react";
+import styles from "./tree-menu.module.scss";
 
 interface TreeProps {
-    parent: string
-    nodes: Array<string>
+  parent: string;
+  nodes: Array<string>;
 }
 
 interface TreeState {
-    toggle: boolean
+  toggle: boolean;
 }
 
 class Tree extends Component<TreeProps, TreeState> {
+  constructor(props: TreeProps) {
+    super(props);
 
-    constructor(props: TreeProps) {
-        super(props)
+    this.state = {
+      toggle: false,
+    };
+  }
 
-        this.state = {
-            toggle: false
-        }
-    }
+  toggleMenu = () => {
+    this.setState({
+      toggle: !this.state.toggle,
+    });
+  };
 
-
-    toggleMenu = () => {
-        this.setState({
-            toggle: !this.state.toggle
-        })
-        this.forceUpdate();
-    }
-
-    render() {
-        return (     
-            <div className={styles.treeMenu}>
-                <ul className={styles.tree}>
-                    <li key={this.props.parent}><button className={styles.box} onClick={() => this.toggleMenu()}>{this.props.parent}</button>
-                        <ul className={styles.nested} style={{ display: this.state.toggle ? 'none': 'block'}}>
-                            {this.props.nodes.map(node => 
-                                <li key={node}><button className={styles.node}>{ node }</button></li>
-                            )}
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        )
-    }
-
+  render() {
+    return (
+      <div className={styles.treeMenu}>
+        <ul className={styles.tree}>
+          <li key={this.props.parent}>
+            <button className={styles.box} onClick={() => this.toggleMenu()}>
+              {this.props.parent}
+            </button>
+            <ul
+              className={styles.nested}
+              style={{ display: this.state.toggle ? "none" : "block" }}
+            >
+              {this.props.nodes.map((node) => (
+                <li key={node}>
+                  <button className={styles.node}>{node}</button>
+                </li>
+              ))}
+            </ul>
+          </li>
+        </ul>
+      </div>
+    );
+  }
 }
 
-export default Tree
+export default Tree;
