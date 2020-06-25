@@ -1,5 +1,7 @@
+@import "../theme/_variables.scss";
+
 .sidebar {
-    border: solid 2px #DEEBF2;
+    background-color: $color-primary;
     padding: 0;
 }
 
@@ -15,6 +17,7 @@
     margin-left: 2vh;
 }
 
-.content {
-    margin: 10vh;
+.hidden {
+    visibility: hidden;
 }
+
