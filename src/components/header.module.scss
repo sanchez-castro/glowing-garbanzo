@@ -1,66 +1,158 @@
-header {
-    margin: 2rem 1rem 2rem 1rem;
+@import "../theme/_variables.scss";
+
+.header-row {
+    margin: 1rem 0 1rem 0;
+
+    .nav-search {
+        margin-right: 1.3rem;
+        border-radius: 3px;
+        border: none;
+        background-color: $color-primary-light;
+        height: 2rem;
+        width: 20rem;
+        padding: 1vh;
+        outline: none !important;
+    }
+
+    .nav-list {
+        li {
+            align-self: center;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        display: flex;
+        list-style-type: none;
+        justify-content: space-evenly;
+        margin: 0;
+
+        .nav-button {
+            height: 2.5rem;
+            width: 9rem;
+            border-radius: 3px;
+            background-color: $color-accent; 
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .nav-item {
+            margin-right: 1.3rem;
+            text-decoration: none;
+            color: $color-primary-text;
+            font-family: PT Serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 0.01em;
+        }
+    
+        .nav-item:hover {
+            color: #666666;
+        }
+    
+        .active-nav-item {
+            color: #333333;
+        }    
+    }
+
+
 }
 
-.title {
-    color: #000000;
-    font-size: 3rem;
-    text-decoration: none;
+.rotated {
+    transform: rotate(180deg);
 }
 
-.nav-search {
-    margin-right: 1.3rem;
-    box-sizing: border-box;
-    height: 40px;
-    width: 291px;
-    border: 2px solid #0E415E;
-    border-radius: 2px;
-}
 
-.nav-button {
-    height: 3rem;
-    width: 9rem;
-    border-radius: 1px;
-    background-color: #6452F6;
-    color: #FFFFFF;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0;
-    -webkit-box-shadow: 2px 2px 0px 0px rgba(3,49,75,1);
-    -moz-box-shadow: 2px 2px 0px 0px rgba(3,49,75,1);
-    box-shadow: 2px 2px 0px 0px rgba(3,49,75,1);
-}
-
-.nav-item {
-    margin-right: 1.3rem;
-    text-decoration: none;
-    color: #345669;
-    font-family: Montserrat;
-    font-size: 15px;
-    font-weight: bold;
-    letter-spacing: 0;
-}
-
-li {
-    align-self: center;
-}
-
-ul {
-    padding: 0;
-}
-
-.nav-item:hover {
-    color: #666666;
-}
-
-.active-nav-item {
-    color: #333333;
-}
-
-.nav-list {
+.hide-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    visibility: initial;
+    height: 2rem;
+    width: 2rem;
+    background-color: #F1F2F2;
+    color: #191919;
     display: flex;
-    list-style-type: none;
-    justify-content: space-evenly;
-    margin: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.extended-searchbar {
+    font-size: 2rem;
+    margin-top: 4rem;
+    border-radius: 3px;
+    border: none;
+    background-color: #e4e4e4;
+    height: 4rem;
+    width: 80%;
+    padding: 4vh;
+    font-weight: 300;
+    outline: none !important;
+    margin-bottom: 2vh;
+}
+
+.extended-searchbar::-webkit-input-placeholder { 
+  color: black;
+}
+.extended-searchbar::-moz-placeholder { 
+  color: black;
+}
+.extended-searchbar:-ms-input-placeholder { 
+  color: black;
+}
+.extended-searchbar:-moz-placeholder { 
+  color: black;
+}
+
+.tags {
+    margin-top: 1vh;
+    .tag {
+        border-radius: 10vh;
+        border: none;
+        background-color: #F1F2F2;
+        color: black;
+        padding: 1vh 4vh 1vh 2vh;
+        margin: 0 1vh 1vh 0;
+    }
+    
+    .tag:focus { 
+        outline:0 !important;
+        background-color: rgb(196, 196, 196); 
+    }
+    
+    .active-tag {
+        background-color: black;
+        color: white;
+    }
+    
+    .active-tag:focus {
+        background-color: black;
+    }
+    
+    .delete-tag {
+        margin-left: 1vh;
+        position: absolute;
+        cursor: pointer;
+    }
+    
+    .add-tag {
+        transform: rotate(45deg);
+        margin-left: 1vh;
+        position: absolute;
+        cursor: pointer;
+    }
+}
+
+.more-tags {
+    border-bottom: solid 1px #E0E0E0;
+    padding-top: 1vh;
+    padding-bottom: 4rem;
 }
 
