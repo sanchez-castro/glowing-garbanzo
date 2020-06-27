@@ -3,6 +3,7 @@
 .sidebar {
     background-color: $color-primary;
     padding: 0;
+    height: 100%;
 }
 
 .row {
@@ -21,3 +22,22 @@
     visibility: hidden;
 }
 
+.rotated {
+    transform: rotate(180deg);
+}
+
+
+.hide-button {
+    position: fixed;
+    top: 0;
+    cursor: pointer;
+    visibility: initial;
+    height: 2rem;
+    width: 2rem;
+    background-color: #F1F2F2;
+    color: #191919;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
