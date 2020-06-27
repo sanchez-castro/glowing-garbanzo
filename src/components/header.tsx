@@ -2,37 +2,29 @@ import React, { Fragment, useState } from "react";
 import { Link } from "gatsby";
 import styles from "./header.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
+import searchIcon from '../assets/icon/search.svg'
 
 interface HeaderProps {
-  hideHandler: (event: React.MouseEvent<HTMLImageElement>) => void;
-  hiddenBar: boolean;
   extendedSearchbar: boolean;
 }
 
 const Header = (props: HeaderProps) => {
   return (
     <header>
-      <div
-        className={[
-          props.hiddenBar ? styles.rotated : "",
-          styles.hideButton
-        ].join(" ")}
-        onClick={props.hideHandler}
-      >
-        &#10095;
-      </div>
-
       <Container fluid>
         <Row className={styles.headerRow}>
           <Col lg={6}>
-            <input
-              className={[
-                props.extendedSearchbar ? "d-none" : "",
-                styles.navSearch
-              ].join(" ")}
-              type="text"
-              placeholder="Search"
-            />
+            <div className={styles.inputContainer}>
+              <input 
+                className={[
+                  props.extendedSearchbar ? "d-none" : "",
+                  styles.navSearch
+                ].join(" ")}
+                type="text"
+                placeholder="Search"
+              />
+              <img className={styles.inputIcon} src={searchIcon} alt=""/>
+            </div>
           </Col>
           <Col lg={6}>
             <ul className={styles.navList}>
@@ -92,11 +84,14 @@ const ExtendedSearchbar = () => {
     <Fragment>
       <Row className="justify-content-md-center">
         <Col className="d-flex justify-content-center" lg={10} xl={10}>
-          <input
-            className={styles.extendedSearchbar}
-            type="text"
-            placeholder="What do you want to learn today?"
-          />
+          <div className={styles.extendedInputContainer}>
+            <input 
+              className={styles.extendedSearchbar}
+              type="text"
+              placeholder="What do you want to learn today?"
+            />
+            <img className={styles.inputIcon} src={searchIcon} alt=""/>
+          </div>
         </Col>
       </Row>
       <Row className="justify-content-md-center">
