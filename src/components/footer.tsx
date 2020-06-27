@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from "gatsby";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import styles from './footer.module.scss'
+import styles from './footer.module.scss';
+import twitterIcon from '../assets/icon/twitter.svg'
+import facebookIcon from '../assets/icon/facebook.svg'
+import instagramIcon from '../assets/icon/instagram.svg'
 
 const Footer = () => {
     return(
@@ -53,9 +56,9 @@ const Footer = () => {
                     </Col>
                     <Col className={styles.socialMedia}>
                         <p className={styles.strong}>Follow us</p>
-                        <img src={"icon/twitter.svg"} alt=""/>
-                        <img src={"icon/facebook.svg"} alt=""/>
-                        <img src={"icon/instagram.svg"} alt=""/>
+                        <img src={twitterIcon} alt=""/>
+                        <img src={facebookIcon} alt=""/>
+                        <img src={instagramIcon} alt=""/>
                     </Col>
                     <Col className={styles.subscribe}>
                         <p className={styles.strong}>Subscribe</p>
