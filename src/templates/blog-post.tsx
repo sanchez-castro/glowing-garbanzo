@@ -2,6 +2,11 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
+import { Container, Row, Col } from "react-bootstrap";
+import styles from "./blog-post.module.scss";
+import Tags from "../components/shared/post-tags";
+import PostType from "../components/shared/post-type";
+import Subscribe from "../components/subscribe";
 
 interface Props {
   data: {
@@ -26,54 +31,71 @@ const BlogPostTemplate = ({ data, pageContext }: Props) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <h1
-        style={{
-          marginTop: `1rem`,
-          marginBottom: 0,
-        }}
-      >
-        {post.frontmatter.title}
-      </h1>
-      <p
-        style={{
-          transform: `scale(-1 / 5)`,
-          display: `block`,
-          marginBottom: `1rem`,
-        }}
-      >
-        {post.frontmatter.date}
-      </p>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} />
-      <hr
-        style={{
-          marginBottom: `1rem`,
-        }}
-      />
 
-      <ul
-        style={{
-          display: `flex`,
-          flexWrap: `wrap`,
-          justifyContent: `space-between`,
-          listStyle: `none`,
-          padding: 0,
-        }}
-      >
-        <li>
-          {previous && (
-            <Link to={previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
-            </Link>
+      <Container fluid className="p-0">
+        <Row className={styles.row}>
+          {post.frontmatter.featuredImage ? (
+            <Col lg={12} xl={12} className="p-0">
+              <div className={styles.jumbotron}>
+                <img
+                  src={post.frontmatter.featuredImage.childImageSharp.fluid.src}
+                  alt="post image"
+                />
+              </div>
+            </Col>
+          ) : (
+            ""
           )}
-        </li>
-        <li>
-          {next && (
-            <Link to={next.fields.slug} rel="next">
-              {next.frontmatter.title} →
-            </Link>
-          )}
-        </li>
-      </ul>
+          <Col lg={12} xl={12} className={styles.header}>
+            <h1>{post.frontmatter.title}</h1>
+            <p className={styles.date}>{post.frontmatter.date}</p>
+            <div className={styles.metaContainer}>
+              {post.frontmatter.type ? (
+                <PostType types={post.frontmatter.type}></PostType>
+              ) : (
+                ""
+              )}
+              {post.frontmatter.tags ? (
+                <Tags tags={post.frontmatter.tags}></Tags>
+              ) : (
+                ""
+              )}
+            </div>
+          </Col>
+          <Col lg={12} xl={12} className={styles.content}>
+            <div dangerouslySetInnerHTML={{ __html: post.html }} />
+          </Col>
+          <Col lg={12} xl={12} className={styles.subscribe}>
+            <Subscribe></Subscribe>
+          </Col>
+          <Col lg={12} xl={12}>
+            <ul
+              style={{
+                display: `flex`,
+                flexWrap: `wrap`,
+                justifyContent: `space-between`,
+                listStyle: `none`,
+                padding: 0
+              }}
+            >
+              <li>
+                {previous && (
+                  <Link to={previous.fields.slug} rel="prev">
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+              </li>
+              <li>
+                {next && (
+                  <Link to={next.fields.slug} rel="next">
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </Col>
+        </Row>
+      </Container>
     </Layout>
   );
 };
@@ -96,9 +118,17 @@ export const pageQuery = graphql`
       excerpt(pruneLength: 160)
       html
       frontmatter {
-        title
         date(formatString: "MMMM DD, YYYY")
-        description
+        title
+        tags
+        type
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 2000) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
