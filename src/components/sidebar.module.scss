@@ -29,7 +29,6 @@
 }
 
 .learning-topics {
-    padding: 0 1.5vh 0 1.5vh;
     .topics {
         padding: 2vh 1vh 2vh 1vh;
         border-bottom: solid 1px #131313;
@@ -41,27 +40,32 @@
 
 .collapsable {
     .header {
-        margin: 1vh;
+        margin: 2vh;
         color: #ffffff;
         font-size: 16px;
         font-weight: 400;
         cursor: pointer;
+        position: relative;
+        .rotated {
+            transform: rotate(90deg);
+        }
+        img {
+            position: absolute;
+            right: 3vh;
+            bottom: 0.6vh;
+            transform: rotate(270deg);
+        }
     }
 
     .node {
-        background-color: $color-primary-dark;
-        color: tomato;
+        color: white;
         font-size: 16px;
         cursor: pointer;
         font-weight: 200;
+        padding: 1vh 5vh 1vh 5vh;
     }
 
-    .node:first-child {
-        padding-top: 2vh;
-    }
-
-    .node:last-child {
-        padding-bottom: 2vh;
+    .node:hover {
+        background-color: $color-primary-dark;
     }
 }
-
