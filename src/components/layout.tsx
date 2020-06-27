@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { Link } from "gatsby";
 import Header from "./header";
 import Sidebar from "./sidebar";
 import Footer from "./footer";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./layout.module.scss";
+import collapse from '../assets/icon/collapse-arrow.svg'
 
 interface LayoutProps {
   location: Location;
-  title: string;
+  title?: string;
   children?: any;
 }
 
@@ -20,33 +20,32 @@ class Layout extends Component<LayoutProps, LayoutState> {
   constructor(props: LayoutProps) {
     super(props);
     this.state = {
-      collapsedSidebar: false,
+      collapsedSidebar: false
     };
   }
 
   contentWidth: number = 9;
-  hiddenClass: string = '';
+  hiddenClass: string = "";
 
   toggleHideHandler = () => {
     this.setState(
       {
-        collapsedSidebar: !this.state.collapsedSidebar,
+        collapsedSidebar: !this.state.collapsedSidebar
       },
       this.setContentWidth
     );
   };
 
   setContentWidth = () => {
-    if(this.state.collapsedSidebar) {
+    if (this.state.collapsedSidebar) {
       this.contentWidth = 12;
-      this.hiddenClass = 'd-none';
-    }else{
+      this.hiddenClass = "d-none";
+    } else {
       this.contentWidth = 9;
-      this.hiddenClass = '';
+      this.hiddenClass = "";
     }
-    this.forceUpdate()
-  }
-
+    this.forceUpdate();
+  };
 
   render() {
     return (
@@ -55,17 +54,32 @@ class Layout extends Component<LayoutProps, LayoutState> {
           <Col
             lg={3}
             xl={3}
-            className={ [this.hiddenClass, styles.sidebar].join(" ")}
+            className={[this.hiddenClass, styles.sidebar, "fixed-top one"].join(" ")}
           >
-            <Sidebar
-              hidden={this.state.collapsedSidebar}
-            ></Sidebar>
+            <Sidebar hidden={this.state.collapsedSidebar}></Sidebar>
           </Col>
-          <Col style={{ padding: 0 }} lg={this.contentWidth} xl={this.contentWidth}>
-            <Header 
-              extendedSearchbar={this.props.location.pathname == '/' ? true : false}
-              hiddenBar={this.state.collapsedSidebar}
-              hideHandler={this.toggleHideHandler}></Header>
+          <Col
+            style={{ padding: 0 }}
+            lg={this.contentWidth}
+            lg={{offset: 12 - this.contentWidth}}
+            xl={{offset: 12 - this.contentWidth}}
+            xl={this.contentWidth}
+            className="two"
+          >
+            <div
+              className={[
+                this.state.collapsedSidebar ? styles.rotated : "",
+                styles.hideButton
+              ].join(" ")}
+              onClick={this.toggleHideHandler}
+            >
+              <img src={collapse} alt="" />
+            </div>
+            <Header
+              extendedSearchbar={
+                this.props.location.pathname == "/" ? true : false
+              }
+            ></Header>
             <main className={styles.content}>{this.props.children}</main>
             <Footer></Footer>
           </Col>
