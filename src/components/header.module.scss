@@ -3,15 +3,39 @@
 .header-row {
     margin: 1rem 0 1rem 0;
 
-    .nav-search {
-        margin-right: 1.3rem;
-        border-radius: 3px;
-        border: none;
-        background-color: $color-primary-light;
-        height: 2rem;
-        width: 20rem;
-        padding: 1vh;
-        outline: none !important;
+    .input-container {
+        display: flex;
+        width: 100%;
+
+        .input-icon {
+            position: relative;
+            right: 5.5vh;
+            width: 2vh;
+        }
+        .nav-search {
+            margin-right: 1.3rem;
+            margin-left: 3vh;
+            border-radius: 3px;
+            border: none;
+            background-color: #F4F5F5;
+            height: 2.5rem;
+            width: 20rem;
+            padding: 1vh;
+            padding-right: 5vh;
+            outline: none !important;
+        }
+        .nav-search::-webkit-input-placeholder { 
+        color: black;
+        }
+        .nav-search::-moz-placeholder { 
+        color: black;
+        }
+        .nav-search:-ms-input-placeholder { 
+        color: black;
+        }
+        .nav-search:-moz-placeholder { 
+        color: black;
+        }
     }
 
     .nav-list {
@@ -63,52 +87,43 @@
 
 }
 
-.rotated {
-    transform: rotate(180deg);
-}
-
-
-.hide-button {
-    position: absolute;
-    left: 0;
-    top: 0;
-    cursor: pointer;
-    visibility: initial;
-    height: 2rem;
-    width: 2rem;
-    background-color: #F1F2F2;
-    color: #191919;
+.extended-input-container {
     display: flex;
+    width: 100%;
     justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
 
-.extended-searchbar {
-    font-size: 2rem;
-    margin-top: 4rem;
-    border-radius: 3px;
-    border: none;
-    background-color: #e4e4e4;
-    height: 4rem;
-    width: 80%;
-    padding: 4vh;
-    font-weight: 300;
-    outline: none !important;
-    margin-bottom: 2vh;
-}
+    .input-icon {
+        position: relative;
+        right: 6vh;
+        top: 2.5vh;
+    }
 
-.extended-searchbar::-webkit-input-placeholder { 
-  color: black;
-}
-.extended-searchbar::-moz-placeholder { 
-  color: black;
-}
-.extended-searchbar:-ms-input-placeholder { 
-  color: black;
-}
-.extended-searchbar:-moz-placeholder { 
-  color: black;
+    .extended-searchbar {
+        font-size: 2rem;
+        margin-top: 4rem;
+        border-radius: 3px;
+        border: none;
+        background-color: #e4e4e4;
+        height: 4rem;
+        width: 80%;
+        padding: 4vh;
+        font-weight: 300;
+        outline: none !important;
+        margin-bottom: 2vh;
+    }
+    
+    .extended-searchbar::-webkit-input-placeholder { 
+      color: black;
+    }
+    .extended-searchbar::-moz-placeholder { 
+      color: black;
+    }
+    .extended-searchbar:-ms-input-placeholder { 
+      color: black;
+    }
+    .extended-searchbar:-moz-placeholder { 
+      color: black;
+    }
 }
 
 .tags {
