@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Collapse } from 'react-bootstrap'
 import styles from "./sidebar.module.scss";
+import collapseArrowIcon from "../assets/icon/accent-collapse-arrow.svg"
 
 interface LayoutProps {
   hidden: boolean;
@@ -54,6 +55,7 @@ const CollapsableMenu = (props: MenuProps) => {
         aria-controls="example-collapse-text"
         aria-expanded={open}>
           {props.parent}
+          <img src={collapseArrowIcon} className={open ? styles.rotated : ''} alt=""/>
       </div>
       <Collapse in={open}>
         <div>
