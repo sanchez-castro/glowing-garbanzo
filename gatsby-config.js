@@ -29,6 +29,10 @@ module.exports = {
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        resolve: `gatsby-source-filesystem`,
+        options: {
+          path: `${__dirname}/content/blog`,
+        },
         plugins: [
           {
             resolve: `gatsby-remark-images`,
