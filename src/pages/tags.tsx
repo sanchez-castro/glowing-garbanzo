@@ -6,6 +6,7 @@ import Layout from "../components/layout";
 import { Helmet } from "react-helmet";
 import { PageProps, Link, graphql } from "gatsby";
 import { Container, Row, Col } from "react-bootstrap";
+import { kebabCase } from "lodash";
 
 interface Data {
   allMarkdownRemark: {
@@ -39,7 +40,9 @@ const TagsPage = ({ data, location }: PageProps<Data>) => {
         <Row>
           {data.allMarkdownRemark.group.map((tag) => (
             <Col key={tag.fieldValue}>
-              <h5 className="tag-title">{tag.fieldValue}</h5>
+              <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+                <h5 className="tag-title">{tag.fieldValue}</h5>
+              </Link>
               <div>
                 {tag.edges.map((edge) => (
                   <Link key={edge.node.fields.slug} to={edge.node.fields.slug}>
@@ -53,24 +56,6 @@ const TagsPage = ({ data, location }: PageProps<Data>) => {
       </Container>
     </Layout>
   );
-};
-
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-      }),
-    }),
-  }),
 };
 
 export default TagsPage;
