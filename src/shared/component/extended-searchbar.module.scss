@@ -1,0 +1,86 @@
+@import "../../theme/_variables.scss";
+
+.extended-input-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .input-icon {
+        position: relative;
+        right: 6vh;
+        top: 2.5vh;
+    }
+
+    .extended-searchbar {
+        font-size: 2rem;
+        margin-top: 4rem;
+        border-radius: 3px;
+        border: none;
+        background-color: #e4e4e4;
+        height: 4rem;
+        width: 80%;
+        padding: 4vh;
+        font-weight: 300;
+        outline: none !important;
+        margin-bottom: 2vh;
+    }
+    
+    .extended-searchbar::-webkit-input-placeholder { 
+      color: black;
+    }
+    .extended-searchbar::-moz-placeholder { 
+      color: black;
+    }
+    .extended-searchbar:-ms-input-placeholder { 
+      color: black;
+    }
+    .extended-searchbar:-moz-placeholder { 
+      color: black;
+    }
+}
+
+.tags {
+    margin-top: 1vh;
+    .tag {
+        border-radius: 10vh;
+        border: none;
+        background-color: #F1F2F2;
+        color: black;
+        padding: 1vh 4vh 1vh 2vh;
+        margin: 0 1vh 1vh 0;
+    }
+    
+    .tag:focus { 
+        outline:0 !important;
+        background-color: rgb(196, 196, 196); 
+    }
+    
+    .active-tag {
+        background-color: black;
+        color: white;
+    }
+    
+    .active-tag:focus {
+        background-color: black;
+    }
+    
+    .delete-tag {
+        margin-left: 1vh;
+        position: absolute;
+        cursor: pointer;
+    }
+    
+    .add-tag {
+        transform: rotate(45deg);
+        margin-left: 1vh;
+        position: absolute;
+        cursor: pointer;
+    }
+}
+
+.more-tags {
+    border-bottom: solid 1px #E0E0E0;
+    padding-top: 1vh;
+    padding-bottom: 4rem;
+}
+
