@@ -1,0 +1,14 @@
+@import "../../theme/_variables.scss";
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    .tag {
+        text-transform: capitalize;
+        cursor: pointer;
+        border-radius: 10vh;
+        background-color: $color-primary-light;
+        padding: .5vh 1vh .5vh 1vh;
+        margin-right: 2vh;
+    }
+}
