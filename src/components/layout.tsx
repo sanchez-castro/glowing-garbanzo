@@ -60,10 +60,8 @@ class Layout extends Component<LayoutProps, LayoutState> {
           </Col>
           <Col
             style={{ padding: 0 }}
-            lg={this.contentWidth}
-            lg={{offset: 12 - this.contentWidth}}
-            xl={{offset: 12 - this.contentWidth}}
-            xl={this.contentWidth}
+            lg={this.contentWidth && {offset: 12 - this.contentWidth}}
+            xl={this.contentWidth && {offset: 12 - this.contentWidth}}
             className="two"
           >
             <div
@@ -80,8 +78,10 @@ class Layout extends Component<LayoutProps, LayoutState> {
                 this.props.location.pathname == "/" ? true : false
               }
             ></Header>
-            <main className={styles.content}>{this.props.children}</main>
-            <Footer></Footer>
+            <body className={styles.body}>
+              <main className="main-content">{this.props.children}</main>
+              <Footer></Footer>
+            </body>
           </Col>
         </Row>
       </Container>
