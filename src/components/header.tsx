@@ -61,80 +61,8 @@ const Header = (props: HeaderProps) => {
             </ul>
           </Col>
         </Row>
-        {props.extendedSearchbar ? <ExtendedSearchbar></ExtendedSearchbar> : ""}
       </Container>
     </header>
-  );
-};
-
-const ExtendedSearchbar = () => {
-  const tags = [
-    "Data Science",
-    "Machine Learning",
-    "Programming",
-    "AI",
-    "Data Science",
-    "Business Intelligence",
-    "Knowledge",
-    "Business",
-    "Culture"
-  ];
-
-  return (
-    <Fragment>
-      <Row className="justify-content-md-center">
-        <Col className="d-flex justify-content-center" lg={10} xl={10}>
-          <div className={styles.extendedInputContainer}>
-            <input 
-              className={styles.extendedSearchbar}
-              type="text"
-              placeholder="What do you want to learn today?"
-            />
-            <img className={styles.inputIcon} src={searchIcon} alt=""/>
-          </div>
-        </Col>
-      </Row>
-      <Row className="justify-content-md-center">
-          <small>Filter by tag</small>
-      </Row>
-      <Row className="justify-content-md-center">
-        <Col className="d-flex justify-content-center" lg={7} xl={7}>
-          <div className={styles.tags}>
-            {tags.map(tag => (
-              <Tag title={tag}></Tag>
-            ))}
-          </div>
-        </Col>
-      </Row>
-      <Row className={["justify-content-md-center", styles.moreTags].join(" ")}>
-          <small>See all tags</small>
-      </Row>
-    </Fragment>
-  );
-};
-
-interface TagProps {
-  title: string;
-}
-
-const Tag = (props: TagProps) => {
-  const [select, setSelected] = useState(false);
-  return (
-    <button
-      onClick={() => setSelected(!select)}
-      className={[select ? styles.activeTag : "", styles.tag].join(" ")}
-    >
-      {props.title}
-      {select ? (
-        <label className={styles.deleteTag}>
-          <small>&#10005;</small>
-        </label>
-      ) : (
-        <label className={styles.addTag}>
-          <small>&#10005;</small>
-        </label>
-      )}
-    </button>
   );
 };
 
