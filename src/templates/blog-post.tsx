@@ -4,9 +4,10 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./blog-post.module.scss";
-import Tags from "../components/shared/post-tags";
-import PostType from "../components/shared/post-type";
-import Subscribe from "../components/subscribe";
+import Tags from "../shared/component/post-tags";
+import PostType from "../shared/component/post-type";
+import Subscribe from "../shared/component/subscribe";
+import RelatedPosts from '../shared/component/related-posts'
 
 interface Props {
   data: {
@@ -67,6 +68,9 @@ const BlogPostTemplate = ({ data, pageContext }: Props) => {
           </Col>
           <Col lg={12} xl={12} className={styles.subscribe}>
             <Subscribe></Subscribe>
+          </Col>
+          <Col lg={12} xl={12}>
+            <RelatedPosts></RelatedPosts>
           </Col>
           <Col lg={12} xl={12}>
             <ul
