@@ -41,12 +41,16 @@
 
 .tags {
     margin-top: 1vh;
+    .tag-container {
+        display: inline-block;
+    }
     .tag {
         border-radius: 10vh;
         border: none;
         background-color: #F1F2F2;
         color: black;
-        padding: 1vh 4vh 1vh 2vh;
+        text-transform: Capitalize;
+        padding: .5vh 4vh .5vh 2vh;
         margin: 0 1vh 1vh 0;
     }
     
