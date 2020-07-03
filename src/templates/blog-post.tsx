@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
-import Layout from "../components/layout";
+import Layout from "../shared/component/layout";
 import SEO from "../components/seo";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./blog-post.module.scss";
