@@ -5,11 +5,10 @@ import { PostsData } from "../shared/models/post";
 import { postsFragment } from '../shared/fragments/posts';
 
 //Components
-import Subscribe from "../shared/component/subscribe";
 import Layout from "../shared/component/layout";
-import PostPreview from "../shared/component/post-preview";
 import SEO from "../components/seo";
 import ExtendedSearchbar from "../shared/component/extended-searchbar";
+import PostList from "../shared/component/post-list";
 
 // Assets
 import scientistIcon from "../assets/icon/data-scientist.svg";
@@ -19,7 +18,6 @@ import biIcon from "../assets/icon/bi-analyst.svg";
 //Styles
 import styles from "./index.module.scss";
 import "../global.scss";
-import PostList from "../shared/component/post-list";
 
 interface IndexProps {
   data: {
@@ -67,7 +65,7 @@ class BlogIndex extends Component<IndexProps, IndexState> {
         <Container fluid>
           <ExtendedSearchbar
             onTagSelected={this.tagSelectHandler}
-            onKeyDown={this.searchInputHandler.bind(this)}
+            onKeyUp={this.searchInputHandler.bind(this)}
           ></ExtendedSearchbar>
           <LearningPaths></LearningPaths>
           <Row className="justify-content-md-center">
