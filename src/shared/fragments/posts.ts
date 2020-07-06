@@ -5,6 +5,7 @@ export const postsFragment = graphql`
       allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
         edges {
           node {
+            id
             excerpt(pruneLength: 400)
             fields {
               slug
