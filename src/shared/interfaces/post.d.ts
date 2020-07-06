@@ -12,6 +12,7 @@ export interface IFrontmatter {
 }
 
 export interface INode {
+    id: string;
     excerpt: string;
     fields: IFields;
     frontmatter: IFrontmatter;
@@ -39,7 +40,6 @@ export interface IChildImageSharp {
 
 export interface IFluid {
     aspectRatio: number;
-    base64: string;
     sizes: string;
     src: string;
     srcSet: string;

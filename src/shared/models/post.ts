@@ -16,7 +16,7 @@ class AllMarkdownRemark {
     }
 }
 
-class Edge {
+export class Edge {
     node: Node
     constructor(attrs: IEdge) {
         this.node = new Node(attrs.node)
@@ -24,6 +24,7 @@ class Edge {
 }
 
 class Node {
+    id: string
     excerpt: string
     fields: Fields
     frontmatter: Frontmatter 
@@ -31,6 +32,7 @@ class Node {
         this.excerpt = attrs.excerpt
         this.fields = attrs.fields
         this.frontmatter = new Frontmatter(attrs.frontmatter)
+        this.id = attrs.id
     }
 }
 
@@ -76,7 +78,6 @@ class Fluid {
     srcSet: string;
     constructor(attrs: IFluid) {
         this.aspectRatio = attrs.aspectRatio
-        this.base64 = attrs.base64
         this.sizes = attrs.sizes
         this.src = attrs.src
         this.srcSet = attrs.srcSet
