@@ -13,7 +13,7 @@ const Header = (props: HeaderProps) => {
     <header>
       <Container fluid>
         <Row className={styles.headerRow}>
-          <Col lg={6}>
+          <Col lg={5} xl={5}>
             <div className={styles.inputContainer}>
               <input 
                 className={[
@@ -26,7 +26,7 @@ const Header = (props: HeaderProps) => {
               <img className={styles.inputIcon} src={searchIcon} alt=""/>
             </div>
           </Col>
-          <Col lg={6}>
+          <Col lg={7} xl={7}>
             <ul className={styles.navList}>
               <li>
                 <Link
