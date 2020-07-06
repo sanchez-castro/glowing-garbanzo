@@ -1,4 +1,4 @@
-import React, { useState, Component, Fragment } from 'react'
+import React, { useState, Component, Fragment, KeyboardEvent } from 'react'
 import Layout from "../shared/component/layout";
 import { Container, Row, Col } from 'react-bootstrap'
 import ExtendedSearchbar from '../shared/component/extended-searchbar';
@@ -8,10 +8,11 @@ import { PostsData } from "../shared/models/post";
 import { IPostsData } from '../shared/interfaces/post';
 import _ from 'lodash'
 import PostList from '../shared/component/post-list';
+import Fuse from 'fuse.js'
 
 interface ResultProps {
     location: any,
-    data: IPostsData
+    data: any
 }
 
 interface ResultState {
@@ -25,62 +26,91 @@ class ResultPage extends Component<ResultProps, ResultState> {
     constructor(props: ResultProps) {
         super(props)
         this.state = {
-            filteredData: new PostsData(props.data),
+            filteredData: new PostsData(_.cloneDeep(props.data)),
             query: props.location.state ? props.location.state.searchTerm.toLowerCase() : "",
             selectedTags: props.location.state ? props.location.state.tags : []
         }
-        console.log(this.state)
     }
 
     componentDidMount() {
-        this.search(this.state.query, this.state.selectedTags)
+        this.search()
     }
 
     searchInputHandler(event: React.KeyboardEvent<HTMLInputElement>) {
         const query = event.target as HTMLInputElement
-        this.search(query.value, this.state.selectedTags)
+        this.setState({
+            query: query.value
+        }, () => this.search())
     } 
 
-    search(query: string, selectedTags: Array<string>) {
-        const dummyData = {...this.props.data};
+    search() {
+        if(!this.state.query.trim() && this.state.selectedTags.length == 0 ) {
+            this.setState({
+                filteredData: _.cloneDeep(this.props.data)
+            })
+            return;
+        }
+        const dummyData = _.cloneDeep(this.props.data);
+        let posts = dummyData.allMarkdownRemark.edges || [];
+        const options = {
+            keys: ['node.excerpt', 'node.frontmatter.title', 'node.frontmatter.tags', 'node.frontmatter.type']
+        }
+        const fuse = new Fuse(posts, options)
+        const result = fuse.search(this.state.query)
+        posts = result.map( result => result.item)
+        dummyData.allMarkdownRemark.edges = posts
+        this.setState({
+            filteredData: dummyData
+        }, () => this.state.selectedTags.length > 0 ? this.filterByTags() : '')
+    }
+
+    filterByTags() {
+        var dummyData: PostsData
+        if(!this.state.query.trim()){
+           dummyData = _.cloneDeep(this.props.data)
+        }else {
+           dummyData = {...this.state.filteredData}
+        }
         const posts = dummyData.allMarkdownRemark.edges || [];
         const filteredData = posts.filter((post: any) => {
-            let { description, title, tags } = post.node.frontmatter;
-            description = description ? description.toLowerCase() : "";
-            title = title ? title.toLowerCase() : "";
+            let { tags } = post.node.frontmatter;
             return (
-            description.includes(query) ||
-            title.includes(query) ||
-            (tags && tags.join("").toLowerCase().includes(query)) ||
-            (_.intersection(tags, selectedTags).length > 0)
+                (_.intersection(tags, this.state.selectedTags).length > 0)
             );
         });
-
         dummyData.allMarkdownRemark.edges = filteredData
-
         this.setState({
-            ...this.state,
-            filteredData: dummyData,
-            query: query
+            filteredData: dummyData
         })
     }
 
     tagSelectHandler = (tags: Array<string>) => {
-        this.setState({
-            ...this.state, selectedTags: tags
-        }, () => this.search(this.state.query, this.state.selectedTags))
+        if(tags.length > 0){
+            this.setState({
+                selectedTags: tags
+            }, () => this.filterByTags())
+        }else {
+            this.setState({
+                selectedTags: tags
+            }, () => this.search())
+        }
     }  
 
     render() {
+        const searchText = `${this.state.filteredData.allMarkdownRemark.edges.length} posts found for ${ !this.state.query.trim() ? "your search" : '"' + this.state.query + '"' }`
         return (
             <Layout location={window.location}>
                 <Container fluid>
                     <ExtendedSearchbar 
                         selectedTags={this.state.selectedTags}
                         onTagSelected={this.tagSelectHandler}
-                        onKeyDown={this.searchInputHandler.bind(this)}
+                        onKeyUp={this.searchInputHandler.bind(this)}
+                        value={this.state.query}
                     ></ExtendedSearchbar>
                     <Row className="justify-content-md-center">
+                        <Col lg={10}>
+                            <h1 style={{ marginTop: "5vh" }}>{searchText}</h1>
+                        </Col>
                         <Col lg={10} xl={10}>
                             <PostList list={this.state.filteredData}></PostList>
                         </Col>
@@ -93,7 +123,7 @@ class ResultPage extends Component<ResultProps, ResultState> {
 
 export default ResultPage
 
-export const pageQuery = graphql`
+export const resultPageQuery = graphql`
   query {
     ...PostsFragment
   }
