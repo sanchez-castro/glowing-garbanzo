@@ -10,7 +10,7 @@ interface SearchbarState {
 
 const ExtendedSearchbar = (props: any) => {
   const [state, setState] = useState<SearchbarState>({
-    selectedTags: props.selectedTags ? props.selectedTags : [""]
+    selectedTags: props.selectedTags ? props.selectedTags : []
   });
 
   const data = useStaticQuery(
@@ -54,12 +54,11 @@ const ExtendedSearchbar = (props: any) => {
               className={styles.extendedSearchbar}
               type="text"
               placeholder="What do you want to learn today?"
-              onKeyDown={props.onKeyDown}
+              onKeyUp={props.onKeyUp}
             />
-            <img className={styles.inputIcon} src={searchIcon} alt="" />
           </div>
         </Col>
-      </Row>
+      </Row>        
       <Row className="justify-content-md-center">
         <small>Filter by tag</small>
       </Row>
