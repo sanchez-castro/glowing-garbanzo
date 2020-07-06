@@ -5,13 +5,8 @@
     width: 100%;
     justify-content: center;
 
-    .input-icon {
-        position: relative;
-        right: 6vh;
-        top: 2.5vh;
-    }
-
     .extended-searchbar {
+        background: url('../../assets/icon/search.svg') no-repeat right 2vh center;
         font-size: 2rem;
         margin-top: 4rem;
         border-radius: 3px;
