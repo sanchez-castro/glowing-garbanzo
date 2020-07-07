@@ -1,8 +1,10 @@
 ---
 title: New Beginnings
 date: "2015-05-28T22:40:32.169Z"
-tags: ["garbanzo salad"]
+tags: ['data science', 'business intelligence']
+type: ['article', 'video']
 description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
+featuredImage: ./mac.jpeg
 ---
 
 Far far away, behind the word mountains, far from the countries Vokalia and
@@ -21,6 +23,19 @@ made herself on the way.
 - Well uncritical so misled
   - this is very interesting
 - Goodness much until that fluid owl
+
+```
+const { tag } = pageContext;
+const { edges, totalCount } = data.allMarkdownRemark;
+const tagHeader = `${totalCount} post${
+totalCount === 1 ? "" : "s"
+} tagged with "${tag}"`;
+
+const allTags = () => {
+navigate(`/tags`)
+}
+```
+
 
 When she reached the first hills of the **Italic Mountains**, she had a last
 view back on the skyline of her hometown _Bookmarksgrove_, the headline of

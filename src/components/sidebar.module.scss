@@ -1,0 +1,72 @@
+@import "../theme/_variables.scss";
+
+.hidden-bar {
+    visibility: hidden;
+}
+
+.title-container {
+    background-color: $color-primary-dark;
+    padding: 2.5vh 1.5vh 2.5vh 1.5vh;
+
+    .title {
+        color: #20D872;
+        cursor: pointer;
+        line-height: 3.5vh;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .bio {
+        color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        font-family: PT Serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.01em;
+    }
+}
+
+.learning-topics {
+    .topics {
+        padding: 2vh 1vh 2vh 1vh;
+        border-bottom: solid 1px #131313;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+.collapsable {
+    .header {
+        margin: 2vh;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: pointer;
+        position: relative;
+        .rotated {
+            transform: rotate(90deg);
+        }
+        img {
+            position: absolute;
+            right: 3vh;
+            bottom: 0.6vh;
+            transform: rotate(270deg);
+        }
+    }
+
+    .node {
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: 200;
+        padding: 1vh 5vh 1vh 5vh;
+    }
+
+    .node:hover {
+        background-color: $color-primary-dark;
+    }
+}

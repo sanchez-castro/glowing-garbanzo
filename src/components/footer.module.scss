@@ -1,0 +1,114 @@
+@import "../theme/_variables.scss";
+
+.footer {
+    background-color: $color-primary-light;
+    .title {
+        font-weight: 500;
+        font-size: 24px;
+        letter-spacing: -0.02em;
+    }  
+}   
+
+.container {
+    padding: 5vh;
+}
+
+.links {
+    li {
+        align-self: center;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    list-style-type: none;
+    margin: 0;
+
+    .nav-item {
+        margin-right: 1.3rem;
+        text-decoration: none;
+        color: $color-primary-text;
+        font-family: PT Serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 150%;
+        letter-spacing: 0.01em;
+    }
+
+    .nav-item:hover {
+        color: #666666;
+    }
+
+    .active-nav-item {
+        color: #333333;
+    }    
+}
+
+.social-media {
+    img {
+        margin-right: 2vh;
+    }
+}
+
+.strong {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+}
+
+.subscribe {
+    .email {
+        border: none;
+        background-color: $color-light-box;
+        padding: 1vh 3vh 1vh 3vh;
+        width: 110%;
+    }
+
+    .email::-webkit-input-placeholder { 
+        font-family: PT Serif;
+        font-size: 16px;
+        align-items: center;
+        letter-spacing: 0.01em;
+        color: black;
+    }
+    .email::-moz-placeholder { 
+        font-family: PT Serif;
+        font-size: 16px;
+        align-items: center;
+        letter-spacing: 0.01em;
+        color: black;
+    }
+    .email:-ms-input-placeholder { 
+        font-family: PT Serif;
+        font-size: 16px;
+        align-items: center;
+        letter-spacing: 0.01em;
+        color: black;
+    }
+    .email:-moz-placeholder { 
+        font-family: PT Serif;
+        font-size: 16px;
+        align-items: center;
+        letter-spacing: 0.01em;
+        color: black;
+    }
+}
+
+.toast {
+    position: fixed;
+    top: 1vh;
+    right: 1vh;
+    z-index: 1;
+    background-color: #212121;
+    color: #10DB85;
+    span {
+        color: white;
+    }
+}
+
+.toast-header {
+    color: #10DB85;
+    background-color: #1A1A1A;
+}

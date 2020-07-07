@@ -1,0 +1,87 @@
+@import "../theme/_variables.scss";
+
+.header-row {
+    margin: 1rem 0 1rem 0;
+
+    .input-container {
+        display: flex;
+        width: 100%;
+
+        .input-icon {
+            position: relative;
+            right: 5.5vh;
+            width: 2vh;
+        }
+        .nav-search {
+            margin-right: 1.3rem;
+            margin-left: 3vh;
+            border-radius: 3px;
+            border: none;
+            background-color: #F4F5F5;
+            height: 2.5rem;
+            width: 20rem;
+            padding: 1vh;
+            padding-right: 5vh;
+            outline: none !important;
+        }
+        .nav-search::-webkit-input-placeholder { 
+        color: black;
+        }
+        .nav-search::-moz-placeholder { 
+        color: black;
+        }
+        .nav-search:-ms-input-placeholder { 
+        color: black;
+        }
+        .nav-search:-moz-placeholder { 
+        color: black;
+        }
+    }
+
+    .nav-list {
+        li {
+            align-self: center;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        display: flex;
+        list-style-type: none;
+        justify-content: space-evenly;
+        margin: 0;
+
+        .nav-button {
+            height: 2.5rem;
+            width: 9rem;
+            border-radius: 3px;
+            background-color: $color-accent; 
+            border: none;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .nav-item {
+            margin-right: 1.3rem;
+            text-decoration: none;
+            color: $color-primary-text;
+            font-family: PT Serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 0.01em;
+        }
+    
+        .nav-item:hover {
+            color: #666666;
+        }
+    
+        .active-nav-item {
+            color: #333333;
+        }    
+    }
+
+}

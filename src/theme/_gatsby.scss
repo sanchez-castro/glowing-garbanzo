@@ -1,0 +1,25 @@
+/* Override gatsby styles */
+
+.tag-title {
+    text-transform: capitalize;
+}
+
+.container {
+    padding: 0;
+}
+
+html, body, #___gatsby {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+}
+
+div[role="group"][tabindex] {
+    height: 100%;
+}
+
+#gatsby-focus-wrapper {
+    height: 100%;
+}

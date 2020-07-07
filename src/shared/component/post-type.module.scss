@@ -1,0 +1,20 @@
+@import "../../theme/_variables.scss";
+
+.post-types {
+    display: flex;
+    flex-direction: row;
+    .post-type {
+        display: flex;
+        align-items: baseline;
+        margin-right: 2vh;
+        .title {
+            text-transform: capitalize;
+            font-size: 12px;
+            letter-spacing: 0.01em;
+            color: $color-secondary-text;
+        }
+        img {
+            margin-right: 1vh;
+        }
+    }
+}

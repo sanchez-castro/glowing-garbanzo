@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-// Components
-import { Link, graphql } from "gatsby";
+import { Link, graphql, navigate } from "gatsby";
+import Layout from "../shared/component/layout";
+import PostPreview from "../shared/component/post-preview";
+import { Row, Col, Container } from "react-bootstrap";
+import styles from './tags.module.scss'
 
 interface Props {
   data: {
@@ -18,50 +20,46 @@ const Tags = ({ pageContext, data }: Props) => {
     totalCount === 1 ? "" : "s"
   } tagged with "${tag}"`;
 
-  return (
-    <div>
-      <h1>{tagHeader}</h1>
-      <ul>
-        {edges.map(({ node }: any) => {
-          const { slug } = node.fields;
-          const { title } = node.frontmatter;
-          return (
-            <li key={slug}>
-              <Link to={slug}>{title}</Link>
-            </li>
-          );
-        })}
-      </ul>
-      {/*
-              This links to a page that does not yet exist.
-              You'll come back to it!
-            */}
-      <Link to="/tags">All tags</Link>
-    </div>
-  );
-};
+  const allTags = () => {
+    navigate(`/tags`)
+  }
 
-Tags.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-  }),
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired
-      ),
-    }),
-  }),
+  return (
+    <Layout>
+      <Container fluid>
+        <Row className="justify-content-md-center">
+          <Col lg={12} xl={12}>
+            <h1>{tagHeader}</h1>
+          </Col>
+          <Col lg={12} xl={12}>
+            {edges.map(({ node }: any, index: number) => {
+              const { slug } = node.fields;
+              const { title } = node.frontmatter;
+              return (
+                <PostPreview 
+                  key={node.fields}
+                  title={node.frontmatter.title}
+                  date={node.frontmatter.date}
+                  excerpt={node.frontmatter.description || node.excerpt}
+                  type={node.frontmatter.type}
+                  tags={node.frontmatter.tags}
+                  featuredImage={node.frontmatter.featuredImage ? node.frontmatter.featuredImage.childImageSharp.fluid.src : null}
+                  link={node.fields.slug}
+                  extended={index == 0 ? true : false}
+                ></PostPreview>
+              );
+            })}
+          </Col>
+          <Col lg={12} xl={12}>
+            <div className={styles.allTags} onClick={() => allTags()}>
+              All tags
+            </div>
+          </Col>
+        </Row>
+      </Container>
+      
+    </Layout>
+  );
 };
 
 export default Tags;
@@ -76,11 +74,22 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt(pruneLength: 400)
           fields {
             slug
           }
           frontmatter {
+            date(formatString: "MMMM DD, YYYY")
             title
+            tags
+            type
+            featuredImage {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
