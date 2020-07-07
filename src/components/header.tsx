@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 import styles from "./header.module.scss";
 import { Container, Row, Col } from "react-bootstrap";
 import searchIcon from '../assets/icon/search.svg'
@@ -9,6 +9,17 @@ interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
+  const searchInputHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      const target = event.target as HTMLInputElement
+      navigate(
+        "/search-result/",
+        {
+          state: { searchTerm: target.value, tags: [] },
+        }
+      )
+    }
+  }
   return (
     <header>
       <Container fluid>
@@ -22,6 +33,7 @@ const Header = (props: HeaderProps) => {
                 ].join(" ")}
                 type="text"
                 placeholder="Search"
+                onKeyUp={searchInputHandler}
               />
               <img className={styles.inputIcon} src={searchIcon} alt=""/>
             </div>
