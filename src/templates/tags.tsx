@@ -25,7 +25,7 @@ const Tags = ({ pageContext, data }: Props) => {
   }
 
   return (
-    <Layout location={window.location}>
+    <Layout>
       <Container fluid>
         <Row className="justify-content-md-center">
           <Col lg={12} xl={12}>

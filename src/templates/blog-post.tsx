@@ -8,21 +8,22 @@ import Tags from "../shared/component/post-tags";
 import PostType from "../shared/component/post-type";
 import Subscribe from "../shared/component/subscribe";
 import RelatedPosts from '../shared/component/related-posts'
+import { PostData } from "../shared/models/post";
 
 interface Props {
-  data: any
+  data: PostData
   pageContext: any;
 }
 
-const BlogPostTemplate = ({ data, pageContext }: Props) => {
-  const post = data.markdownRemark;
-  const { previous, next } = pageContext;
+const BlogPostTemplate = (props: Props) => {
+  const post = new PostData(props.data).markdownRemark
+  const { previous, next } = props.pageContext;
 
   return (
-    <Layout location={window.location}>
+    <Layout>
       <SEO
         title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
+        description={post.excerpt}
       />
 
       <Container fluid>

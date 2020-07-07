@@ -12,7 +12,7 @@ import Fuse from 'fuse.js'
 
 interface ResultProps {
     location: any,
-    data: any
+    data: PostsData
 }
 
 interface ResultState {
@@ -99,7 +99,7 @@ class ResultPage extends Component<ResultProps, ResultState> {
     render() {
         const searchText = `${this.state.filteredData.allMarkdownRemark.edges.length} posts found for ${ !this.state.query.trim() ? "your search" : '"' + this.state.query + '"' }`
         return (
-            <Layout location={window.location}>
+            <Layout>
                 <Container fluid>
                     <ExtendedSearchbar 
                         selectedTags={this.state.selectedTags}

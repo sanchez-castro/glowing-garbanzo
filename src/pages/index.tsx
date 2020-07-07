@@ -61,7 +61,7 @@ class BlogIndex extends Component<IndexProps, IndexState> {
 
   render() {
     return (
-      <Layout location={window.location}>
+      <Layout>
         <Container fluid>
           <ExtendedSearchbar
             onTagSelected={this.tagSelectHandler}
