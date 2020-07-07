@@ -8,7 +8,7 @@ export interface IFrontmatter {
     title: string;
     tags: string[];
     type: string[];
-    featuredImage: IFeaturedImage;
+    featuredImage: IFeaturedImage | null;
 }
 
 export interface INode {
@@ -43,4 +43,16 @@ export interface IFluid {
     sizes: string;
     src: string;
     srcSet: string;
+}
+
+export interface IMarkdownRemark {
+    id: string;
+    excerpt: string;
+    fields: IFields;
+    frontmatter: IFrontmatter;
+    html: string
+}
+
+export interface IPostData {
+    markdownRemark: IMarkdownRemark;
 }

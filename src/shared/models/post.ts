@@ -1,9 +1,16 @@
-import { IPostsData, IAllMarkdownRemark, IEdge, INode, IFields, IFrontmatter, IFeaturedImage, IChildImageSharp, IFluid } from "../interfaces/post";
+import { IPostData, IMarkdownRemark, IPostsData, IAllMarkdownRemark, IEdge, INode, IFields, IFrontmatter, IFeaturedImage, IChildImageSharp, IFluid } from '../interfaces/post';
 
 export class PostsData {
-    allMarkdownRemark: AllMarkdownRemark;
+    allMarkdownRemark: AllMarkdownRemark
     constructor(attrs: IPostsData) {
         this.allMarkdownRemark = new AllMarkdownRemark(attrs.allMarkdownRemark)
+    }
+}
+
+export class PostData {
+    markdownRemark: MarkdownRemark
+    constructor(attrs: IPostData) {
+        this.markdownRemark = new MarkdownRemark(attrs.markdownRemark)
     }
 }
 
@@ -13,6 +20,21 @@ class AllMarkdownRemark {
         attrs.edges.map( edge => {
             this.edges.push( new Edge(edge))
         })
+    }
+}
+
+class MarkdownRemark {
+    id: string
+    excerpt: string
+    fields: Fields
+    frontmatter: Frontmatter 
+    html: string
+    constructor(attrs: IMarkdownRemark) {
+        this.excerpt = attrs.excerpt
+        this.fields = attrs.fields
+        this.frontmatter = new Frontmatter(attrs.frontmatter)
+        this.id = attrs.id
+        this.html = attrs.html
     }
 }
 
@@ -47,11 +69,13 @@ class Frontmatter {
     date: string
     title: string
     tags: string[]
+    type: string[]
     featuredImage: FeaturedImage | null
     constructor(attrs: IFrontmatter) {
         this.date = attrs.date
         this.title = attrs.title
         this.tags = attrs.tags ? attrs.tags : []
+        this.type = attrs.type ? attrs.type : []
         this.featuredImage = attrs.featuredImage ? new FeaturedImage(attrs.featuredImage) : null
     }
 }
@@ -72,7 +96,6 @@ class ChildImageSharp {
 
 class Fluid {
     aspectRatio: number;
-    base64: string;
     sizes: string;
     src: string;
     srcSet: string;
