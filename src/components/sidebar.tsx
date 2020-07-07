@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Collapse } from 'react-bootstrap'
 import styles from "./sidebar.module.scss";
 import collapseArrowIcon from "../assets/icon/accent-collapse-arrow.svg"
+import { navigate } from "gatsby";
 
 interface LayoutProps {
   hidden: boolean;
@@ -16,10 +17,14 @@ const Sidebar = (props: LayoutProps) => {
     });
   };
 
+  const home = () => {
+    navigate('/')
+  }
+
   return (
     <div className={props.hidden ? styles.hiddenBar : ''}>
       <div className={styles.titleContainer}>
-        <p className={styles.title}>Data <br/> Product <br/> Design</p>
+        <p onClick={() => home()} className={styles.title}>Data <br/> Product <br/> Design</p>
         <p className={styles.bio}>
           I spend my time trying to change the way we understand social phenomenon
           through data science to resolve problems for social good.
