@@ -16,7 +16,7 @@ const Tags = (props: Props) => {
         <div className={styles.tags}>
             {
                 props.tags.map((tag :string) => (
-                    <div onClick={() => goToTag(tag)} className={styles.tag}>
+                    <div key={tag} onClick={() => goToTag(tag)} className={styles.tag}>
                         {tag}
                     </div> 
                 ))

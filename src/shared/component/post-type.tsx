@@ -12,7 +12,7 @@ const PostType = (props: Props) => {
         <div className={styles.postTypes}>
             {
                 props.types.map( type => (
-                    <div className={styles.postType}>
+                    <div className={styles.postType} key={type}>
                         <img src={checkType(type)} alt="post type" />
                         <label className={styles.title}>{type}</label>
                     </div>

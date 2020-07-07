@@ -69,6 +69,7 @@ const ExtendedSearchbar = (props: any) => {
               <div
                 className={styles.tagContainer}
                 onClick={() => addTag(tag.title)}
+                key={tag.title}
               >
                 <Tag title={tag.title} active={tag.active}></Tag>
               </div>
