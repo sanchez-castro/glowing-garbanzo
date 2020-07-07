@@ -4,10 +4,9 @@ import Sidebar from "../../components/sidebar";
 import Footer from "../../components/footer";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./layout.module.scss";
-import collapse from '../../assets/icon/collapse-arrow.svg'
+import collapse from "../../assets/icon/collapse-arrow.svg";
 
 interface LayoutProps {
-  location: Location;
   title?: string;
   children?: any;
 }
@@ -54,14 +53,16 @@ class Layout extends Component<LayoutProps, LayoutState> {
           <Col
             lg={3}
             xl={3}
-            className={[this.hiddenClass, styles.sidebar, "fixed-top one"].join(" ")}
+            className={[this.hiddenClass, styles.sidebar, "fixed-top one"].join(
+              " "
+            )}
           >
             <Sidebar hidden={this.state.collapsedSidebar}></Sidebar>
           </Col>
           <Col
             style={{ padding: 0 }}
-            lg={this.contentWidth && {offset: 12 - this.contentWidth}}
-            xl={this.contentWidth && {offset: 12 - this.contentWidth}}
+            lg={this.contentWidth && { offset: 12 - this.contentWidth }}
+            xl={this.contentWidth && { offset: 12 - this.contentWidth }}
             className="two"
           >
             <div
@@ -73,11 +74,18 @@ class Layout extends Component<LayoutProps, LayoutState> {
             >
               <img src={collapse} alt="" />
             </div>
-            <Header
-              extendedSearchbar={
-                this.props.location.pathname == "/" ? true : false
-              }
-            ></Header>
+            {typeof window !== `undefined` ? (
+              <Header
+                extendedSearchbar={
+                  window.location.pathname == "/" ||
+                  window.location.pathname == "/search-result/"
+                    ? true
+                    : false
+                }
+              ></Header>
+            ) : (
+              ""
+            )}
             <body className={styles.body}>
               <main>{this.props.children}</main>
               <Footer></Footer>
