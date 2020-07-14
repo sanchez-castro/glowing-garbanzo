@@ -1,5 +1,6 @@
 import { IPostData, IMarkdownRemark, IPostsData, IAllMarkdownRemark, IEdge, INode, IFields, IFrontmatter, IFeaturedImage, IChildImageSharp, IFluid } from '../interfaces/post';
-
+import { Author }from './author'
+import { ChildImageSharp } from './image';
 export class PostsData {
     allMarkdownRemark: AllMarkdownRemark
     constructor(attrs: IPostsData) {
@@ -69,14 +70,16 @@ class Frontmatter {
     date: string
     title: string
     tags: string[]
-    type: string[]
+    contentType: string[]
     featuredImage: FeaturedImage | null
+    author: Author | null
     constructor(attrs: IFrontmatter) {
         this.date = attrs.date
         this.title = attrs.title
         this.tags = attrs.tags ? attrs.tags : []
-        this.type = attrs.type ? attrs.type : []
+        this.contentType = attrs.contentType ? attrs.contentType : []
         this.featuredImage = attrs.featuredImage ? new FeaturedImage(attrs.featuredImage) : null
+        this.author = attrs.author ? new Author(attrs.author) : null
     }
 }
 
@@ -84,25 +87,5 @@ class FeaturedImage {
     childImageSharp: ChildImageSharp
     constructor(attrs: IFeaturedImage) {
         this.childImageSharp = new ChildImageSharp(attrs.childImageSharp)
-    }
-}
-
-class ChildImageSharp {
-    fluid: Fluid
-    constructor(attrs: IChildImageSharp) {
-        this.fluid = new Fluid(attrs.fluid)
-    }
-}
-
-class Fluid {
-    aspectRatio: number;
-    sizes: string;
-    src: string;
-    srcSet: string;
-    constructor(attrs: IFluid) {
-        this.aspectRatio = attrs.aspectRatio
-        this.sizes = attrs.sizes
-        this.src = attrs.src
-        this.srcSet = attrs.srcSet
     }
 }
