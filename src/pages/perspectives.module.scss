@@ -1,0 +1,102 @@
+.header {
+  margin: 5vh 0 5vh 0;
+}
+
+.preview {
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 15vh;
+  width: 15vh;
+  margin-bottom: 2vh;
+}
+
+.preview:hover {
+  cursor: pointer;
+}
+
+.preview:hover > .overlay {
+  height: 15vh;
+  width: 15vh;
+  position:absolute;
+  background-color:#000;
+  border-radius: 4px;
+  opacity:0.5;
+}
+
+.current-perspective {
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 98%;
+  width: 100%;
+  .content {
+    padding: 3vh;
+    position: absolute;
+    bottom: 0;
+    p {
+      color: white;
+    }
+  }
+}
+.button {
+  background: #10DB85;
+  border-radius: 4px;
+  padding: 1vh;
+  width: fit-content;
+  cursor: pointer;
+  color: white;
+}
+
+.perspective-scroll {
+  height: 50vh;
+  overflow: scroll;
+}
+
+.scroll-button {
+  height: 4vh;
+  width: 4vh;
+  background-color: #1A1A1A;
+  border-radius: 4px;
+}
+
+.perspective-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.read-more {
+  margin: 3vh 0 3vh 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.perspective-scroll {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.twitter {
+  color: #0ECC7C;
+}
+
+.author-perspectives {
+  .perspectives-header {
+    margin: 5vh 0 5vh;
+  }
+  .author-text {
+    padding-left: 3vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    p {
+      margin-bottom: 1vh;
+    }
+  }
+  .avatar {
+    border-radius: 4px;
+    height: 10vh;
+    width: 10vh;
+  }
+}
