@@ -9,14 +9,19 @@ interface Props {
 
 const Tags = (props: Props) => {
 
-    const goToTag = (tag: string) => {
-        navigate(`/tags/${kebabCase(tag)}/`)
+    const selectTag = (tag: string) => {
+        navigate(
+            "/search-result/",
+            {
+                state: { searchTerm: "", tags: [tag] },
+            }
+        )
     }
     return(
         <div className={styles.tags}>
             {
                 props.tags.map((tag :string) => (
-                    <div key={tag} onClick={() => goToTag(tag)} className={styles.tag}>
+                    <div key={tag} onClick={() => selectTag(tag)} className={styles.tag}>
                         {tag}
                     </div> 
                 ))
