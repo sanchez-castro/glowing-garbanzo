@@ -9,7 +9,7 @@ interface PostProps {
   title: string;
   date: string;
   excerpt?: string;
-  type?: Array<string>;
+  contentType?: Array<string>;
   tags?: Array<string>;
   featuredImage?: any;
   link: string;
@@ -41,7 +41,7 @@ const RegularView = (props: Post) => {
             {props.post.title}
           </Link>
           <p className={styles.date}>{props.post.date}</p>
-          { props.post.type ? <PostType types={props.post.type}></PostType> : '' }
+          { props.post.contentType ? <PostType types={props.post.contentType}></PostType> : '' }
           <p className={styles.excerpt}>{props.post.excerpt}</p>
           { props.post.tags ? <Tags tags={props.post.tags}></Tags> : ''}
         </Col>
@@ -77,7 +77,7 @@ const ExtendedView = (props: Post) => {
             {props.post.title}
           </Link>
           <p className={styles.date}>{props.post.date}</p>
-          { props.post.type ? <PostType types={props.post.type}></PostType> : '' }
+          { props.post.contentType ? <PostType types={props.post.contentType}></PostType> : '' }
           <p className={styles.excerpt}>{props.post.excerpt}</p>
           { props.post.tags ? <Tags tags={props.post.tags}></Tags> : ''}
         </Col>
