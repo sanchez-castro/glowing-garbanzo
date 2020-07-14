@@ -2,7 +2,9 @@
 title: My Second Post!
 date: "2015-05-06T23:46:37.121Z"
 tags: ['programming', 'ai']
-type: ["article", "video"]
+contentType: ["article", "video"]
+author: adrian@ianalytics.org
+topics: [data mining]
 ---
 
 Wow! I love blogging so much already.

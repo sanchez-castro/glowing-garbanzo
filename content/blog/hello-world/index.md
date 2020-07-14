@@ -2,8 +2,9 @@
 title: Hello World
 date: "2015-05-01T22:12:03.284Z"
 tags: ["garbanzos", "data science", "machine learning", "culture", "data product"]
-type: [article]
+contentType: [article]
 featuredImage: ./salty_egg.jpg
+author: adrian@ianalytics.org
 ---
 
 This is my first post on my new fake blog! How exciting!
