@@ -3,6 +3,7 @@ import { Collapse } from 'react-bootstrap'
 import styles from "./sidebar.module.scss";
 import collapseArrowIcon from "../assets/icon/accent-collapse-arrow.svg"
 import { navigate } from "gatsby";
+import { kebabCase } from "lodash";
 
 interface LayoutProps {
   hidden: boolean;
@@ -34,7 +35,7 @@ const Sidebar = (props: LayoutProps) => {
       <div className={styles.learningTopics}>
         <div className={styles.topics} >Learning topics</div>
 
-        <CollapsableMenu parent={'Data Science'} nodes={['Data Mining']}></CollapsableMenu>
+        <CollapsableMenu parent={'Data Science'} nodes={['data mining']}></CollapsableMenu>
         <CollapsableMenu parent={'Machine Learning'} nodes={['Supervised Learning', 'Clustering', 'K-Modes']}></CollapsableMenu>
         <CollapsableMenu parent={'Deep Learning'} nodes={[]}></CollapsableMenu>
         <CollapsableMenu parent={'Business Intelligence'} nodes={[]}></CollapsableMenu>
@@ -51,6 +52,10 @@ interface MenuProps {
 
 const CollapsableMenu = (props: MenuProps) => {
   const [open, setOpen] = useState(false);
+
+  const selectTopic = (topic: string) => {
+    navigate(`/topics/${kebabCase(topic)}/`)
+  }
   
   return (
     <div className={styles.collapsable}>
@@ -65,7 +70,7 @@ const CollapsableMenu = (props: MenuProps) => {
       <Collapse in={open}>
         <div>
           {props.nodes.map((node) => (
-            <div key={node} className={styles.node}>
+            <div key={node} className={styles.node} onClick={ () => selectTopic(node)}>
               {node}
             </div>
           ))}
