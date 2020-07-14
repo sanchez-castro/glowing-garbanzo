@@ -35,7 +35,7 @@ const TagsPage = ({ data, location }: PageProps<Data>) => {
   const siteTitle = data.site.siteMetadata.title;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <Container>
         <Row>
           {data.allMarkdownRemark.group.map((tag) => (
