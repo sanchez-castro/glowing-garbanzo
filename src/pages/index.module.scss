@@ -18,7 +18,7 @@
             display: inline-block;
             height: auto;
             width: 40vh;
-            margin: 3vh 0 3vh 0;
+            margin: 0 1vh 0 1vh;
             border: none;
             background-color: $color-primary-light;
             .card-image {
@@ -39,6 +39,13 @@
                 letter-spacing: 0.01em;
                 margin: 2vh 6vh 3vh 6vh;
             }
+        }
+        
+        .card:first-child {
+            margin-left: 0;
+        }
+        .card:last-child {
+            margin-right: 0;
         }
     }
 }
