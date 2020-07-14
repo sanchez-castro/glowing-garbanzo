@@ -53,9 +53,9 @@ const Header = (props: HeaderProps) => {
                 <Link
                   className={styles.navItem}
                   activeClassName={styles.activeNavItem}
-                  to="/about"
+                  to="/perspectives"
                 >
-                  About
+                  Perspectives
                 </Link>
               </li>
               <li>
@@ -64,7 +64,7 @@ const Header = (props: HeaderProps) => {
                   activeClassName={styles.activeNavItem}
                   to="/philosophy"
                 >
-                  Collective Philosophy
+                  DPD Philosophy
                 </Link>
               </li>
               <li>
