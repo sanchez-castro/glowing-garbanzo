@@ -6,7 +6,8 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const blogPost = path.resolve("./src/templates/blog-post.tsx");
-  const tagTemplate = path.resolve("./src/templates/tags.tsx");
+  const topicTemplate = path.resolve("./src/templates/topics.tsx");
+  const authorPerspective = path.resolve("./src/templates/perspectives.tsx")
   const result = await graphql(
     `
       {
@@ -26,8 +27,13 @@ exports.createPages = async ({ graphql, actions }) => {
             }
           }
         }
-        tagsGroup: allMarkdownRemark(limit: 2000) {
-          group(field: frontmatter___tags) {
+        topics: allMarkdownRemark(limit: 2000) {
+          group(field: frontmatter___topics) {
+            fieldValue
+          }
+        }
+        authors: allMarkdownRemark {
+          group(field: frontmatter___author___id) {
             fieldValue
           }
         }
@@ -56,16 +62,28 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  const tags = result.data.tagsGroup.group;
+  const topics = result.data.topics.group;
   
-  tags.forEach((tag) => {
+  topics.forEach((topic) => {
     createPage({
-      path: `/tags/${_.kebabCase(tag.fieldValue)}/`,
-      component: tagTemplate,
+      path: `/topics/${_.kebabCase(topic.fieldValue)}/`,
+      component: topicTemplate,
       context: {
-        tag: tag.fieldValue,
+        topic: topic.fieldValue,
       },
     });
+  });
+
+  const authors = result.data.authors.group;
+
+  authors.forEach((author) => {
+    createPage({
+      path: `/perspectives/${_.kebabCase(author.fieldValue)}/`,
+      component: authorPerspective,
+      context: {
+        topic: author.fieldValue,
+      },
+    })
   });
 };
 
@@ -81,3 +99,18 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+
+
+exports.createSchemaCustomization = ({ actions }) => {
+  const { createTypes } = actions
+  const typeDefs = `
+    type MarkdownRemark implements Node {
+      frontmatter: Frontmatter
+    }
+
+    type Frontmatter {
+      author: AuthorYaml @link(by: "id")
+    }
+  `
+  createTypes(typeDefs)
+}
