@@ -109,10 +109,10 @@ class ResultPage extends Component<ResultProps, ResultState> {
                     ></ExtendedSearchbar>
                     <Row className="justify-content-md-center">
                         <Col lg={10}>
-                            <h1 style={{ marginTop: "5vh" }}>{searchText}</h1>
+                            <h1 style={{ margin: "5vh 0 5vh 0" }}>{searchText}</h1>
                         </Col>
                         <Col lg={10} xl={10}>
-                            <PostList list={this.state.filteredData}></PostList>
+                            <PostList result={true} list={this.state.filteredData}></PostList>
                         </Col>
                     </Row>
                 </Container>
