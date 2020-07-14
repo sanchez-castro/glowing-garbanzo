@@ -51,7 +51,7 @@ const Footer = () => {
                                 <Link
                                 className={styles.navItem}
                                 activeClassName={styles.activeNavItem}
-                                to="/about"
+                                to="/about-us"
                                 >
                                 About us
                                 </Link>
@@ -62,7 +62,7 @@ const Footer = () => {
                                 activeClassName={styles.activeNavItem}
                                 to="/philosophy"
                                 >
-                                Collective Philosophy
+                                DPD Philosophy
                                 </Link>
                             </li>
                             <li>
