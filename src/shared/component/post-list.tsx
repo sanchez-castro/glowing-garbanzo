@@ -9,6 +9,7 @@ import { Edge } from '../models/post';
 
 interface PostListProps {
     list: PostsData;
+    result?: boolean;
 }  
 
 interface PostListState {
@@ -18,9 +19,11 @@ interface PostListState {
 
 class PostList extends Component<PostListProps, PostListState> {
     private postList: PostsData
+    private resultList: boolean
     constructor(props: PostListProps) {
       super(props)
       this.postList = _.cloneDeep(props.list)
+      this.resultList = props.result ? props.result : false
       this.state = {
         visiblePosts: [],
         fullList: false
@@ -31,8 +34,18 @@ class PostList extends Component<PostListProps, PostListState> {
       this.loadMore()
     }
 
+    componentWillReceiveProps(props: PostListProps) {
+      this.postList = _.cloneDeep(props.list)
+
+      this.setState({
+        visiblePosts: [],
+        fullList: false
+      }, () => this.loadMore())
+    }
+
     loadMore() {
       const listLength = this.state.visiblePosts.length
+
       this.setState(
         {
           visiblePosts: this.postList.allMarkdownRemark.edges.slice(0, listLength + 6),
@@ -49,7 +62,7 @@ class PostList extends Component<PostListProps, PostListState> {
               title,
               date,
               description,
-              type,
+              contentType,
               tags,
               featuredImage
             } = node.frontmatter;
@@ -61,15 +74,15 @@ class PostList extends Component<PostListProps, PostListState> {
                   title={title}
                   date={date}
                   excerpt={description || node.excerpt}
-                  type={type}
+                  contentType={contentType}
                   tags={tags}
                   featuredImage={
                     featuredImage ? featuredImage.childImageSharp.fluid.src : null
                   }
                   link={slug}
-                  extended={index == 0 ? true : false}
+                  extended={index == 0 && !this.resultList ? true : false}
                 ></PostPreview>
-                {index == 4 ? <Subscribe></Subscribe> : ""}
+                {index == 4 && !this.resultList ? <Subscribe></Subscribe> : ""}
               </Fragment>
             );
           })}
