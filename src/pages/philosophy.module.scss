@@ -1,0 +1,125 @@
+@import "../theme/_variables.scss";
+
+.jumbotron {
+    img {
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+    }
+
+    .banner-text {
+        position: absolute;
+        bottom: 0;
+        color: white;
+        margin: 3vh 10vh 4vh 10vh;
+
+        h1 {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 40px;
+            line-height: 40px;
+            letter-spacing: -0.03em;
+        }
+
+        p {
+            font-family: Poppins;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 24px;
+            line-height: 100%;
+            letter-spacing: -0.02em;
+        }
+    }
+}
+
+.image-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0;
+    img {
+        border-radius: 4px;
+        width: 35vh;
+        height: 35vh;
+        object-fit: cover;
+    }
+}
+
+.col-content {
+    margin: 10vh 0 5vh 0;
+}
+
+.headline {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+}
+
+.quote {
+    border-radius: 4px;
+    background-color: #0ECC7C;
+    padding: 5vh 5vh 5vh 5vh;
+    padding-right: 30%;
+    background-image: url('../assets//image/quote-elipse.png');
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    p {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 25px;
+        margin-bottom: 0;
+    }
+}
+
+.vitals-title {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -0.03em;
+    margin: 5vh 0 5vh 0;
+}
+
+.cards {
+    cursor: pointer;
+    justify-content: space-between;
+    display: flex;
+    .card {
+        display: inline-block;
+        height: auto;
+        width: 40vh;
+        margin: 0 1vh 0 1vh;
+        border: none;
+        background-color: $color-primary-light;
+        .card-image {
+            text-align: center;
+            margin: 2vh 0 2vh 0;
+        }
+        .card-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+        .card-text {
+            text-align: center;
+            font-family: PT Serif;
+            font-size: 16px;
+            text-align: center;
+            letter-spacing: 0.01em;
+            margin: 2vh 6vh 3vh 6vh;
+        }
+    }
+    .card:first-child {
+        margin-left: 0;
+    }
+    .card:last-child {
+        margin-right: 0;
+    }
+}
