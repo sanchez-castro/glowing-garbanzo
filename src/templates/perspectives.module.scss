@@ -1,0 +1,20 @@
+.header {
+  margin: 5vh 0 5vh 0;
+}
+.author-data {
+  padding-left: 3vh !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    margin-bottom: 1vh;
+  }
+}
+.avatar {
+  border-radius: 4px;
+  height: 10vh;
+  width: 10vh;
+}
+.twitter {
+  color: #0ECC7C;
+}
