@@ -14,13 +14,20 @@ export const postsFragment = graphql`
               date(formatString: "MMMM DD, YYYY")
               title
               tags
-              type
+              contentType
+              topics
               featuredImage {
                 childImageSharp {
                   fluid(maxWidth: 800) {
                     ...GatsbyImageSharpFluid
                   }
                 }
+              }
+              author {
+                id
+                bio
+                name
+                twitter
               }
             }
           }
