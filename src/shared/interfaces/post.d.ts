@@ -1,3 +1,5 @@
+import { IAuthor } from "./author";
+import { IChildImageSharp } from "./image";
 
 export interface IFields {
     slug: string;
@@ -7,7 +9,8 @@ export interface IFrontmatter {
     date: string;
     title: string;
     tags: string[];
-    type: string[];
+    contentType: string[];
+    author: IAuthor;
     featuredImage: IFeaturedImage | null;
 }
 
@@ -32,17 +35,6 @@ export interface IPostsData {
 
 export interface IFeaturedImage {
     childImageSharp: IChildImageSharp
-}
-
-export interface IChildImageSharp {
-    fluid: IFluid
-}
-
-export interface IFluid {
-    aspectRatio: number;
-    sizes: string;
-    src: string;
-    srcSet: string;
 }
 
 export interface IMarkdownRemark {
