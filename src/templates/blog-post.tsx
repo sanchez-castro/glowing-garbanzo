@@ -44,8 +44,8 @@ const BlogPostTemplate = (props: Props) => {
             <h1>{post.frontmatter.title}</h1>
             <p className={styles.date}>{post.frontmatter.date}</p>
             <div className={styles.metaContainer}>
-              {post.frontmatter.type ? (
-                <PostType types={post.frontmatter.type}></PostType>
+              {post.frontmatter.contentType ? (
+                <PostType types={post.frontmatter.contentType}></PostType>
               ) : (
                 ""
               )}
@@ -101,7 +101,7 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         tags
-        type
+        contentType
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 2000) {
