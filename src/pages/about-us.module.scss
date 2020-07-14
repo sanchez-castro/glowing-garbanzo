@@ -1,0 +1,49 @@
+.header {
+    margin: 5vh 0 5vh 0;
+}
+
+.collaborators {
+    text-align: center;
+    margin: 5vh 0 5vh 0;
+}
+
+.about {
+    margin: 5vh 0 5vh 0;
+    .image-col {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 0;
+        img {
+            border-radius: 4px;
+            width: 30vh;
+            height: 30vh;
+            object-fit: cover;
+        }
+    }
+    .content-col {
+        padding-left: 5vh;
+        .title {
+            background: url('../assets/icon/about-title.svg') no-repeat left center;
+        }
+        .email {
+            background: url('../assets/icon/about-email.svg') no-repeat left center;
+        }
+        .github {
+            background: url('../assets/icon/about-github.svg') no-repeat left center;
+        }
+        .location {
+            background: url('../assets/icon/about-location.svg') no-repeat left center;
+        }
+        .twitter {
+            background: url('../assets/icon/twitter.svg') no-repeat left center;
+        }
+        label {
+            padding-left: 5vh;
+            margin-bottom: 0;
+        }
+    }
+    .twitter-handle {
+        color: #0ECC7C;
+    }
+}
