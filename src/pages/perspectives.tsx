@@ -105,12 +105,14 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
               style={{ marginTop: "5vh" }}
               className="p-0 d-none d-lg-block"
             >
-              {this.state.authorPerspectives.group.map((perspectives: any, index: number) => (
-                <AuthorPerspectivesLandscape
-                  key={index}
-                  perspectives={perspectives}
-                ></AuthorPerspectivesLandscape>
-              ))}
+              {this.state.authorPerspectives.group.map(
+                (perspectives: any, index: number) => (
+                  <AuthorPerspectivesLandscape
+                    key={index}
+                    perspectives={perspectives}
+                  ></AuthorPerspectivesLandscape>
+                )
+              )}
             </Col>
             <Col
               xs={12}
@@ -118,12 +120,14 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
               style={{ marginTop: "5vh" }}
               className="p-0 d-block d-lg-none"
             >
-              {this.state.authorPerspectives.group.map((perspectives: any, index: number) => (
-                <AuthorPerspectivesMobile
-                  key={index}
-                  perspectives={perspectives}
-                ></AuthorPerspectivesMobile>
-              ))}
+              {this.state.authorPerspectives.group.map(
+                (perspectives: any, index: number) => (
+                  <AuthorPerspectivesMobile
+                    key={index}
+                    perspectives={perspectives}
+                  ></AuthorPerspectivesMobile>
+                )
+              )}
             </Col>
           </Row>
         </Container>
