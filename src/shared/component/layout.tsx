@@ -1,10 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Header from "../../components/header";
 import Sidebar from "../../components/sidebar";
 import Footer from "../../components/footer";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./layout.module.scss";
 import collapse from "../../assets/icon/collapse-arrow.svg";
+import menuIcon from "../../assets/icon/hamburguer.svg";
 
 interface LayoutProps {
   title?: string;
@@ -19,82 +20,130 @@ class Layout extends Component<LayoutProps, LayoutState> {
   constructor(props: LayoutProps) {
     super(props);
     this.state = {
-      collapsedSidebar: false
+      collapsedSidebar: false,
     };
   }
 
-  contentWidth: number = 9;
-  hiddenClass: string = "";
+  contentWidth = 9;
+  hiddenClass = "fixed-top one";
+  contentClass = "two";
 
   toggleHideHandler = () => {
-    this.setState(
-      {
-        collapsedSidebar: !this.state.collapsedSidebar
-      },
-      this.setContentWidth
-    );
-  };
-
-  setContentWidth = () => {
-    if (this.state.collapsedSidebar) {
-      this.contentWidth = 12;
-      this.hiddenClass = "d-none";
-    } else {
-      this.contentWidth = 9;
-      this.hiddenClass = "";
-    }
-    this.forceUpdate();
+    this.setState({
+      collapsedSidebar: !this.state.collapsedSidebar,
+    });
   };
 
   render() {
     return (
       <Container fluid className={styles.container}>
         <Row className={styles.row}>
-          <Col
-            lg={3}
-            xl={3}
-            className={[this.hiddenClass, styles.sidebar, "fixed-top one"].join(
-              " "
-            )}
-          >
-            <Sidebar hidden={this.state.collapsedSidebar}></Sidebar>
-          </Col>
-          <Col
-            style={{ padding: 0 }}
-            lg={this.contentWidth && { offset: 12 - this.contentWidth }}
-            xl={this.contentWidth && { offset: 12 - this.contentWidth }}
-            className="two"
-          >
-            <div
-              className={[
-                this.state.collapsedSidebar ? styles.rotated : "",
-                styles.hideButton
-              ].join(" ")}
-              onClick={this.toggleHideHandler}
+          <Col className="d-block d-lg-none p-0">
+            <Mobile
+              collapsedSidebar={this.state.collapsedSidebar}
+              toggleHideHandler={this.toggleHideHandler}
             >
-              <img src={collapse} alt="" />
-            </div>
-            {typeof window !== `undefined` ? (
-              <Header
-                extendedSearchbar={
-                  window.location.pathname == "/" ||
-                  window.location.pathname == "/search-result/"
-                    ? true
-                    : false
-                }
-              ></Header>
-            ) : (
-              ""
-            )}
-            <body className={styles.body}>
-              <main>{this.props.children}</main>
-              <Footer></Footer>
-            </body>
+              {this.props.children}
+            </Mobile>
+          </Col>
+          <Col className="d-none d-lg-block p-0">
+            <Landscape
+              collapsedSidebar={this.state.collapsedSidebar}
+              toggleHideHandler={this.toggleHideHandler}
+            >
+              {this.props.children}
+            </Landscape>
           </Col>
         </Row>
       </Container>
     );
   }
 }
+
+const Mobile = (props: any) => {
+  return (
+    <Fragment>
+      <div
+        className={[
+          styles.sidebar,
+          props.collapsedSidebar ? styles.mobileVisible : styles.hidden,
+        ].join(" ")}
+      >
+        <Sidebar
+          hidden={!props.collapsedSidebar}
+          closeHandle={props.toggleHideHandler}
+          mobile={true}
+        ></Sidebar>
+      </div>
+      {typeof window !== `undefined` ? (
+        <Header
+          extendedSearchbar={
+            window.location.pathname == "/" ||
+            window.location.pathname == "/search-result/"
+              ? true
+              : false
+          }
+          mobile={true}
+          toggleHide={props.toggleHideHandler}
+        ></Header>
+      ) : (
+        ""
+      )}
+      <body className={styles.body}>
+        <main>{props.children}</main>
+        <Footer mobile={true}></Footer>
+      </body>
+    </Fragment>
+  );
+};
+
+const Landscape = (props: any) => {
+  return (
+    <Fragment>
+      <div
+        className={[
+          styles.sidebar,
+          props.collapsedSidebar ? styles.hidden : styles.visible,
+        ].join(" ")}
+      >
+        <Sidebar hidden={props.collapsedSidebar}></Sidebar>
+      </div>
+
+      <div
+        className={[
+          "d-none d-lg-block ",
+          styles.content,
+          !props.collapsedSidebar ? styles.contentOffset : "",
+        ].join(" ")}
+      >
+        <div
+          className={[
+            props.collapsedSidebar ? styles.rotated : "",
+            styles.hideButton,
+          ].join(" ")}
+          onClick={props.toggleHideHandler}
+        >
+          <img src={collapse} alt="" />
+        </div>
+        {typeof window !== `undefined` ? (
+          <Header
+            extendedSearchbar={
+              window.location.pathname == "/" ||
+              window.location.pathname == "/search-result/"
+                ? true
+                : false
+            }
+          ></Header>
+        ) : (
+          ""
+        )}
+        <body className={styles.body}>
+          <main>{props.children}</main>
+          <Footer></Footer>
+        </body>
+      </div>
+    </Fragment>
+  );
+};
 
 export default Layout;

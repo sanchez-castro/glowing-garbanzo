@@ -1,50 +1,81 @@
 @import "../../theme/_variables.scss";
 
 .sidebar {
-    background-color: $color-primary;
-    padding: 0;
-    height: 100%;
-}
-
-.row {
-    height: 100%;
-}
-
-.container {
-    height: 100%;
-}
-
-.nav {
-    margin-left: 2vh;
+  background-color: $color-primary;
+  padding: 0;
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
 }
 
 .hidden {
-    visibility: hidden;
+  width: 0px;
+}
+
+.mobile-visible {
+  width: 100%;
+}
+
+.visible {
+  width: 50vh;
+}
+
+.content-offset {
+  margin-left: 50vh;
+}
+
+.content {
+  transition: margin-left .5s;
+}
+
+.row {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.container {
+  height: 100%;
+  padding: 0;
+}
+
+.nav {
+  margin-left: 2vh;
 }
 
 .rotated {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
-
 .hide-button {
-    position: fixed;
-    top: 0;
-    cursor: pointer;
-    visibility: initial;
-    height: 2rem;
-    width: 2rem;
-    background-color: #F1F2F2;
-    color: #191919;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
+  position: fixed;
+  top: 0;
+  cursor: pointer;
+  visibility: initial;
+  height: 2rem;
+  width: 2rem;
+  background-color: #F1F2F2;
+  color: #191919;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
 }
 
 .body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    justify-content: space-between
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between
+}
+
+.menu-icon {
+  position: absolute;
+  left: 2vh;
+  top: 1.5vh;
 }
