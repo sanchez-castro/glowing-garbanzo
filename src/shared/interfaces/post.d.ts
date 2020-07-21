@@ -2,49 +2,49 @@ import { IAuthor } from "./author";
 import { IChildImageSharp } from "./image";
 
 export interface IFields {
-    slug: string;
+  slug: string;
 }
 
 export interface IFrontmatter {
-    date: string;
-    title: string;
-    tags: string[];
-    contentType: string[];
-    author: IAuthor;
-    featuredImage: IFeaturedImage | null;
+  date: string;
+  title: string;
+  tags: string[];
+  contentType: string[];
+  author: IAuthor;
+  featuredImage: IFeaturedImage | null;
 }
 
 export interface INode {
-    id: string;
-    excerpt: string;
-    fields: IFields;
-    frontmatter: IFrontmatter;
+  id: string;
+  excerpt: string;
+  fields: IFields;
+  frontmatter: IFrontmatter;
 }
 
 export interface IEdge {
-    node: INode;
+  node: INode;
 }
 
 export interface IAllMarkdownRemark {
-    edges: IEdge[];
+  edges: IEdge[];
 }
 
 export interface IPostsData {
-    allMarkdownRemark: IAllMarkdownRemark;
+  allMarkdownRemark: IAllMarkdownRemark;
 }
 
 export interface IFeaturedImage {
-    childImageSharp: IChildImageSharp
+  childImageSharp: IChildImageSharp;
 }
 
 export interface IMarkdownRemark {
-    id: string;
-    excerpt: string;
-    fields: IFields;
-    frontmatter: IFrontmatter;
-    html: string
+  id: string;
+  excerpt: string;
+  fields: IFields;
+  frontmatter: IFrontmatter;
+  html: string;
 }
 
 export interface IPostData {
-    markdownRemark: IMarkdownRemark;
+  markdownRemark: IMarkdownRemark;
 }
