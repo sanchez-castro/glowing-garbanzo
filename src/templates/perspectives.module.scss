@@ -1,6 +1,10 @@
 .header {
   margin: 5vh 0 5vh 0;
 }
+
+.mobile-header {
+  margin: 2vh 0 2vh 0;
+}
 .author-data {
   padding-left: 3vh !important;
   display: flex;
@@ -11,7 +15,7 @@
   }
 }
 .avatar {
-  border-radius: 4px;
+  border-radius: 50%;
   height: 10vh;
   width: 10vh;
 }
