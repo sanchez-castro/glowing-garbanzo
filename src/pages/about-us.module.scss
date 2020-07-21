@@ -14,36 +14,36 @@
         justify-content: flex-end;
         align-items: flex-start;
         padding: 0;
-        img {
-            border-radius: 4px;
-            width: 30vh;
-            height: 30vh;
+        .avatar {
+            border-radius: 50%;
+            width: 20vh;
+            height: 20vh;
             object-fit: cover;
+        }
+        .mobile-avatar {
+          margin-bottom: 3vh;
         }
     }
     .content-col {
         padding-left: 5vh;
-        .title {
-            background: url('../assets/icon/about-title.svg') no-repeat left center;
-        }
-        .email {
-            background: url('../assets/icon/about-email.svg') no-repeat left center;
-        }
-        .github {
-            background: url('../assets/icon/about-github.svg') no-repeat left center;
-        }
-        .location {
-            background: url('../assets/icon/about-location.svg') no-repeat left center;
-        }
-        .twitter {
-            background: url('../assets/icon/twitter.svg') no-repeat left center;
-        }
         label {
-            padding-left: 5vh;
-            margin-bottom: 0;
+          margin: 0;
         }
     }
     .twitter-handle {
-        color: #0ECC7C;
+        a {
+          color: #0ECC7C;
+        }
     }
+}
+
+.about-mobile {
+  margin: 0 0 2vh 0;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  opacity: 0.8;
+  width: 4vh;
 }
