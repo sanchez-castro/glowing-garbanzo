@@ -60,7 +60,7 @@ const RelatedPosts = (props: Props) => {
       >
         Publicaciones relacionadas
       </p>
-      {posts.allMarkdownRemark.edges.map(({ node }: any) => {
+      {posts.allMarkdownRemark.edges.map(({ node }: any, index: number) => {
         const {
           title,
           date,
@@ -72,7 +72,7 @@ const RelatedPosts = (props: Props) => {
         const slug = node.fields.slug;
         const mobile = props.mobile ? true : false;
         return (
-          <Fragment>
+          <Fragment key={index}>
             <PostPreview
               key={slug}
               title={title}
