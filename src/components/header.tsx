@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from "react";
 import { Link, navigate } from "gatsby";
 import styles from "./header.module.scss";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Modal, Button } from "react-bootstrap";
 import menuIcon from "../assets/icon/hamburguer.svg";
+import Subscribe from "../shared/component/subscribe";
+import ResultToast from "../shared/component/result-toast";
 
 interface HeaderProps {
   extendedSearchbar: boolean;
@@ -19,6 +21,25 @@ const Header = (props: HeaderProps) => {
       });
     }
   };
+  const [showSubscribe, setShowSubscribe] = useState(false);
+  const [toastState, setToastState] = useState({
+    email: "",
+    result: null,
+    displayToast: false,
+  });
+
+  const toastClose = () =>
+    setToastState({
+      email: toastState.email,
+      result: toastState.result,
+      displayToast: false,
+    });
+
+  const handleClose = (subscribeState: any) => {
+    setToastState(subscribeState);
+    setShowSubscribe(false);
+  };
+  const handleShow = () => setShowSubscribe(true);
   return (
     <header>
       <Container fluid>
@@ -76,12 +97,31 @@ const Header = (props: HeaderProps) => {
                   Filosofía
                 </Link>
               </li>
+              <li></li>
               {!props.mobile ? (
-                <li>
-                  <button className={[styles.navButton, "paragraph"].join(" ")}>
-                    Subscribir
-                  </button>
-                </li>
+                <Fragment>
+                  <li>
+                    <button
+                      className={[styles.navButton, "paragraph"].join(" ")}
+                      onClick={handleShow}
+                    >
+                      Subscribir
+                    </button>
+                  </li>
+
+                  <Modal centered show={showSubscribe} onHide={handleClose}>
+                    <Subscribe
+                      handleSubmit={handleClose}
+                      modal={true}
+                    ></Subscribe>
+                  </Modal>
+
+                  <ResultToast
+                    displayToast={toastState.displayToast}
+                    result={toastState.result}
+                    handleClose={toastClose}
+                  ></ResultToast>
+                </Fragment>
               ) : (
                 ""
               )}
