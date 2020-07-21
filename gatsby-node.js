@@ -7,7 +7,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const blogPost = path.resolve("./src/templates/blog-post.tsx");
   const topicTemplate = path.resolve("./src/templates/topics.tsx");
-  const authorPerspective = path.resolve("./src/templates/perspectives.tsx")
+  const authorPerspective = path.resolve("./src/templates/perspectives.tsx");
   const result = await graphql(
     `
       {
@@ -63,7 +63,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   const topics = result.data.topics.group;
-  
+
   topics.forEach((topic) => {
     createPage({
       path: `/topics/${_.kebabCase(topic.fieldValue)}/`,
@@ -83,7 +83,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         topic: author.fieldValue,
       },
-    })
+    });
   });
 };
 
@@ -100,9 +100,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-
 exports.createSchemaCustomization = ({ actions }) => {
-  const { createTypes } = actions
+  const { createTypes } = actions;
   const typeDefs = `
     type MarkdownRemark implements Node {
       frontmatter: Frontmatter
@@ -111,6 +110,6 @@ exports.createSchemaCustomization = ({ actions }) => {
     type Frontmatter {
       author: AuthorYaml @link(by: "id")
     }
-  `
-  createTypes(typeDefs)
-}
+  `;
+  createTypes(typeDefs);
+};
