@@ -35,8 +35,8 @@ class PostList extends Component<PostListProps, PostListState> {
     this.loadMore();
   }
 
-  componentWillUpdate() {
-    this.postList = _.cloneDeep(this.props.list);
+  componentWillReceiveProps(props: PostListProps) {
+    this.postList = _.cloneDeep(props.list);
 
     this.setState(
       {
