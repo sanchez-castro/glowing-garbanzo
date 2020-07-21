@@ -5,14 +5,11 @@ import searchIcon from "../../assets/icon/search.svg";
 import { useStaticQuery, graphql } from "gatsby";
 
 interface SearchbarState {
-  selectedTags: Array<string>
+  selectedTags: Array<string>;
+  visibleTags: Tag[];
 }
 
 const ExtendedSearchbar = (props: any) => {
-  const [state, setState] = useState<SearchbarState>({
-    selectedTags: props.selectedTags ? props.selectedTags : []
-  });
-
   const data = useStaticQuery(
     graphql`
       query Tags {
@@ -26,10 +23,17 @@ const ExtendedSearchbar = (props: any) => {
   );
 
   const tags: Array<Tag> = data.allMarkdownRemark.group.map((tag: any) => {
-    return { 
-      title: tag.fieldValue, 
-      active: state.selectedTags.includes(tag.fieldValue) 
+    return {
+      title: tag.fieldValue,
+      active: props.selectedTags
+        ? props.selectedTags.includes(tag.fieldValue)
+        : false,
     };
+  });
+
+  const [state, setState] = useState<SearchbarState>({
+    selectedTags: props.selectedTags ? props.selectedTags : [],
+    visibleTags: props.mobile ? tags.slice(0, 5) : tags.slice(0, 10),
   });
 
   const addTag = (title: string) => {
@@ -39,33 +43,60 @@ const ExtendedSearchbar = (props: any) => {
     } else {
       selectedTags.push(title);
     }
-    setState({ selectedTags: selectedTags });
+    const visibleTags = state.visibleTags.map((tag) => {
+      return { title: tag.title, active: selectedTags.includes(tag.title) };
+    });
+    setState({
+      selectedTags: selectedTags,
+      visibleTags: visibleTags,
+    });
     if (props.onTagSelected) {
       props.onTagSelected(selectedTags);
     }
+    console.log(state);
+  };
+
+  const displayAllTags = () => {
+    setState({
+      selectedTags: state.selectedTags,
+      visibleTags: tags,
+    });
   };
 
   return (
     <div>
       <Row className="justify-content-md-center">
-        <Col className="d-flex justify-content-center" lg={10} xl={10}>
+        <Col
+          className="d-flex justify-content-center"
+          sm={10}
+          md={10}
+          lg={10}
+          xl={10}
+        >
           <div className={styles.extendedInputContainer}>
             <input
-              className={styles.extendedSearchbar}
+              className={[
+                styles.extendedSearchbar,
+                props.mobile ? styles.searchbarMobile : "",
+              ].join(" ")}
               type="text"
-              placeholder="What do you want to learn today?"
+              placeholder={
+                !props.mobile
+                  ? "¿Qué quieres aprender el día de hoy?"
+                  : "Buscar"
+              }
               onKeyUp={props.onKeyUp}
             />
           </div>
         </Col>
-      </Row>        
-      <Row className="justify-content-md-center">
-        <small>Filter by tag</small>
       </Row>
-      <Row className="justify-content-md-center">
+      <Row className="justify-content-center">
+        <small>Filtrar por etiqueta</small>
+      </Row>
+      <Row className="justify-content-center">
         <Col className="d-flex justify-content-center" lg={7} xl={7}>
           <div className={styles.tags}>
-            {tags.map((tag: Tag) => (
+            {state.visibleTags.map((tag: Tag) => (
               <div
                 className={styles.tagContainer}
                 onClick={() => addTag(tag.title)}
@@ -77,16 +108,28 @@ const ExtendedSearchbar = (props: any) => {
           </div>
         </Col>
       </Row>
-      <Row className={["justify-content-md-center", styles.moreTags].join(" ")}>
-        <small>See all tags</small>
+      <Row
+        className={[
+          "justify-content-center",
+          styles.moreTags,
+          props.mobile ? styles.moreTagsMobile : "",
+        ].join(" ")}
+      >
+        {state.visibleTags.length < tags.length ? (
+          <small onClick={() => displayAllTags()}>
+            Ver todas las etiquetas
+          </small>
+        ) : (
+          ""
+        )}
       </Row>
     </div>
   );
 };
 
 interface Tag {
-  title: string
-  active: boolean
+  title: string;
+  active: boolean;
 }
 
 const Tag = (props: Tag) => {
