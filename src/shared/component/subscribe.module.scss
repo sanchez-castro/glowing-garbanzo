@@ -11,19 +11,6 @@
     }
 
     .title {
-        font-weight: 500;
-        font-size: 24px;
-        color: white;
-        letter-spacing: -0.02em;
-    }
-
-    .subtitle {
-        font-family: PT Serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 150%;
-        letter-spacing: 0.01em;
         color: white;
     }
 
@@ -68,6 +55,18 @@
         right: 4vh;
         width: 2.5vh;
     }
+}
+
+.mobile-container {
+  border-radius: 0;
+
+  .row {
+      padding: 2vh 2vh 2vh 2vh;
+  }
+
+  .email {
+      width: 100%;
+  }
 }
 
 .toast {
