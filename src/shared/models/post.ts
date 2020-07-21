@@ -7,7 +7,7 @@ import {
   INode,
   IFields,
   IFrontmatter,
-  IFeaturedImage
+  IFeaturedImage,
 } from "../interfaces/post";
 import { Author } from "./author";
 import { ChildImageSharp } from "./image";
