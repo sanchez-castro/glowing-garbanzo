@@ -8,18 +8,36 @@ import banner from "../assets/image/philosophy-banner.jpg";
 import scientistIcon from "../assets/icon/data-scientist.svg";
 import analystIcon from "../assets/icon/data-analyst.svg";
 import biIcon from "../assets/icon/bi-analyst.svg";
+import { navigate } from "gatsby";
 
 const Philosophy = () => {
+  const navigateTo = (path: string) => {
+    navigate(path);
+  };
   return (
     <Layout>
-      <Container fluid>
+      <Container fluid className={styles.container}>
         <Row className="justify-content-md-center">
           <Col lg={12} xl={12} className="p-0">
-            <div className={styles.jumbotron}>
-              <img src={banner} alt="banner image" />
+            <div className={[styles.jumbotron, "d-none d-lg-block"].join(" ")}>
               <div className={styles.bannerText}>
-                <h1>DPD Philosophy</h1>
-                <p>
+                <p className="headline-1">Filosofía</p>
+                <p className="headline-3">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+              </div>
+            </div>
+            <div
+              className={["d-block d-lg-none", styles.jumbotronMobile].join(
+                " "
+              )}
+            >
+              <div className={styles.bannerText}>
+                <p className="headline-1">Filosofía</p>
+                <p className="headline-3">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -30,25 +48,39 @@ const Philosophy = () => {
           </Col>
           <Col lg={10} xl={10} className={styles.colContent}>
             <Row>
-              <Col lg={8}>
-                <p className={styles.headline}>You'll learn to love data</p>
+              <Col xs={12} sm={12} md={8} lg={8}>
+                <p className={styles.headline}>Youll learn to love data</p>
                 <p>
-                  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. "Lorem ipsum
+                  laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
                   dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
                   minim veniam, quis nostrud exercitation ullamco laboris nisi
                   ut aliquip ex ea commodo consequat.
                 </p>
               </Col>
-              <Col lg={4} className={styles.imageCol}>
-                <img src={banner} alt="man programming" />
+              <Col xs={12} sm={12} md={8} lg={4} className={styles.imageCol}>
+                <img
+                  className="d-none d-lg-block"
+                  src={banner}
+                  alt="man programming"
+                />
               </Col>
             </Row>
           </Col>
-          <Col lg={10} className={styles.colContent}>
+          <Col className="d-block d-lg-none p-0" xs={12} sm={12}>
+            <img
+              className={styles.mobileBlockImage}
+              src={banner}
+              alt="man programming"
+            />
+          </Col>
+          <Col
+            lg={10}
+            className={[styles.colContent, "d-none d-lg-block"].join(" ")}
+          >
             <div className={styles.quote}>
               <p>
                 Big data es como el sexo en la adolescencia:
@@ -61,60 +93,148 @@ const Philosophy = () => {
                 <br />
                 Así que todos dicen estarlo hacerlo.
                 <br />
-                –Jamie Boyle
+                <span className={styles.quoteAuthor}>–Jamie Boyle</span>
+              </p>
+            </div>
+          </Col>
+
+          <Col
+            lg={10}
+            className={[styles.colContent, "d-block d-lg-none"].join(" ")}
+          >
+            <div className={styles.mobileQuote}>
+              <p>
+                Big data es como el sexo en la adolescencia:
+                <br />
+                Todos hablan de ello;
+                <br />
+                nadie en realidad sabe como hacerlo;
+                <br />
+                todos piensan que todos los demás lo hacen;
+                <br />
+                Así que todos dicen estarlo hacerlo.
+                <br />
+                <span className={styles.quoteAuthor}>–Jamie Boyle</span>
               </p>
             </div>
           </Col>
         </Row>
 
-        <Row
-          className="justify-content-md-center"
-        >
-          <Col lg={10} xl={10} className={styles.vitalsTitle}>
-            Our vitals
+        <Row className="justify-content-md-center">
+          <Col
+            lg={10}
+            xl={10}
+            className="text-center headline-1 d-block d-lg-none"
+            style={{ marginBottom: "2vh" }}
+          >
+            Nuestros vitales
+          </Col>
+          <Col
+            lg={10}
+            xl={10}
+            className="headline-1 d-none d-lg-block"
+            style={{ marginBottom: "5vh" }}
+          >
+            Nuestros vitales
           </Col>
           <Col lg={10} xl={10} className={styles.cards}>
-            <Card className={styles.card}>
-              <Card.Body>
-                <Card.Title className={styles.cardImage}>
-                  <img src={scientistIcon} />
-                </Card.Title>
-                <Card.Subtitle className={styles.cardTitle}>
-                  Learning Hub
-                </Card.Subtitle>
-                <Card.Text className={styles.cardText}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </Card.Text>
-              </Card.Body>
-            </Card>
+            <Row>
+              <Col
+                xs={12}
+                sm={12}
+                md={4}
+                lg={4}
+                xl={4}
+                className="d-flex justify-content-center"
+              >
+                <Card
+                  className={[styles.card, styles.modules].join(" ")}
+                  onClick={() => navigateTo("/modules")}
+                >
+                  <Card.Body>
+                    <div className={styles.cardImage}>
+                      <img src={scientistIcon} />
+                    </div>
+                    <Card.Title className="headline-3 text-center">
+                      Módulos
+                    </Card.Title>
+                    <Card.Subtitle className="headline-4 text-center">
+                      Habilidades y pensamiento crítico
+                    </Card.Subtitle>
+                    <Card.Text
+                      className={["paragraph", styles.cardText].join(" ")}
+                    >
+                      Lenguajes y ambientes de programación para ayudar en
+                      desarrollo e implementación de productos de datos.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
 
-            <Card className={styles.card}>
-              <Card.Body>
-                <Card.Title className={styles.cardImage}>
-                  <img src={analystIcon} />
-                </Card.Title>
-                <Card.Subtitle className={styles.cardTitle}>
-                  Projects
-                </Card.Subtitle>
-                <Card.Text className={styles.cardText}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </Card.Text>
-              </Card.Body>
-            </Card>
+              <Col
+                xs={12}
+                sm={12}
+                md={4}
+                lg={4}
+                xl={4}
+                className="d-flex justify-content-center"
+              >
+                <Card
+                  className={[styles.card, styles.perspectives].join(" ")}
+                  onClick={() => navigateTo("/perspectives")}
+                >
+                  <Card.Body>
+                    <div className={styles.cardImage}>
+                      <img src={analystIcon} />
+                    </div>
+                    <Card.Title className="headline-3 text-center">
+                      Perspectivas
+                    </Card.Title>
+                    <Card.Subtitle className="headline-4 text-center">
+                      Inspiración en ciencia de datos
+                    </Card.Subtitle>
+                    <Card.Text
+                      className={["paragraph", styles.cardText].join(" ")}
+                    >
+                      Experiencias, visiones e ideas alrededor de la ciencia de
+                      datos.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
 
-            <Card className={styles.card}>
-              <Card.Body>
-                <Card.Title className={styles.cardImage}>
-                  <img src={biIcon} />
-                </Card.Title>
-                <Card.Subtitle className={styles.cardTitle}>
-                  Perspectives
-                </Card.Subtitle>
-                <Card.Text className={styles.cardText}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                </Card.Text>
-              </Card.Body>
-            </Card>
+              <Col
+                xs={12}
+                sm={12}
+                md={4}
+                lg={4}
+                xl={4}
+                className="d-flex justify-content-center"
+              >
+                <Card
+                  className={[styles.card, styles.projects].join(" ")}
+                  onClick={() => navigateTo("/projects")}
+                >
+                  <Card.Body>
+                    <div className={styles.cardImage}>
+                      <img src={biIcon} />
+                    </div>
+                    <Card.Title className="headline-3 text-center">
+                      Proyectos
+                    </Card.Title>
+                    <Card.Subtitle className="headline-4 text-center">
+                      Conocimiento aplicado
+                    </Card.Subtitle>
+                    <Card.Text
+                      className={["paragraph", styles.cardText].join(" ")}
+                    >
+                      Problemas y soluciones escalables para tus primeros
+                      proyectos en ciencia de datos.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Col>
         </Row>
       </Container>

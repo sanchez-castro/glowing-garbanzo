@@ -1,35 +1,33 @@
 @import "../theme/_variables.scss";
 
 .jumbotron {
-    img {
-        width: 100%;
-        height: 50vh;
-        object-fit: cover;
-    }
-
+  background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)),
+    url('../assets/image/philosophy-banner.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 50vh;
     .banner-text {
+        color: white;
+        margin: 0 10vh 4vh 10vh;
         position: absolute;
         bottom: 0;
+    }
+    align-items: flex-end;
+}
+
+.jumbotron-mobile {
+  background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)),
+    url('../assets/image/philosophy-banner.jpg');
+    background-size: cover;
+    width: 100%;
+    height: fit-content;
+    .banner-text {
         color: white;
-        margin: 3vh 10vh 4vh 10vh;
+        padding: 3vh 3vh 3vh 3vh;
 
-        h1 {
-            font-family: Poppins;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 40px;
-            line-height: 40px;
-            letter-spacing: -0.03em;
-        }
-
-        p {
-            font-family: Poppins;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 24px;
-            line-height: 100%;
-            letter-spacing: -0.02em;
-        }
     }
 }
 
@@ -46,8 +44,15 @@
     }
 }
 
+
+.mobile-block-image {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+}
+
 .col-content {
-    margin: 10vh 0 5vh 0;
+    margin: 5vh 0 5vh 0;
 }
 
 .headline {
@@ -70,9 +75,28 @@
     p {
         font-family: Poppins;
         font-style: normal;
-        font-weight: 600;
-        font-size: 25px;
+        font-weight: 400;
+        font-size: 34px;
         margin-bottom: 0;
+        .quote-author {
+          font-weight: 600;
+        }
+    }
+}
+
+.mobileQuote {
+  border-radius: 4px;
+    background-color: #0ECC7C;
+    padding: 3vh;
+    p {
+        font-family: Poppins;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 21px;
+        margin-bottom: 0;
+        .quote-author {
+          font-weight: 600;
+        }
     }
 }
 
@@ -87,39 +111,46 @@
 }
 
 .cards {
-    cursor: pointer;
-    justify-content: space-between;
-    display: flex;
-    .card {
-        display: inline-block;
-        height: auto;
-        width: 40vh;
-        margin: 0 1vh 0 1vh;
-        border: none;
-        background-color: $color-primary-light;
-        .card-image {
-            text-align: center;
-            margin: 2vh 0 2vh 0;
-        }
-        .card-title {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-        .card-text {
-            text-align: center;
-            font-family: PT Serif;
-            font-size: 16px;
-            text-align: center;
-            letter-spacing: 0.01em;
-            margin: 2vh 6vh 3vh 6vh;
-        }
-    }
-    .card:first-child {
-        margin-left: 0;
-    }
-    .card:last-child {
-        margin-right: 0;
-    }
+  cursor: pointer;
+  justify-content: space-between;
+  display: flex;
+  .card {
+      display: inline-block;
+      height: auto;
+      width: 40vh;
+      margin: 1vh 0 1vh 0;
+      border: none;
+      background-color: $color-primary-light;
+      .card-image {
+          text-align: center;
+          margin: 1vh 0 1vh 0;
+      }
+      .card-text {
+          margin: 1vh 0 1vh 0;
+          text-align: center;
+      }
+  }
+
+  .modules {
+    background-color: #D3CEFC;;
+  }
+
+  .perspectives {
+    background-color: #FAE1E0;
+  }
+
+  .projects {
+    background-color: #FFDD84;
+  }
+  
+  .card:first-child {
+      margin-left: 0;
+  }
+  .card:last-child {
+      margin-right: 0;
+  }
+}
+
+.container {
+  padding-bottom: 3vh;
 }
