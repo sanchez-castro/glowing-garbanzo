@@ -3,14 +3,14 @@ import { Link, graphql, navigate } from "gatsby";
 import Layout from "../shared/component/layout";
 import PostPreview from "../shared/component/post-preview";
 import { Row, Col, Container } from "react-bootstrap";
-import styles from './tags.module.scss'
+import styles from "./tags.module.scss";
 
 interface Props {
   data: {
     allMarkdownRemark: any;
   };
   pageContext: {
-    topic: string
+    topic: string;
   };
 }
 
@@ -22,29 +22,36 @@ const Topics = ({ pageContext, data }: Props) => {
   } for ${topic}`;
 
   const allTopics = () => {
-    navigate(`/topics`)
-  }
+    navigate(`/topics`);
+  };
 
   return (
     <Layout>
       <Container fluid>
         <Row className="justify-content-md-center">
           <Col lg={12} xl={12}>
-            <h1>{totalCount} post{totalCount ===1 ? "" : "s"} for <span style={{ textTransform: "capitalize"}}>{topic}</span></h1>
+            <h1>
+              {totalCount} post{totalCount === 1 ? "" : "s"} for{" "}
+              <span style={{ textTransform: "capitalize" }}>{topic}</span>
+            </h1>
           </Col>
           <Col lg={12} xl={12}>
             {edges.map(({ node }: any, index: number) => {
               const { slug } = node.fields;
               const { title } = node.frontmatter;
               return (
-                <PostPreview 
+                <PostPreview
                   key={node.fields}
                   title={node.frontmatter.title}
                   date={node.frontmatter.date}
                   excerpt={node.frontmatter.description || node.excerpt}
                   contentType={node.frontmatter.contentType}
                   tags={node.frontmatter.tags}
-                  featuredImage={node.frontmatter.featuredImage ? node.frontmatter.featuredImage.childImageSharp.fluid.src : null}
+                  featuredImage={
+                    node.frontmatter.featuredImage
+                      ? node.frontmatter.featuredImage.childImageSharp.fluid.src
+                      : null
+                  }
                   link={node.fields.slug}
                   extended={index == 0 ? true : false}
                 ></PostPreview>
@@ -58,7 +65,6 @@ const Topics = ({ pageContext, data }: Props) => {
           </Col>
         </Row>
       </Container>
-      
     </Layout>
   );
 };
