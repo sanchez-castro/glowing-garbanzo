@@ -1,9 +1,5 @@
 @import "../theme/_variables.scss";
 
-.hidden-bar {
-    visibility: hidden;
-}
-
 .title-container {
     background-color: $color-primary-dark;
     padding: 2.5vh 1.5vh 2.5vh 1.5vh;
@@ -20,22 +16,14 @@
         color: #ffffff;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        font-family: PT Serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        line-height: 150%;
-        letter-spacing: 0.01em;
     }
 }
 
 .learning-topics {
     .topics {
-        padding: 2vh 1vh 2vh 1vh;
+        padding: 2vh 2vh 2vh 2vh;
         border-bottom: solid 1px #131313;
         color: #ffffff;
-        font-size: 16px;
-        font-weight: 400;
     }
 }
 
@@ -70,4 +58,19 @@
     .node:hover {
         background-color: $color-primary-dark;
     }
+}
+
+.close-icon {
+  position: absolute;
+  right: 4vh;
+  top: 2vh;
+  font-size: 2vh;
+  img {
+    width: 2vh;
+    height: 2vh;
+  }
+}
+
+.hidden-bar {
+  visibility: hidden;
 }
