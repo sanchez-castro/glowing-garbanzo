@@ -69,19 +69,3 @@
   }
 }
 
-.toast {
-    position: fixed;
-    top: 1vh;
-    right: 1vh;
-    z-index: 1;
-    background-color: #212121;
-    color: #10DB85;
-    span {
-        color: white;
-    }
-}
-
-.toast-header {
-    color: #10DB85;
-    background-color: #1A1A1A;
-}
