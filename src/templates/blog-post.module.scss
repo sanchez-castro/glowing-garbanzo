@@ -8,58 +8,81 @@
     }
 }
 
+.jumbotron-mobile {
+  img {
+      width: 100%;
+      height: 33vh;
+      object-fit: cover;
+  }
+}
+
 .content {
     padding: 5vh 0 10vh 0;
     p {
-        font-family: PT Serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        letter-spacing: 0.01em;
-        color: $color-primary-text;
+      font-family: Noto Serif;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 150%;
+      letter-spacing: 0.01em;
+      color: $color-primary-text;
     }
+    h1{
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 40px;
+      letter-spacing: -0.03em;
+    }
+    h2 {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 32px;
+      line-height: 40px;
+      letter-spacing: -0.02em;
+    }
+    h3 {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 100%;
+      letter-spacing: -0.02em;
+    }
+    h4 {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      letter-spacing: -0.02em;
+    }
+    small {
+      font-family: Poppins;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 150%;
+      letter-spacing: 0.01em;
+    }
+}
+
+.mobile-content {
+  padding-top: 3vh;
+  padding-bottom: 3vh;
 }
 
 .header {
     padding: 10vh 0 0 0;
-    h1 {
-        font-style: normal;
-        font-weight: 500;
-        font-size: 40px;
-        line-height: 40px;
-        letter-spacing: -0.03em;
-        color: $color-primary-text;
-    }
-
     .date {
-        font-family: PT Serif;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 16px;
-        letter-spacing: 0.01em;
         color: $color-secondary-text;
     }
+}
 
-    .types {
-        .type {
-            font-size: 12px;
-            letter-spacing: 0.01em;
-            text-transform: capitalize;
-        }
-    }
-
-    .tags {
-        display: flex;
-        .tag {
-            font-size: 12px;
-            padding: 1vh;
-            background-color: $color-primary-light;
-            text-align: center;
-            letter-spacing: 0.01em;
-            border-radius: 10vh;
-            margin-right: 2vh;
-        }
-    }
+.mobileHeader {
+  padding-top: 3vh;
 }
 
 .link-ul {
@@ -68,5 +91,12 @@
     justify-content: space-between;
     list-style: none;
     padding: 0;
-    margin-top: 5vh;
+    margin-top: 5vh; 
+    a {
+      color: $color-accent;
+    }
+}
+
+.link-ul-mobile {
+  margin-top: 3vh;
 }
