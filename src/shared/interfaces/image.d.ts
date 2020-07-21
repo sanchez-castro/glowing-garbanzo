@@ -1,5 +1,5 @@
 export interface IChildImageSharp {
-  fluid: IFluid
+  fluid: IFluid;
 }
 
 export interface IFluid {
