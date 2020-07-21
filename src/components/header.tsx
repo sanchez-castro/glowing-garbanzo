@@ -7,7 +7,7 @@ import menuIcon from "../assets/icon/hamburguer.svg";
 interface HeaderProps {
   extendedSearchbar: boolean;
   mobile?: boolean;
-  toggleHide: any;
+  toggleHide?: any;
 }
 
 const Header = (props: HeaderProps) => {
