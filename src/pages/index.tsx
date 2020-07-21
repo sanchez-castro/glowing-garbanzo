@@ -2,7 +2,7 @@ import React, { Fragment, Component, createRef } from "react";
 import { Link, graphql, navigate } from "gatsby";
 import { Card, Row, Col, Container } from "react-bootstrap";
 import { PostsData } from "../shared/models/post";
-import { postsFragment } from '../shared/fragments/posts';
+import { postsFragment } from "../shared/fragments/posts";
 
 //Components
 import Layout from "../shared/component/layout";
@@ -20,60 +20,81 @@ import styles from "./index.module.scss";
 import "../global.scss";
 
 interface IndexProps {
-  data: {
-    allMarkdownRemark: any;
-    site: {
-      siteMetadata: {
-        title: string;
-      };
-    };
-  };
+  data: PostsData;
 }
 
 interface IndexState {
   postsData: PostsData;
+  searchTerm: string;
+  selectedTags: string[];
 }
 
 class BlogIndex extends Component<IndexProps, IndexState> {
-  selectedTags: Array<string> = []
   constructor(props: IndexProps) {
     super(props);
     this.state = {
-      postsData: new PostsData(props.data)
+      postsData: new PostsData(props.data),
+      searchTerm: "",
+      selectedTags: [],
     };
   }
 
   searchInputHandler(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === 'Enter') {
-      const target = event.target as HTMLInputElement
-      navigate(
-        "/search-result/",
-        {
-          state: { searchTerm: target.value, tags: this.selectedTags },
-        }
-      )
+    if (event.key === "Enter") {
+      navigate("/search-result/", {
+        state: {
+          searchTerm: this.state.searchTerm,
+          tags: this.state.selectedTags,
+        },
+      });
     }
+    const target = event.target as HTMLInputElement;
+    this.setState({ searchTerm: target.value });
   }
 
   tagSelectHandler = (tags: Array<string>) => {
-    this.selectedTags = tags
-  }  
+    this.setState({ selectedTags: tags });
+    navigate("/search-result/", {
+      state: {
+        searchTerm: this.state.searchTerm,
+        tags: this.state.selectedTags,
+      },
+    });
+  };
 
   render() {
     return (
       <Layout>
         <Container fluid>
-          <ExtendedSearchbar
-            onTagSelected={this.tagSelectHandler}
-            onKeyUp={this.searchInputHandler.bind(this)}
-          ></ExtendedSearchbar>
+          <div className="d-block d-lg-none">
+            <ExtendedSearchbar
+              onTagSelected={this.tagSelectHandler}
+              onKeyUp={this.searchInputHandler.bind(this)}
+              mobile={true}
+            ></ExtendedSearchbar>
+          </div>
+          <div className="d-none d-lg-block">
+            <ExtendedSearchbar
+              onTagSelected={this.tagSelectHandler}
+              onKeyUp={this.searchInputHandler.bind(this)}
+            ></ExtendedSearchbar>
+          </div>
           <LearningPaths></LearningPaths>
-          <Row className="justify-content-md-center">
-            <Col lg={10} xl={10}>
+          <Row className="justify-content-center">
+            <Col lg={10} xl={10} className="d-none d-lg-block">
               <Row className={styles.explore}>
-                <Col className={styles.title}>Explore</Col>
+                <Col className="headline-1">Explora</Col>
               </Row>
-              <PostList list={this.state.postsData}></PostList>
+
+              <div className="headline-1 d-none d-lg-block">
+                <PostList list={this.state.postsData}></PostList>
+              </div>
+            </Col>
+            <Col xs={12} sm={12} className="d-block d-lg-none p-0">
+              <Row className={styles.explore}>
+                <Col className="headline-1 text-center">Explora</Col>
+              </Row>
+              <PostList list={this.state.postsData} mobile={true}></PostList>
             </Col>
           </Row>
         </Container>
@@ -84,56 +105,121 @@ class BlogIndex extends Component<IndexProps, IndexState> {
 }
 
 const LearningPaths = () => {
+  const navigateTo = (path: string) => {
+    navigate(path);
+  };
   return (
     <Row
       className={["justify-content-md-center", styles.learningPaths].join(" ")}
     >
-      <Col lg={10} xl={10} className={styles.title}>
-        Learning paths
+      <Col
+        lg={10}
+        xl={10}
+        className="text-center headline-1 d-block d-lg-none"
+        style={{ marginBottom: "2vh" }}
+      >
+        Nuestros vitales
+      </Col>
+      <Col
+        lg={10}
+        xl={10}
+        className="headline-1 d-none d-lg-block"
+        style={{ marginBottom: "5vh" }}
+      >
+        Nuestros vitales
       </Col>
       <Col lg={10} xl={10} className={styles.cards}>
-        <Card className={styles.card}>
-          <Card.Body>
-            <Card.Title className={styles.cardImage}>
-              <img src={scientistIcon} />
-            </Card.Title>
-            <Card.Subtitle className={styles.cardTitle}>
-              Data Scientist
-            </Card.Subtitle>
-            <Card.Text className={styles.cardText}>
-              With this path you will learn how to become a great data
-              scientist.
-            </Card.Text>
-          </Card.Body>
-        </Card>
+        <Row className="justify-content-center">
+          <Col
+            xs={12}
+            sm={12}
+            md={12}
+            lg={4}
+            xl={4}
+            className="d-flex justify-content-center"
+          >
+            <Card
+              className={[styles.card, styles.modules].join(" ")}
+              onClick={() => navigateTo("/modules")}
+            >
+              <Card.Body>
+                <div className={styles.cardImage}>
+                  <img src={scientistIcon} />
+                </div>
+                <Card.Title className="headline-3 text-center">
+                  Módulos
+                </Card.Title>
+                <Card.Subtitle className="headline-4 text-center">
+                  Habilidades y pensamiento crítico
+                </Card.Subtitle>
+                <Card.Text className={["paragraph", styles.cardText].join(" ")}>
+                  Lenguajes y ambientes de programación para ayudar en
+                  desarrollo e implementación de productos de datos.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
 
-        <Card className={styles.card}>
-          <Card.Body>
-            <Card.Title className={styles.cardImage}>
-              <img src={analystIcon} />
-            </Card.Title>
-            <Card.Subtitle className={styles.cardTitle}>
-              Data Analyst
-            </Card.Subtitle>
-            <Card.Text className={styles.cardText}>
-              With this path you will learn how to become a great data analyst.
-            </Card.Text>
-          </Card.Body>
-        </Card>
+          <Col
+            xs={12}
+            sm={12}
+            md={12}
+            lg={4}
+            xl={4}
+            className="d-flex justify-content-center"
+          >
+            <Card
+              className={[styles.card, styles.perspectives].join(" ")}
+              onClick={() => navigateTo("/perspectives")}
+            >
+              <Card.Body>
+                <div className={styles.cardImage}>
+                  <img src={analystIcon} />
+                </div>
+                <Card.Title className="headline-3 text-center">
+                  Perspectivas
+                </Card.Title>
+                <Card.Subtitle className="headline-4 text-center">
+                  Inspiración en ciencia de datos
+                </Card.Subtitle>
+                <Card.Text className={["paragraph", styles.cardText].join(" ")}>
+                  Experiencias, visiones e ideas alrededor de la ciencia de
+                  datos.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
 
-        <Card className={styles.card}>
-          <Card.Body>
-            <Card.Title className={styles.cardImage}>
-              <img src={biIcon} />
-            </Card.Title>
-            <Card.Subtitle className={styles.cardTitle}>
-              BI Analyst
-            </Card.Subtitle>
-            <Card.Text className={styles.cardText}>
-              With this path you will learn how to become a great BI scientist.
-            </Card.Text>
-          </Card.Body>
-        </Card>
+          <Col
+            xs={12}
+            sm={12}
+            md={12}
+            lg={4}
+            xl={4}
+            className="d-flex justify-content-center"
+          >
+            <Card
+              className={[styles.card, styles.projects].join(" ")}
+              onClick={() => navigateTo("/projects")}
+            >
+              <Card.Body>
+                <div className={styles.cardImage}>
+                  <img src={biIcon} />
+                </div>
+                <Card.Title className="headline-3 text-center">
+                  Proyectos
+                </Card.Title>
+                <Card.Subtitle className="headline-4 text-center">
+                  Conocimiento aplicado
+                </Card.Subtitle>
+                <Card.Text className={["paragraph", styles.cardText].join(" ")}>
+                  Problemas y soluciones escalables para tus primeros proyectos
+                  en ciencia de datos.
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
       </Col>
     </Row>
   );

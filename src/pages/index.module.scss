@@ -1,12 +1,5 @@
 @import "../theme/_variables.scss";
 
-.title {
-    font-style: normal;
-    font-weight: 400;
-    font-size: 40px;
-    letter-spacing: -0.03em;
-}
-
 .learning-paths {
     border-bottom: solid 1px $color-divider;
     padding: 5vh 0 5vh 0;
@@ -18,27 +11,29 @@
             display: inline-block;
             height: auto;
             width: 40vh;
-            margin: 0 1vh 0 1vh;
+            margin: 1vh 0 1vh 0;
             border: none;
             background-color: $color-primary-light;
             .card-image {
                 text-align: center;
-                margin: 2vh 0 2vh 0;
-            }
-            .card-title {
-                text-align: center;
-                font-size: 24px;
-                font-weight: 500;
-                letter-spacing: -0.02em;
+                margin: 1vh 0 1vh 0;
             }
             .card-text {
+                margin: 1vh 0 1vh 0;
                 text-align: center;
-                font-family: PT Serif;
-                font-size: 16px;
-                text-align: center;
-                letter-spacing: 0.01em;
-                margin: 2vh 6vh 3vh 6vh;
             }
+        }
+
+        .modules {
+          background-color: #D3CEFC;
+        }
+
+        .perspectives {
+          background-color: #FAE1E0;
+        }
+
+        .projects {
+          background-color: #FFDD84;
         }
         
         .card:first-child {
@@ -52,4 +47,5 @@
 
 .explore {
     margin-top: 5vh;
+    margin-bottom: 5vh;
 }
