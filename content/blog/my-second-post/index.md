@@ -6,6 +6,7 @@ contentType: ["artículo", "video"]
 author: adrian@ianalytics.org
 topics: historia
 type: proyecto
+sidebar: true
 ---
 
 Wow! I love blogging so much already.
