@@ -20,16 +20,13 @@ const Projects = (props: ProjectProps) => {
         <Row className="justify-content-md-center">
           <Col
             lg={10}
-            className={[styles.header, "d-none d-lg-block"].join(" ")}
+            className={[styles.header, "d-none d-lg-block p-0"].join(" ")}
           >
             <p className={["headline-1", styles.projectTitle].join(" ")}>
               Proyectos
             </p>
             <p className="headline-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Problemas y soluciones escalables para tus primeros proyectos en ciencia de datos.
             </p>
           </Col>
           <Col lg={10} className="d-block d-lg-none">
@@ -42,10 +39,7 @@ const Projects = (props: ProjectProps) => {
               Proyectos
             </p>
             <p className="headline-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Problemas y soluciones escalables para tus primeros proyectos en ciencia de datos.
             </p>
           </Col>
           <Col
@@ -89,6 +83,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             tags
+            type
             contentType
             topics
             featuredImage {
