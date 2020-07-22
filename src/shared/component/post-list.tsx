@@ -70,6 +70,7 @@ class PostList extends Component<PostListProps, PostListState> {
             contentType,
             tags,
             featuredImage,
+            type
           } = node.frontmatter;
           const slug = node.fields.slug;
           return (
@@ -84,6 +85,7 @@ class PostList extends Component<PostListProps, PostListState> {
                 featuredImage={
                   featuredImage ? featuredImage.childImageSharp.fluid.src : null
                 }
+                type={type}
                 link={slug}
                 extended={index == 0 && !this.resultList ? true : false}
                 mobile={this.props.mobile}
