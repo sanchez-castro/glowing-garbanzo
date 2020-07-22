@@ -20,16 +20,13 @@ const Modules = (props: PerspectivesProps) => {
         <Row className="justify-content-md-center">
           <Col
             lg={10}
-            className={[styles.header, "d-none d-lg-block"].join(" ")}
+            className={[styles.header, "d-none d-lg-block p-0"].join(" ")}
           >
             <p className={["headline-1", styles.moduleTitle].join(" ")}>
               Módulos
             </p>
             <p className="headline-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lenguajes y ambientes de programación para ayudar en desarrollo e implementación de productos de datos.
             </p>
           </Col>
           <Col lg={10} className="d-block d-lg-none">
@@ -42,10 +39,7 @@ const Modules = (props: PerspectivesProps) => {
               Módulos
             </p>
             <p className="headline-3">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+              Lenguajes y ambientes de programación para ayudar en desarrollo e implementación de productos de datos.
             </p>
           </Col>
           <Col
@@ -91,6 +85,7 @@ export const pageQuery = graphql`
             tags
             contentType
             topics
+            type
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 2000) {
