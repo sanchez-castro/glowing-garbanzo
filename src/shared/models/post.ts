@@ -83,6 +83,7 @@ class Frontmatter {
   contentType: string[];
   featuredImage: FeaturedImage | null;
   author: Author | null;
+  type: string;
   constructor(attrs: IFrontmatter) {
     this.date = attrs.date;
     this.title = attrs.title;
@@ -91,6 +92,7 @@ class Frontmatter {
     this.featuredImage = attrs.featuredImage
       ? new FeaturedImage(attrs.featuredImage)
       : null;
+    this.type = attrs.type
     this.author = attrs.author ? new Author(attrs.author) : null;
   }
 }

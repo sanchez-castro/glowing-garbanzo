@@ -65,6 +65,7 @@ const RelatedPosts = (props: Props) => {
           title,
           date,
           description,
+          contentType,
           type,
           tags,
           featuredImage,
@@ -78,7 +79,8 @@ const RelatedPosts = (props: Props) => {
               title={title}
               date={date}
               excerpt={description || node.excerpt}
-              contentType={type}
+              contentType={contentType}
+              type={type}
               tags={tags}
               featuredImage={
                 featuredImage ? featuredImage.childImageSharp.fluid.src : null

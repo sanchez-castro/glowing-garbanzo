@@ -16,6 +16,7 @@ export const postsFragment = graphql`
             tags
             contentType
             topics
+            type
             featuredImage {
               childImageSharp {
                 fluid(maxWidth: 800) {

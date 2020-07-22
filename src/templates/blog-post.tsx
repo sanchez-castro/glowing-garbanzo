@@ -16,7 +16,8 @@ interface Props {
 }
 
 const BlogPostTemplate = (props: Props) => {
-  const post = new PostData(props.data).markdownRemark;
+  const postData = new PostData(props.data);
+  const post = postData.markdownRemark;
   const { previous, next } = props.pageContext;
 
   return (
@@ -57,7 +58,7 @@ const Mobile = (props: any) => {
         </p>
         <div className={styles.metaContainer}>
           {post.frontmatter.contentType ? (
-            <PostType types={post.frontmatter.contentType}></PostType>
+            <PostType postType={post.frontmatter.type} types={post.frontmatter.contentType}></PostType>
           ) : (
             ""
           )}
@@ -128,7 +129,7 @@ const Landscape = (props: any) => {
         </p>
         <div className={styles.metaContainer}>
           {post.frontmatter.contentType ? (
-            <PostType types={post.frontmatter.contentType}></PostType>
+            <PostType postType={post.frontmatter.type} types={post.frontmatter.contentType}></PostType>
           ) : (
             ""
           )}
@@ -187,6 +188,7 @@ export const pageQuery = graphql`
         title
         tags
         contentType
+        type
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 2000) {

@@ -10,6 +10,7 @@ export interface IFrontmatter {
   title: string;
   tags: string[];
   contentType: string[];
+  type: string;
   author: IAuthor;
   featuredImage: IFeaturedImage | null;
 }
