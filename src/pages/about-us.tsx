@@ -38,7 +38,7 @@ const AboutUs = (props: Props) => {
           >
             <p className="headline-1 text-center">Sobre nosotros</p>
             <p className="headline-3 text-center">
-              Tu lugar para aprender Ciencia de Datos en Español
+              Aquellos que tengan la capacidad para tratar grandes volumenes de datos tendrán la capacidar para incidir en la forma en cómo evolucionamos como sociedad. Nosotros queremos democratizar su uso y desarrollar el pensamiento crítico en las personas para que puedan crear soluciones a problemas comunes a través de productos de datos más humanos. 
             </p>
           </Col>
           <Col
@@ -47,7 +47,7 @@ const AboutUs = (props: Props) => {
           >
             <p className="headline-1">Sobre nosotros</p>
             <p className="headline-3">
-              Tu lugar para aprender Ciencia de Datos en Español
+              Aquellos que tengan la capacidad para tratar grandes volumenes de datos tendrán la capacidar para incidir en la forma en cómo evolucionamos como sociedad. Nosotros queremos democratizar su uso y desarrollar el pensamiento crítico en las personas para que puedan crear soluciones a problemas comunes a través de productos de datos más humanos. 
             </p>
           </Col>
           <Col lg={8} className="d-block d-lg-none">
