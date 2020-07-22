@@ -61,7 +61,7 @@ class ResultPage extends Component<ResultProps, ResultState> {
         "node.excerpt",
         "node.frontmatter.title",
         "node.frontmatter.tags",
-        "node.frontmatter.type",
+        "node.frontmatter.contentType",
       ],
     };
     const fuse = new Fuse(posts, options);
