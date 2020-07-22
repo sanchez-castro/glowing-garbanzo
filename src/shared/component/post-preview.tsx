@@ -15,6 +15,7 @@ interface PostProps {
   link: string;
   extended?: boolean;
   mobile?: boolean;
+  type?: string;
 }
 
 interface Post {
@@ -46,7 +47,7 @@ const RegularView = (props: Post) => {
             {props.post.date}
           </p>
           {props.post.contentType ? (
-            <PostType types={props.post.contentType}></PostType>
+            <PostType postType={props.post.type} types={props.post.contentType}></PostType>
           ) : (
             ""
           )}
@@ -84,7 +85,7 @@ const MobileView = (props: Post) => {
             {props.post.date}
           </p>
           {props.post.contentType ? (
-            <PostType types={props.post.contentType}></PostType>
+            <PostType postType={props.post.type} types={props.post.contentType}></PostType>
           ) : (
             ""
           )}
@@ -103,7 +104,7 @@ const MobileView = (props: Post) => {
             className={[
               styles.excerpt,
               "paragraph m-0",
-              styles.mobileExcerpt,
+              styles.mobileExcerpt
             ].join(" ")}
           >
             {props.post.excerpt}
@@ -139,7 +140,7 @@ const ExtendedView = (props: Post) => {
             {props.post.date}
           </p>
           {props.post.contentType ? (
-            <PostType types={props.post.contentType}></PostType>
+            <PostType postType={props.post.type} types={props.post.contentType}></PostType>
           ) : (
             ""
           )}
