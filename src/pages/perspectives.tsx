@@ -51,10 +51,7 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
                 Perspectivas
               </p>
               <p className="headline-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                  Experiencias, visiones e ideas alrededor de la ciencia de datos.
               </p>
             </Col>
             <Col lg={10} className="d-block d-lg-none">
@@ -67,10 +64,7 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
                 Perspectivas
               </p>
               <p className="headline-3">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                Experiencias, visiones e ideas alrededor de la ciencia de datos.
               </p>
             </Col>
             {this.state.latestPerspectives.edges.length > 0 ? (
@@ -430,7 +424,7 @@ export const pageQuery = graphql`
     authorPerspectives: allMarkdownRemark(
       limit: 3
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { type: { eq: "perspective" } } }
+      filter: { frontmatter: { type: { eq: "perspectiva" } } }
     ) {
       group(field: frontmatter___author___id, limit: 3) {
         edges {
@@ -445,6 +439,7 @@ export const pageQuery = graphql`
               title
               tags
               contentType
+              type
               topics
               featuredImage {
                 childImageSharp {
@@ -473,7 +468,7 @@ export const pageQuery = graphql`
     latestPerspectives: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 15
-      filter: { frontmatter: { type: { eq: "perspective" } } }
+      filter: { frontmatter: { type: { eq: "perspectiva" } } }
     ) {
       edges {
         node {
