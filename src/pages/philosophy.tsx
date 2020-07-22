@@ -23,10 +23,7 @@ const Philosophy = () => {
               <div className={styles.bannerText}>
                 <p className="headline-1">Filosofía</p>
                 <p className="headline-3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                  Acercamos el conocimiento de ciencia de datos en español para ayudarte a desarrollar las habilidades de programación y el pensamiento crítico requerido para diseñar productos de datos más humanos en Latinoamerica.
                 </p>
               </div>
             </div>
@@ -38,10 +35,7 @@ const Philosophy = () => {
               <div className={styles.bannerText}>
                 <p className="headline-1">Filosofía</p>
                 <p className="headline-3">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
+                Acercamos el conocimiento de ciencia de datos en español para ayudarte a desarrollar las habilidades de programación y el pensamiento crítico requerido para diseñar productos de datos más humanos en Latinoamerica.
                 </p>
               </div>
             </div>
@@ -49,16 +43,18 @@ const Philosophy = () => {
           <Col lg={10} xl={10} className={styles.colContent}>
             <Row>
               <Col xs={12} sm={12} md={8} lg={8}>
-                <p className={styles.headline}>Youll learn to love data</p>
+                <p className={styles.headline}>Nuestra óptica</p>
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
-                  dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                  minim veniam, quis nostrud exercitation ullamco laboris nisi
-                  ut aliquip ex ea commodo consequat.
+                  Creeo que un conocimiento holístico sobre la aplicación de ciencia de datos conlleva entender 5 ciones:
+
+                  <ul>
+                    <li>De su evolución;  de donde viene y que és</li>
+                    <li>De su programación; como se aplica</li>
+                    <li>De sus aplicación:  desde una perspectiva de su función objetivo; cuando se aplica</li>
+                    <li>De sus implicación: desde una perspectiva de pensamiento crítico;  porqué se aplica</li>
+                    <li>Ideación</li>
+                  </ul>
+                  
                 </p>
               </Col>
               <Col xs={12} sm={12} md={8} lg={4} className={styles.imageCol}>
