@@ -3,7 +3,7 @@ import { Collapse } from "react-bootstrap";
 import styles from "./sidebar.module.scss";
 import collapseArrowIcon from "../assets/icon/accent-collapse-arrow.svg";
 import closeIcon from "../assets/icon/close.svg";
-import { navigate } from "gatsby";
+import { navigate, useStaticQuery, graphql, Link } from "gatsby";
 import { kebabCase } from "lodash";
 
 interface LayoutProps {
@@ -16,6 +16,26 @@ const Sidebar = (props: LayoutProps) => {
   const home = () => {
     navigate("/");
   };
+
+  const menuItems = useStaticQuery(
+    graphql`
+      query {
+        allMarkdownRemark(filter: { frontmatter: { sidebar: { eq: true } } }) {
+          group(field: frontmatter___type) {
+            nodes {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+            fieldValue
+          }
+        }
+      }
+    `
+  );
 
   return (
     <div className={props.hidden ? styles.hiddenBar : ""}>
@@ -36,24 +56,15 @@ const Sidebar = (props: LayoutProps) => {
       </div>
 
       <div className={styles.learningTopics}>
-        <div className={[styles.topics, "headline-4"].join(" ")}>
-          Learning topics
-        </div>
-
-        <CollapsableMenu
-          parent={"Data Science"}
-          nodes={["data mining"]}
-        ></CollapsableMenu>
-        <CollapsableMenu
-          parent={"Machine Learning"}
-          nodes={["Supervised Learning", "Clustering", "K-Modes"]}
-        ></CollapsableMenu>
-        <CollapsableMenu parent={"Deep Learning"} nodes={[]}></CollapsableMenu>
-        <CollapsableMenu
-          parent={"Business Intelligence"}
-          nodes={[]}
-        ></CollapsableMenu>
-        <CollapsableMenu parent={"Technology"} nodes={[]}></CollapsableMenu>
+        <div className={[styles.topics, "headline-4"].join(" ")}>Vitales</div>
+        {menuItems
+          ? menuItems.allMarkdownRemark.group.map((item: any) => (
+              <CollapsableMenu
+                parent={item.fieldValue}
+                nodes={item.nodes}
+              ></CollapsableMenu>
+            ))
+          : ""}
       </div>
     </div>
   );
@@ -61,15 +72,11 @@ const Sidebar = (props: LayoutProps) => {
 
 interface MenuProps {
   parent: string;
-  nodes: Array<string>;
+  nodes: Array<{ fields: { slug: string }; frontmatter: { title: string } }>;
 }
 
 const CollapsableMenu = (props: MenuProps) => {
   const [open, setOpen] = useState(false);
-
-  const selectTopic = (topic: string) => {
-    navigate(`/topics/${kebabCase(topic)}/`);
-  };
 
   return (
     <div className={styles.collapsable}>
@@ -79,7 +86,7 @@ const CollapsableMenu = (props: MenuProps) => {
         aria-controls="example-collapse-text"
         aria-expanded={open}
       >
-        {props.parent}
+        {props.parent}s
         <img
           src={collapseArrowIcon}
           className={open ? styles.rotated : ""}
@@ -88,13 +95,11 @@ const CollapsableMenu = (props: MenuProps) => {
       </div>
       <Collapse in={open}>
         <div>
-          {props.nodes.map((node) => (
-            <div
-              key={node}
-              className={styles.node}
-              onClick={() => selectTopic(node)}
-            >
-              {node}
+          {props.nodes.map(node => (
+            <div key={node.frontmatter.title} className={styles.node}>
+              <Link className={styles.link} to={node.fields.slug}>
+                {node.frontmatter.title}
+              </Link>
             </div>
           ))}
         </div>
