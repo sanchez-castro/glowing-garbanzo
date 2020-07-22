@@ -10,9 +10,14 @@
         .title {
             text-transform: capitalize;
             color: $color-secondary-text;
+            align-self: flex-start;
         }
         img {
             margin-right: 1vh;
+        }
+        .type-logo {
+          height: 15px;
+          width: 15px;
         }
     }
 }
