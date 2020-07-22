@@ -134,7 +134,8 @@ const Philosophy = () => {
             Nuestros vitales
           </Col>
           <Col lg={10} xl={10} className={styles.cards}>
-            <Row>
+            <Container fluid className="p-0">
+            <Row className="justify-content-center p-0">
               <Col
                 xs={12}
                 sm={12}
@@ -231,6 +232,7 @@ const Philosophy = () => {
                 </Card>
               </Col>
             </Row>
+            </Container>
           </Col>
         </Row>
       </Container>
