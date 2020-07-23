@@ -27,10 +27,10 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-23bfc859666973c11aa7.js"
+    "url": "webpack-runtime-6970a80b27bb8da898db.js"
   },
   {
-    "url": "styles.8f4c56cf7740a7418d4f.css"
+    "url": "styles.4126b941b895b591a756.css"
   },
   {
     "url": "styles-89fd2ae28bdf06750a71.js"
@@ -39,18 +39,26 @@ self.__precacheManifest = [
     "url": "framework-c2ac104d50cf29153aa3.js"
   },
   {
-    "url": "app-60d9f7b5c29d50d1dc35.js"
+    "url": "app-d95e6718575680776e4c.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "929e4c1379d40f3e83e15cef51659165"
+    "revision": "acb0637dd9dd4b5f818aad10b9a63104"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-6d7462888018cb13a12a.js"
   },
   {
+    "url": "page-data/offline-plugin-app-shell-fallback/page-data.json",
+    "revision": "43232b01cc861c0701a3ece4bd67720b"
+  },
+  {
+    "url": "page-data/app-data.json",
+    "revision": "0cbb7723c902ecdcdf8e323502fad6e3"
+  },
+  {
     "url": "manifest.webmanifest",
-    "revision": "9a0ef63274f41337ba33b43e523c2453"
+    "revision": "70bce3c16ef0c3b86839c3d17261ec1d"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -138,12 +146,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/glowing-garbanzo`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-60d9f7b5c29d50d1dc35.js`))) {
+  if (!resources || !(await caches.match(`/glowing-garbanzo/app-d95e6718575680776e4c.js`))) {
     return await fetch(event.request)
   }
 
@@ -156,7 +164,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/glowing-garbanzo/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
