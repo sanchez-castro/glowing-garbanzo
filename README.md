@@ -1,2 +1,2 @@
 # glowing-garbanzo
-dataproduct.design una nueva plataforma digital para la Ciencia de Datos 
+dataproduct.design es una nueva plataforma digital para aprender Ciencia de Datos 
