@@ -20,7 +20,7 @@ class Layout extends Component<LayoutProps, LayoutState> {
   constructor(props: LayoutProps) {
     super(props);
     this.state = {
-      collapsedSidebar: false,
+      collapsedSidebar: true,
     };
   }
 
@@ -32,6 +32,8 @@ class Layout extends Component<LayoutProps, LayoutState> {
     this.setState({
       collapsedSidebar: !this.state.collapsedSidebar,
     });
+
+    console.log(!this.state.collapsedSidebar)
   };
 
   render() {
@@ -66,11 +68,11 @@ const Mobile = (props: any) => {
       <div
         className={[
           styles.sidebar,
-          props.collapsedSidebar ? styles.mobileVisible : styles.hidden,
+          props.collapsedSidebar ? styles.hidden : styles.mobileVisible,
         ].join(" ")}
       >
         <Sidebar
-          hidden={!props.collapsedSidebar}
+          hidden={props.collapsedSidebar}
           closeHandle={props.toggleHideHandler}
           mobile={true}
         ></Sidebar>

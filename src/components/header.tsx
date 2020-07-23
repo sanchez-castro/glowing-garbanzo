@@ -59,8 +59,8 @@ const Header = (props: HeaderProps) => {
               </div>
             </Col>
           ) : (
-            <div className={styles.menuIcon}>
-              <img onClick={props.toggleHide} src={menuIcon} alt="menu icon" />
+            <div className={styles.menuIcon} onClick={props.toggleHide}>
+              <img src={menuIcon} alt="menu icon" />
             </div>
           )}
           <Col sm={12} md={7} lg={7}>
