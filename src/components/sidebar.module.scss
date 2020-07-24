@@ -1,0 +1,87 @@
+@import "../theme/_variables.scss";
+
+.title-container {
+    background-color: $color-primary-dark;
+    padding: 2.5vh 1.5vh 2.5vh 1.5vh;
+
+    .title {
+        color: #20D872;
+        cursor: pointer;
+        line-height: 3.5vh;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .bio {
+        color: #ffffff;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+.learning-topics {
+    .topics {
+        padding: 2vh 2vh 2vh 2vh;
+        border-bottom: solid 1px #131313;
+        color: #ffffff;
+    }
+}
+
+.collapsable {
+    .header {
+        margin: 2vh;
+        color: $color-accent;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: pointer;
+        position: relative;
+        .rotated {
+            transform: rotate(90deg);
+        }
+        img {
+            position: absolute;
+            right: 3vh;
+            bottom: 0.6vh;
+            transform: rotate(270deg);
+        }
+    }
+
+    .node {
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        text-transform: capitalize;
+        font-weight: 200;
+        padding: 1vh 5vh 1vh 5vh;
+    }
+
+    .node:hover {
+        background-color: $color-primary-dark;
+    }
+}
+
+.close-icon {
+  position: absolute;
+  right: 4vh;
+  top: 2vh;
+  font-size: 2vh;
+  img {
+    width: 2vh;
+    height: 2vh;
+  }
+}
+
+.hidden-bar {
+  visibility: hidden;
+}
+
+.link {
+  color: white;
+  word-break: break-all;
+}
+
+.link:hover {
+  color: white;
+  text-decoration: none;
+}

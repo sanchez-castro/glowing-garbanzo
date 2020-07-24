@@ -1,0 +1,126 @@
+@import "../../theme/_variables.scss";
+
+.container {
+  border-top: solid 1px $color-divider;
+  border-bottom: solid 1px $color-divider;
+  .title {
+    cursor: pointer;
+    color: $color-primary-text;
+    margin-bottom: 1vh;
+  }
+
+  .content-col {
+    padding: 0 5vh 0 0;
+  }
+
+  .image-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    a {
+      height: fit-content;
+    }
+    img {
+      border-radius: 4px;
+      width: 35vh;
+      height: 35vh;
+      object-fit: cover;
+    }
+  }
+}
+
+.mobile {
+  border-top: 0;
+  .image-col {
+    img {
+      width: 100%;
+      height: 20vh;
+      border-radius: 0;
+      margin: 1vh 0 2vh 0;
+    }
+  }
+}
+
+.mobile:last-child {
+  border-bottom: 0;
+}
+
+.extended-container {
+  margin-bottom: 10rem;
+  .title {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    letter-spacing: -0.02em;
+    color: $color-primary-text;
+    margin-bottom: 1vh;
+  }
+
+  .image-col {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 0;
+    a {
+      height: fit-content;
+    }
+    img {
+      border-radius: 4px;
+      width: 40vh;
+      height: 40vh;
+      object-fit: cover;
+    }
+  }
+}
+
+.date {
+  color: $color-accent;
+  margin-bottom: 1vh;
+}
+
+.content-preview {
+  font-family: PT Serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  color: $color-secondary-text;
+}
+
+.row {
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+
+.excerpt {
+  color: #757575;
+}
+
+.mobile-excerpt {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.postType {
+  height: 2vh;
+  width: 2vh;
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .extended-container .image-col img {
+        width: 20vh;
+        height: 20vh;
+  }
+  .container {
+    .content-col {
+      padding: 0;
+    }
+    .image-col {
+      img {
+        width: 15vh;
+        height: 15vh;
+      }
+    }
+  }
+}

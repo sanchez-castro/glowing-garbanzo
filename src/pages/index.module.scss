@@ -1,0 +1,51 @@
+@import "../theme/_variables.scss";
+
+.learning-paths {
+    border-bottom: solid 1px $color-divider;
+    padding: 5vh 0 5vh 0;
+    .cards {
+        cursor: pointer;
+        justify-content: space-between;
+        display: flex;
+        .card {
+            display: inline-block;
+            height: auto;
+            width: 40vh;
+            margin: 1vh 0 1vh 0;
+            border: none;
+            background-color: $color-primary-light;
+            .card-image {
+                text-align: center;
+                margin: 1vh 0 1vh 0;
+            }
+            .card-text {
+                margin: 1vh 0 1vh 0;
+                text-align: center;
+            }
+        }
+
+        .modules {
+          background-color: #F4F5F5;
+        }
+
+        .perspectives {
+          background-color: #F4F5F5;
+        }
+
+        .projects {
+          background-color: #F4F5F5;
+        }
+        
+        .card:first-child {
+            margin-left: 0;
+        }
+        .card:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.explore {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
