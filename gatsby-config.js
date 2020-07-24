@@ -46,6 +46,12 @@ module.exports = {
               classPrefix: "language-",
             },
           },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `ignore`
+            }
+          },
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
         ],

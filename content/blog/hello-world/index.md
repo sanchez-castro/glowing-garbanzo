@@ -6,6 +6,7 @@ contentType: [artículo]
 featuredImage: ./salty_egg.jpg
 author: adrian@ianalytics.org
 type: modulo
+sidebar: true
 ---
 
 This is my first post on my new fake blog! How exciting!
