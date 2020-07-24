@@ -6,6 +6,7 @@ import PostPreview from "../shared/component/post-preview";
 import { graphql, navigate } from "gatsby";
 import { kebabCase } from "lodash";
 import { IPostsData } from "../shared/interfaces/post";
+import SEO from "../components/seo";
 
 interface PerspectivesState {
   authorPerspectives: any;
@@ -26,7 +27,7 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
     this.state = {
       authorPerspectives: props.data.authorPerspectives,
       currentPerspective: currentPerspective,
-      latestPerspectives: props.data.latestPerspectives,
+      latestPerspectives: props.data.latestPerspectives
     };
     this.selectPerspective = this.selectPerspective.bind(this);
   }
@@ -41,6 +42,7 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
   render() {
     return (
       <Layout>
+        <SEO title="Perspectivas" />
         <Container fluid>
           <Row className="justify-content-md-center">
             <Col
@@ -51,14 +53,14 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
                 Perspectivas
               </p>
               <p className="headline-3">
-                  Experiencias, visiones e ideas alrededor de la ciencia de datos.
+                Experiencias, visiones e ideas alrededor de la ciencia de datos.
               </p>
             </Col>
             <Col lg={10} className="d-block d-lg-none">
               <p
                 className={[
                   "headline-1 text-center",
-                  styles.perspectiveMobileTitle,
+                  styles.perspectiveMobileTitle
                 ].join(" ")}
               >
                 Perspectivas
@@ -75,14 +77,14 @@ class Perspectives extends Component<PerspectivesProps, PerspectivesState> {
                 <p className="headline-1 d-block d-lg-none text-center">
                   Perspectivas más actuales
                 </p>
-                <Container className="d-none d-lg-block">
+                <Container className="d-none d-lg-block p-0" fluid>
                   <LandscapeLatestPerspectives
                     perspectives={this.state.latestPerspectives}
                     currentPerspective={this.state.currentPerspective}
                     selectPerspectiveHandler={this.selectPerspective}
                   ></LandscapeLatestPerspectives>
                 </Container>
-                <Container className="d-block d-lg-none">
+                <Container className="d-block d-lg-none p-0">
                   <MobileLatestPerspectives
                     perspectives={this.state.latestPerspectives}
                     currentPerspective={this.state.currentPerspective}
@@ -139,7 +141,7 @@ const MobileLatestPerspectives = (props: LatestPerspectivesProps) => {
       <Col lg={12}>
         <div
           style={{
-            backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), url(${props.currentPerspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`,
+            backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), url(${props.currentPerspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`
           }}
           className={styles.currentPerspectiveMobile}
         >
@@ -169,7 +171,7 @@ const MobileLatestPerspectives = (props: LatestPerspectivesProps) => {
             perspective.node.frontmatter.featuredImage ? (
               <div
                 style={{
-                  backgroundImage: `url(${perspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`,
+                  backgroundImage: `url(${perspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`
                 }}
                 className={[styles.preview, styles.mobilePreview].join(" ")}
                 onClick={() => selectHandler(perspective.node.id)}
@@ -198,13 +200,13 @@ const LandscapeLatestPerspectives = (props: LatestPerspectivesProps) => {
   }
   return (
     <Row>
-      <Col lg={2}>
+      <Col lg={2} xl={1}>
         <div className={styles.perspectiveScroll}>
           {props.perspectives.edges.map((perspective: any) =>
             perspective.node.frontmatter.featuredImage ? (
               <div
                 style={{
-                  backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), url(${perspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`,
+                  backgroundImage: `linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(0, 0, 0)), url(${perspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`
                 }}
                 className={styles.preview}
                 onClick={() => selectHandler(perspective.node.id)}
@@ -217,10 +219,10 @@ const LandscapeLatestPerspectives = (props: LatestPerspectivesProps) => {
           )}
         </div>
       </Col>
-      <Col lg={10}>
+      <Col lg={10} xl={11}>
         <div
           style={{
-            backgroundImage: `url(${props.currentPerspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`,
+            backgroundImage: `url(${props.currentPerspective.node.frontmatter.featuredImage.childImageSharp.fluid.src})`
           }}
           className={styles.currentPerspective}
         >
@@ -258,7 +260,7 @@ const AuthorPerspectivesLandscape = (props: AuthorProps) => {
     navigate(`/perspectives/${kebabCase(author.id)}/`);
   };
   return (
-    <Container className={["m-0", styles.authorPerspectives].join(" ")}>
+    <Container fluid className={["m-0", styles.authorPerspectives].join(" ")}>
       <Row className={styles.perspectivesHeader}>
         <Col lg={1} className="p-0">
           {author.image ? (
@@ -288,32 +290,33 @@ const AuthorPerspectivesLandscape = (props: AuthorProps) => {
         </Col>
       </Row>
 
-      {props.perspectives.edges.map((perspective: any) => {
-        const {
-          title,
-          date,
-          description,
-          contentType,
-          tags,
-          featuredImage,
-        } = perspective.node.frontmatter;
-        const slug = perspective.node.fields.slug;
-        return (
-          <PostPreview
-            key={slug}
-            title={title}
-            date={date}
-            excerpt={description || perspective.node.excerpt}
-            contentType={contentType}
-            tags={tags}
-            featuredImage={
-              featuredImage ? featuredImage.childImageSharp.fluid.src : null
-            }
-            link={slug}
-          ></PostPreview>
-        );
-      })}
-
+        <Col lg={12} className="p-0">
+          {props.perspectives.edges.map((perspective: any) => {
+            const {
+              title,
+              date,
+              description,
+              contentType,
+              tags,
+              featuredImage
+            } = perspective.node.frontmatter;
+            const slug = perspective.node.fields.slug;
+            return (
+              <PostPreview
+                key={slug}
+                title={title}
+                date={date}
+                excerpt={description || perspective.node.excerpt}
+                contentType={contentType}
+                tags={tags}
+                featuredImage={
+                  featuredImage ? featuredImage.childImageSharp.fluid.src : null
+                }
+                link={slug}
+              ></PostPreview>
+            );
+          })}
+        </Col>
       <Row className="justify-content-end">
         <Col lg={3} className={styles.readMore}>
           <div
@@ -337,7 +340,7 @@ const AuthorPerspectivesMobile = (props: AuthorProps) => {
     <Container
       className={[
         styles.authorPerspectives,
-        styles.authorPerspectivesMobile,
+        styles.authorPerspectivesMobile
       ].join(" ")}
     >
       <Row>
@@ -374,7 +377,7 @@ const AuthorPerspectivesMobile = (props: AuthorProps) => {
           description,
           contentType,
           tags,
-          featuredImage,
+          featuredImage
         } = perspective.node.frontmatter;
         const slug = perspective.node.fields.slug;
         return (
@@ -405,7 +408,7 @@ const AuthorPerspectivesMobile = (props: AuthorProps) => {
             className={[
               styles.button,
               styles.buttonMobile,
-              "headline-4 text-center",
+              "headline-4 text-center"
             ].join(" ")}
             onClick={() => viewAll()}
           >
@@ -484,7 +487,7 @@ export const pageQuery = graphql`
             }
             featuredImage {
               childImageSharp {
-                fluid(maxWidth: 800) {
+                fluid(maxWidth: 2000) {
                   ...GatsbyImageSharpFluid
                 }
               }

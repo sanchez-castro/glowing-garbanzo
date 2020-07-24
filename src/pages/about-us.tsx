@@ -12,6 +12,7 @@ import email from "../assets/icon/about-email.svg";
 import github from "../assets/icon/about-github.svg";
 import location from "../assets/icon/about-location.svg";
 import twitter from "../assets/icon/twitter.svg";
+import SEO from "../components/seo";
 
 interface Props {
   data: any;
@@ -30,6 +31,7 @@ const AboutUs = (props: Props) => {
 
   return (
     <Layout>
+      <SEO title="Acerca de nosotros" />
       <Container fluid>
         <Row className="justify-content-md-center">
           <Col

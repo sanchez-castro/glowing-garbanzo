@@ -9,10 +9,11 @@ import { IPostsData } from "../shared/interfaces/post";
 import _ from "lodash";
 import PostList from "../shared/component/post-list";
 import Fuse from "fuse.js";
+import SEO from "../components/seo";
 
 interface ResultProps {
   location: any;
-  data: PostsData;
+  data: IPostsData;
 }
 
 interface ResultState {
@@ -50,11 +51,11 @@ class ResultPage extends Component<ResultProps, ResultState> {
   search() {
     if (!this.state.query.trim() && this.state.selectedTags.length == 0) {
       this.setState({
-        filteredData: _.cloneDeep(this.props.data),
+        filteredData: new PostsData(_.cloneDeep(this.props.data)),
       });
       return;
     }
-    const dummyData = _.cloneDeep(this.props.data);
+    const dummyData = new PostsData(_.cloneDeep(this.props.data));
     let posts = dummyData.allMarkdownRemark.edges || [];
     const options = {
       keys: [
@@ -79,7 +80,7 @@ class ResultPage extends Component<ResultProps, ResultState> {
   filterByTags() {
     let dummyData: PostsData;
     if (!this.state.query.trim()) {
-      dummyData = _.cloneDeep(this.props.data);
+      dummyData = new PostsData(_.cloneDeep(this.props.data));
     } else {
       dummyData = { ...this.state.filteredData };
     }
@@ -121,6 +122,7 @@ class ResultPage extends Component<ResultProps, ResultState> {
     }`;
     return (
       <Layout>
+        <SEO title="Resultados de búsqueda" />
         <Container fluid>
           <ExtendedSearchbar
             selectedTags={this.state.selectedTags}

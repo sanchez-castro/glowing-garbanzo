@@ -21,7 +21,7 @@ const NotFoundPage = ({ data }: Props) => {
     <Layout title={siteTitle}>
       <SEO title="404: Not Found" />
       <h1>Not Found</h1>
-      <p>You just hit a route that doesn`&apos;`t exist...the sadness.</p>
+      <p>Chale, esta ruta no existe.</p>
     </Layout>
   );
 };

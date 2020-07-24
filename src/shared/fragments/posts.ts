@@ -19,7 +19,7 @@ export const postsFragment = graphql`
             type
             featuredImage {
               childImageSharp {
-                fluid(maxWidth: 800) {
+                fluid(maxWidth: 2000) {
                   ...GatsbyImageSharpFluid
                 }
               }

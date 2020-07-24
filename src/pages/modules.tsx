@@ -6,6 +6,7 @@ import { graphql, navigate } from "gatsby";
 import { PostsData } from "../shared/models/post";
 import PostList from "../shared/component/post-list";
 import { IPostsData } from "../shared/interfaces/post";
+import SEO from "../components/seo";
 
 interface PerspectivesProps {
   data: IPostsData;
@@ -16,6 +17,7 @@ const Modules = (props: PerspectivesProps) => {
 
   return (
     <Layout>
+      <SEO title="Módulos" />
       <Container fluid>
         <Row className="justify-content-md-center">
           <Col

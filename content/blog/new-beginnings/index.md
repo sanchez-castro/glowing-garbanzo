@@ -5,7 +5,7 @@ tags: ['data science', 'business intelligence']
 contentType: ['artículo', 'video']
 description: This is a custom description for SEO and Open Graph purposes, rather than the default generated excerpt. Simply add a description field to the frontmatter.
 featuredImage: ./mac.jpeg
-author: gabriel@axented.com
+author: adrian@ianalytics.org
 type: perspectiva
 sidebar: true
 ---

@@ -92,17 +92,7 @@ const Footer = (props: FooterProps) => {
               </li>
             </ul>
           </Col>
-          <Col xs={3} sm={3} md={3} lg={2} className={styles.socialMedia}>
-            <p className={["headline-4", props.mobile ? "m-0" : ""].join(" ")}>
-              Síguenos
-            </p>
-            <div className={styles.socialIcons}>
-              <img src={twitterIcon} alt="" />
-              <img src={facebookIcon} alt="" />
-              <img src={instagramIcon} alt="" />
-            </div>
-          </Col>
-          <Col xs={9} sm={9} md={9} lg={4} className={styles.subscribe}>
+          <Col xs={12} sm={12} md={12} lg={4} className={styles.subscribe}>
             <p className={["headline-4", props.mobile ? "m-0" : ""].join(" ")}>
               Subscribir
             </p>

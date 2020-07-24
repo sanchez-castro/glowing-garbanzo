@@ -5,15 +5,15 @@ require("dotenv").config({
 module.exports = {
   pathPrefix: `/glowing-garbanzo`,
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Data Product Design`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Adrian Sánchez`,
+      summary: `Líder en ciencia de datos para Walmart eCommerce (New Product Innovation). Fundador del Institute of Analytics y DataProduct.Design.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    description: `El mejor sitio en español para aprender Ciencia de Datos.`,
+    siteUrl: `https://dataproduct.design/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `schzcas`,
     },
   },
   mapping: {
@@ -73,12 +73,6 @@ module.exports = {
         name: `assets`,
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -89,7 +83,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/assets/image/logo.png`,
+        icon: `content/assets/gatsby-icon.png`,
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -144,19 +138,11 @@ module.exports = {
             `,
             output: "/rss.xml",
             title: "Data Product Design RSS feed",
-            // optional configuration to insert feed reference in pages:
-            // if `string` is used, it will be used to create RegExp and then test if pathname of
-            // current page satisfied this regular expression;
-            // if not provided or `undefined`, all pages will have feed reference inserted
             match: "^/blog/",
-            // optional configuration to specify external rss feed, such as feedburner
-            //link: "https://feeds.feedburner.com/gatsby/blog",
           },
         ],
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`,
     `gatsby-transformer-yaml`,
   ],

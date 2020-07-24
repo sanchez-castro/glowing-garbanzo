@@ -9,6 +9,7 @@ import scientistIcon from "../assets/icon/data-scientist.svg";
 import analystIcon from "../assets/icon/data-analyst.svg";
 import biIcon from "../assets/icon/bi-analyst.svg";
 import { navigate } from "gatsby";
+import SEO from "../components/seo";
 
 const Philosophy = () => {
   const navigateTo = (path: string) => {
@@ -16,6 +17,7 @@ const Philosophy = () => {
   };
   return (
     <Layout>
+      <SEO title="Filosofía" />
       <Container fluid className={styles.container}>
         <Row className="justify-content-md-center">
           <Col lg={12} xl={12} className="p-0">

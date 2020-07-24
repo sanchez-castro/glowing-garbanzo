@@ -18,9 +18,10 @@ import biIcon from "../assets/icon/bi-analyst.svg";
 //Styles
 import styles from "./index.module.scss";
 import "../global.scss";
+import { IPostsData } from "../shared/interfaces/post";
 
 interface IndexProps {
-  data: PostsData;
+  data: IPostsData;
 }
 
 interface IndexState {
@@ -98,7 +99,7 @@ class BlogIndex extends Component<IndexProps, IndexState> {
             </Col>
           </Row>
         </Container>
-        <SEO title="All posts" />
+        <SEO title="Inicio" />
       </Layout>
     );
   }
@@ -137,7 +138,7 @@ const LearningPaths = () => {
             md={12}
             lg={4}
             xl={4}
-            className="d-flex justify-content-center"
+            className="d-flex justify-content-center justify-content-lg-start"
           >
             <Card
               className={[styles.card, styles.modules].join(" ")}
@@ -197,7 +198,7 @@ const LearningPaths = () => {
             md={12}
             lg={4}
             xl={4}
-            className="d-flex justify-content-center"
+            className="d-flex justify-content-center justify-content-lg-end"
           >
             <Card
               className={[styles.card, styles.projects].join(" ")}

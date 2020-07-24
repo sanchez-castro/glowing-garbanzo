@@ -194,3 +194,20 @@
   margin-bottom: 3vh;
   border-bottom: solid 1px #E0E0E0;
 }
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .author-perspectives .author-text {
+    padding-left: 10vh;
+  }
+}
+
+@media (min-width: 1200px) {  
+  .preview {
+    height: 10vh;
+    width: 10vh;
+  }
+  .preview:hover > .overlay {
+    height: 10vh;
+    width: 10vh;
+  }
+}

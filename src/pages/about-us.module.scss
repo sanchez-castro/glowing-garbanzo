@@ -1,40 +1,40 @@
 .header {
-    margin: 5vh 0 5vh 0;
+  margin: 5vh 0 5vh 0;
 }
 
 .collaborators {
-    text-align: center;
-    margin: 5vh 0 5vh 0;
+  text-align: center;
+  margin: 5vh 0 5vh 0;
 }
 
 .about {
-    margin: 5vh 0 5vh 0;
-    .image-col {
-        display: flex;
-        justify-content: flex-end;
-        align-items: flex-start;
-        padding: 0;
-        .avatar {
-            border-radius: 50%;
-            width: 20vh;
-            height: 20vh;
-            object-fit: cover;
-        }
-        .mobile-avatar {
-          margin-bottom: 3vh;
-        }
+  margin: 5vh 0 5vh 0;
+  .image-col {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 0;
+    .avatar {
+      border-radius: 50%;
+      width: 20vh;
+      height: 20vh;
+      object-fit: cover;
     }
-    .content-col {
-        padding-left: 5vh;
-        label {
-          margin: 0;
-        }
+    .mobile-avatar {
+      margin-bottom: 3vh;
     }
-    .twitter-handle {
-        a {
-          color: #0ECC7C;
-        }
+  }
+  .content-col {
+    padding-left: 5vh;
+    label {
+      margin: 0;
     }
+  }
+  .twitter-handle {
+    a {
+      color: #0ecc7c;
+    }
+  }
 }
 
 .about-mobile {
@@ -46,4 +46,11 @@
   justify-content: center;
   opacity: 0.8;
   width: 4vh;
+}
+
+@media only screen and (min-width: 1024px) and (max-height: 1366px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .about .image-col .avatar {
+        width: 17vh;
+        height: 17vh;
+  }
 }
