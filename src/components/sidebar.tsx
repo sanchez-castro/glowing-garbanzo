@@ -4,7 +4,8 @@ import styles from "./sidebar.module.scss";
 import collapseArrowIcon from "../assets/icon/accent-collapse-arrow.svg";
 import closeIcon from "../assets/icon/close.svg";
 import { navigate, useStaticQuery, graphql, Link } from "gatsby";
-import { kebabCase } from "lodash";
+import logo from "../assets/image/logo.png";
+import { Container, Row, Col, Image } from "react-bootstrap";
 
 interface LayoutProps {
   hidden: boolean;
@@ -38,7 +39,7 @@ const Sidebar = (props: LayoutProps) => {
   );
 
   return (
-    <div className={props.hidden ? styles.hiddenBar : ""}>
+    <Container className={props.hidden ? styles.hiddenBar : ""}>
       {props.mobile ? (
         <div className={styles.closeIcon}>
           <img onClick={props.closeHandle} src={closeIcon} alt="close icon" />
@@ -46,27 +47,32 @@ const Sidebar = (props: LayoutProps) => {
       ) : (
         ""
       )}
-      <div className={styles.titleContainer}>
-        <p onClick={() => home()} className={styles.title}>
-          Data <br /> Product <br /> Design
-        </p>
-        <p className={[styles.bio, "paragraph"].join(" ")}>
-          El mejor sitio en español para aprender Ciencia de Datos.
-        </p>
-      </div>
-
-      <div className={styles.learningTopics}>
-        <div className={[styles.topics, "headline-4"].join(" ")}>Vitales</div>
-        {menuItems
-          ? menuItems.allMarkdownRemark.group.map((item: any) => (
-              <CollapsableMenu
-                parent={item.fieldValue}
-                nodes={item.nodes}
-              ></CollapsableMenu>
-            ))
-          : ""}
-      </div>
-    </div>
+      <Row>
+        <Col sm={12} className={styles.titleContainer}>
+          <div onClick={() => home()} className={styles.title}>
+            <Image src={logo} alt="" fluid/>
+          </div>
+          <p className={[styles.bio, "paragraph"].join(" ")}>
+            El mejor sitio en español para aprender Ciencia de Datos.
+          </p>
+        </Col>
+        <Col sm={12}>
+          <div className={styles.learningTopics}>
+            <div className={[styles.topics, "headline-4"].join(" ")}>
+              Vitales
+            </div>
+            {menuItems
+              ? menuItems.allMarkdownRemark.group.map((item: any) => (
+                  <CollapsableMenu
+                    parent={item.fieldValue}
+                    nodes={item.nodes}
+                  ></CollapsableMenu>
+                ))
+              : ""}
+          </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
@@ -90,14 +96,17 @@ const CollapsableMenu = (props: MenuProps) => {
         <img
           src={collapseArrowIcon}
           className={open ? styles.rotated : ""}
-          alt=""
+          alt="collapse button"
         />
       </div>
       <Collapse in={open}>
         <div>
           {props.nodes.map(node => (
             <div key={node.frontmatter.title} className={styles.node}>
-              <Link className={styles.link} to={node.fields.slug}>
+              <Link
+                className={[styles.link, "paragraph"].join(" ")}
+                to={node.fields.slug}
+              >
                 {node.frontmatter.title}
               </Link>
             </div>

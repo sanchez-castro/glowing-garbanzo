@@ -117,8 +117,8 @@ const Header = (props: HeaderProps) => {
                   </Modal>
 
                   <ResultToast
-                    displayToast={toastState.displayToast}
-                    result={toastState.result}
+                    displayToast={toastState ? toastState.displayToast : false}
+                    result={toastState ? toastState.result : null}
                     handleClose={toastClose}
                   ></ResultToast>
                 </Fragment>

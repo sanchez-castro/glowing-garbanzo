@@ -51,9 +51,9 @@ const Subscribe = (props: SubscribeProps) => {
         className={[styles.container, "d-none d-lg-block"].join(" ")}
       >
         {props.modal ? (
-          <Modal handleChange={handleChange}></Modal>
+          <Modal handleSubmit={handleSubmit} handleChange={handleChange}></Modal>
         ) : (
-          <Landscape handleChange={handleChange}></Landscape>
+          <Landscape handleSubmit={handleSubmit} handleChange={handleChange}></Landscape>
         )}
       </Container>
 
@@ -65,7 +65,7 @@ const Subscribe = (props: SubscribeProps) => {
           "d-block d-lg-none",
         ].join(" ")}
       >
-        <Mobile handleChange={handleChange}></Mobile>
+        <Mobile handleSubmit={handleSubmit} handleChange={handleChange}></Mobile>
       </Container>
 
       {!props.modal ? (
@@ -101,7 +101,7 @@ const Mobile = (props: any) => {
             type="text"
             onKeyUp={props.handleChange}
           />
-          <img className={styles.inputIcon} src={arrowIcon} alt="" />
+          <img onClick={props.handleSubmit} className={styles.inputIcon} src={arrowIcon} alt="" />
         </div>
       </Col>
     </Row>
@@ -128,7 +128,7 @@ const Modal = (props: any) => {
             type="text"
             onKeyUp={props.handleChange}
           />
-          <img className={styles.inputIcon} src={arrowIcon} alt="" />
+          <img onClick={props.handleSubmit} className={styles.inputIcon} src={arrowIcon} alt="" />
         </div>
       </Col>
     </Row>
@@ -154,7 +154,7 @@ const Landscape = (props: any) => {
             type="text"
             onKeyUp={props.handleChange}
           />
-          <img className={styles.inputIcon} src={arrowIcon} alt="" />
+          <img onClick={props.handleSubmit} className={styles.inputIcon} src={arrowIcon} alt="" />
         </div>
       </Col>
     </Row>

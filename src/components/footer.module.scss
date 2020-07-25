@@ -90,6 +90,17 @@
         letter-spacing: 0.01em;
         color: black;
     }
+
+    .input-container {
+      display: flex;
+    }
+
+    .input-icon {
+      cursor: pointer;
+      position: relative;
+      right: 4vh;
+      width: 2.5vh;
+    }
 }
 
 .toast {
