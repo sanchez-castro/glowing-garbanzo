@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import { Link } from "gatsby";
 import { Container, Row, Col, Toast } from "react-bootstrap";
 import styles from "./footer.module.scss";
-import twitterIcon from "../assets/icon/twitter.svg";
-import facebookIcon from "../assets/icon/facebook.svg";
-import instagramIcon from "../assets/icon/instagram.svg";
+import arrowIcon from "../assets/icon/black-arrow.svg";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 
 interface SubscribeState {
@@ -96,12 +94,15 @@ const Footer = (props: FooterProps) => {
             <p className={["headline-4", props.mobile ? "m-0" : ""].join(" ")}>
               Subscribir
             </p>
-            <input
-              className={styles.email}
-              placeholder="Tu dirección de correo"
-              type="text"
-              onKeyUp={handleChange}
-            />
+            <div className={styles.inputContainer}>
+              <input
+                className={styles.email}
+                placeholder="Tu dirección de correo"
+                type="text"
+                onKeyUp={handleChange}
+              />
+              <img onClick={handleSubmit} className={styles.inputIcon} src={arrowIcon} alt="" />
+            </div>
           </Col>
         </Row>
       </Container>

@@ -24,6 +24,13 @@ class Layout extends Component<LayoutProps, LayoutState> {
     };
   }
 
+  componentDidMount() {
+    const landing = window.location.pathname == "/"
+    this.setState({
+      collapsedSidebar: !landing
+    })
+  }
+
   contentWidth = 9;
   hiddenClass = "fixed-top one";
   contentClass = "two";
@@ -32,8 +39,6 @@ class Layout extends Component<LayoutProps, LayoutState> {
     this.setState({
       collapsedSidebar: !this.state.collapsedSidebar,
     });
-
-    console.log(!this.state.collapsedSidebar)
   };
 
   render() {
