@@ -4,8 +4,8 @@ import styles from "./sidebar.module.scss";
 import collapseArrowIcon from "../assets/icon/accent-collapse-arrow.svg";
 import closeIcon from "../assets/icon/close.svg";
 import { navigate, useStaticQuery, graphql, Link } from "gatsby";
-import logo from "../assets/image/logo.png";
 import { Container, Row, Col, Image } from "react-bootstrap";
+import Img from "gatsby-image";
 
 interface LayoutProps {
   hidden: boolean;
@@ -18,7 +18,7 @@ const Sidebar = (props: LayoutProps) => {
     navigate("/");
   };
 
-  const menuItems = useStaticQuery(
+  const data = useStaticQuery(
     graphql`
       query {
         allMarkdownRemark(filter: { frontmatter: { sidebar: { eq: true } } }) {
@@ -32,6 +32,17 @@ const Sidebar = (props: LayoutProps) => {
               }
             }
             fieldValue
+          }
+        }
+        file(relativePath: { eq: "logo.png" }) {
+          childImageSharp {
+            fluid {
+              base64
+              aspectRatio
+              src
+              srcSet
+              sizes
+            }
           }
         }
       }
@@ -50,7 +61,7 @@ const Sidebar = (props: LayoutProps) => {
       <Row>
         <Col sm={12} className={styles.titleContainer}>
           <div onClick={() => home()} className={styles.title}>
-            <Image src={logo} alt="" fluid/>
+            <Img fluid={data.file.childImageSharp.fluid} alt="logo" />
           </div>
           <p className={[styles.bio, "paragraph"].join(" ")}>
             El mejor sitio en español para aprender Ciencia de Datos.
@@ -61,8 +72,8 @@ const Sidebar = (props: LayoutProps) => {
             <div className={[styles.topics, "headline-4"].join(" ")}>
               Vitales
             </div>
-            {menuItems
-              ? menuItems.allMarkdownRemark.group.map((item: any) => (
+            {data
+              ? data.allMarkdownRemark.group.map((item: any) => (
                   <CollapsableMenu
                     parent={item.fieldValue}
                     nodes={item.nodes}

@@ -47,7 +47,7 @@ class Layout extends Component<LayoutProps, LayoutState> {
         <Row className={styles.row}>
           <Col className="d-block d-lg-none p-0">
             <Mobile
-              collapsedSidebar={this.state.collapsedSidebar}
+              collapsedSidebar={!this.state.collapsedSidebar}
               toggleHideHandler={this.toggleHideHandler}
             >
               {this.props.children}
