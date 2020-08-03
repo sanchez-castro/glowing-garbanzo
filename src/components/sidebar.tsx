@@ -60,9 +60,11 @@ const Sidebar = (props: LayoutProps) => {
       )}
       <Row>
         <Col sm={12} className={styles.titleContainer}>
-          <div onClick={() => home()} className={styles.title}>
-            <Img fluid={data.file.childImageSharp.fluid} alt="logo" />
-          </div>
+          { data.file && data.file.childImageSharp.fluid ?
+            <div onClick={() => home()} className={styles.title}>
+              <Img fluid={data.file.childImageSharp.fluid} alt="logo" />
+            </div> : ''
+          }
           <p className={[styles.bio, "paragraph"].join(" ")}>
             El mejor sitio en español para aprender Ciencia de Datos.
           </p>
