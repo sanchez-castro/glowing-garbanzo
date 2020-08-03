@@ -17,17 +17,19 @@ interface LayoutState {
 }
 
 class Layout extends Component<LayoutProps, LayoutState> {
+  private landing: boolean 
   constructor(props: LayoutProps) {
     super(props);
+    this.landing = true
     this.state = {
       collapsedSidebar: true,
     };
   }
 
   componentDidMount() {
-    const landing = window.location.pathname == "/"
+    this.landing = window.location.pathname == "/"
     this.setState({
-      collapsedSidebar: !landing
+      collapsedSidebar: !this.landing
     })
   }
 
@@ -47,7 +49,7 @@ class Layout extends Component<LayoutProps, LayoutState> {
         <Row className={styles.row}>
           <Col className="d-block d-lg-none p-0">
             <Mobile
-              collapsedSidebar={!this.state.collapsedSidebar}
+              collapsedSidebar={this.landing ? true : this.state.collapsedSidebar}
               toggleHideHandler={this.toggleHideHandler}
             >
               {this.props.children}
