@@ -6,8 +6,14 @@
   .menu-icon {
     position: absolute;
     left: 1vh;
-    top: 1.5vh;
+    top: 1vh;
     z-index: 1;
+    background: url('../assets/icon/hamburguer.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    width: 4vh;
+    height: 4vh;
   }
 
   .input-container {
