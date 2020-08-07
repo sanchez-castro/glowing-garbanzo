@@ -5,7 +5,6 @@ import Footer from "../../components/footer";
 import { Container, Row, Col } from "react-bootstrap";
 import styles from "./layout.module.scss";
 import collapse from "../../assets/icon/collapse-arrow.svg";
-import menuIcon from "../../assets/icon/hamburguer.svg";
 
 interface LayoutProps {
   title?: string;
@@ -13,7 +12,8 @@ interface LayoutProps {
 }
 
 interface LayoutState {
-  collapsedSidebar: boolean;
+  landscapeCollapsedSidebar: boolean;
+  mobileCollapsedSidebar: boolean;
 }
 
 class Layout extends Component<LayoutProps, LayoutState> {
@@ -22,14 +22,15 @@ class Layout extends Component<LayoutProps, LayoutState> {
     super(props);
     this.landing = true
     this.state = {
-      collapsedSidebar: true,
+      landscapeCollapsedSidebar: true,
+      mobileCollapsedSidebar: true
     };
   }
 
   componentDidMount() {
     this.landing = window.location.pathname == "/"
     this.setState({
-      collapsedSidebar: !this.landing
+      landscapeCollapsedSidebar: !this.landing,
     })
   }
 
@@ -39,7 +40,8 @@ class Layout extends Component<LayoutProps, LayoutState> {
 
   toggleHideHandler = () => {
     this.setState({
-      collapsedSidebar: !this.state.collapsedSidebar,
+      landscapeCollapsedSidebar: !this.state.landscapeCollapsedSidebar,
+      mobileCollapsedSidebar: !this.state.mobileCollapsedSidebar,
     });
   };
 
@@ -49,7 +51,7 @@ class Layout extends Component<LayoutProps, LayoutState> {
         <Row className={styles.row}>
           <Col className="d-block d-lg-none p-0">
             <Mobile
-              collapsedSidebar={this.landing ? true : this.state.collapsedSidebar}
+              collapsedSidebar={this.state.mobileCollapsedSidebar}
               toggleHideHandler={this.toggleHideHandler}
             >
               {this.props.children}
@@ -57,7 +59,7 @@ class Layout extends Component<LayoutProps, LayoutState> {
           </Col>
           <Col className="d-none d-lg-block p-0">
             <Landscape
-              collapsedSidebar={this.state.collapsedSidebar}
+              collapsedSidebar={this.state.landscapeCollapsedSidebar}
               toggleHideHandler={this.toggleHideHandler}
             >
               {this.props.children}
